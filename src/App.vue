@@ -1,5 +1,6 @@
 <template>
   <HeaderComp/>
+
   <router-view/>
 </template>
 
