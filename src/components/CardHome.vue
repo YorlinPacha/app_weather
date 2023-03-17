@@ -1,6 +1,6 @@
 <template>
     <section class="weather-content">
-        <h1>Buscador del clima</h1>
+        <h1>Indicador del clima</h1>
         <div class="result">
             <p>Agrege cuidad y pais</p>
             <!-- <h5>Clima en Bogota</h5>
@@ -10,7 +10,7 @@
             <p>Min: 27°C</p> -->
         </div>
         <form action="" method="POST" class="get-weather">
-            <input type="text" name="city" id="city" placeholder="Write your city...">
+            <input type="text" name="city" id="city" placeholder="Este buscador ira en el header. ciudad prueba">
             <input type="submit" name="" id="" value="Get Weather">
         </form>
     </section>
