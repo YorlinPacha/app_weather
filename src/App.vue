@@ -1,5 +1,11 @@
 <template>
-  <HeaderComp/>
+   <HeaderComp/>
+   
+  <!-- <nav>
+     <router-link to="/">Semanal</router-link> |
+     <router-link to="/daily">Diario</router-link>
+
+    </nav> -->
   <router-view/>
 </template>
 
