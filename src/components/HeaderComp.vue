@@ -14,12 +14,12 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end col-4">
           <li class="nav-item ">
 
-            <router-link to="/" class="nav-link active" id="nav"
+            <router-link to="/" class="nav-link active border border-muted " id="nav"
             aria-current="page">Semanal</router-link>
           </li>
           <li class="nav-item ">
 
-            <router-link to="/daily" class="nav-link active"
+            <router-link to="/daily" class="nav-link active border borde-muted" id="nav2"
             
              >Diario</router-link>
           </li>
@@ -44,30 +44,7 @@
 <script>
 export default {
   name: 'HeaderComp',
-//   computed: {
-//     activePath() {
-//       if(this.$route.path === '/') {
-//       return {
-//         logotiempo: true,
-//         week: false,
-//         daily: false,
-//       }
-//       } else if(this.$route.path === '/week') {
-//         return {
-//           logotiempo: false,
-//         week: true,
-//         daily: false, 
-//       }
-    
-//       } else if(this.$route.path === '/daily') {
-//         return {
-//           logotipo: false,
-//         week: false,
-//         daily: true, 
-//       }
-//       }
-//     },
-//   },
+//  
  }
 </script>
 
@@ -82,8 +59,9 @@ export default {
 .nav-link {
   background-color: rgba(218, 218, 218, 0.158);
   padding: 0.3em;
-  border-radius: 10%;
+  border-radius: 40%;
   margin: 0.1em;
+
 }
 
 .logo {
@@ -91,14 +69,19 @@ export default {
  padding: 0.5rem; 
 }
 #nav.router-link-active {
-color: #FFBFA9;
+color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
-border: 1px solid rgba(245, 242, 242, 0.062);
+ 
 }
-#nav {
-  color: #42b983;
-  
+#nav2.router-link-active {
+color: blue;
+ background-color: rgba(133, 128, 128, 0.158); 
+
 }
+ #nav, #nav2 {
+  color: rgb(196, 187, 66);
+
+} 
 .navbar {
   padding: 0;
 }
