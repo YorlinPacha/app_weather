@@ -1,6 +1,7 @@
 <template>
   <div class="contenedor">
     <div class="about">
+      <HeaderCompbis />
     <h1>pagina semanal</h1>
   </div>
   
@@ -8,10 +9,18 @@
 
   <CardHome />
 </div>
+
 </template>
 
-<script setup>
+<script>
 import CardHome from '@/components/CardHome.vue'
+import HeaderCompbis from '@/components/HeaderCompbis.vue';
+export default{
+  components: {
+      HeaderCompbis,
+      CardHome
+    }
+}
 
 </script>
 
