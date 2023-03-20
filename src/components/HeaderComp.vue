@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid bgnav">
-      <router-link to="/logo" class="navbar-brand col-3 d-flex justify-content-center ">
+      <router-link to="/" class="navbar-brand col-3 d-flex justify-content-center ">
         <img class= "logo" src="../assets/img/logotiempo.png" alt="logo"> 
        
       </router-link>
@@ -17,7 +17,7 @@
             <router-link to="/" class="nav-link active border border-muted " id="nav"
             aria-current="page">Semanal</router-link>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
 
             <router-link to="/daily" class="nav-link active border borde-muted" id="nav2"
             
@@ -63,6 +63,12 @@ export default {
   margin: 0.1em;
 
 }
+
+
+
+
+
+
 
 .logo {
   max-width: 5em;
