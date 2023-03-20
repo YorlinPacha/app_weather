@@ -49,16 +49,20 @@ export default {
     const doSearch= async()=>{
         const response = await fetch(API + search.value + apikey)
         const data= await response.json()
+        console.log(data);
         result.value = data
+        console.log(result.value.name);
         }
       return{
         search,
         result,
         doSearch,
       }
+      
     }
   
 }
+
 
 
 </script>
