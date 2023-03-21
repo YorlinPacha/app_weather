@@ -28,8 +28,8 @@
             </span></div> -->
 
         </ul>
-        <form class="d-flex col-6">
-          <input class="form-control me-2" type="search" placeholder="Introducir Ciudad" aria-label="Search">
+        <form class="d-flex col-6" v-on:submit.prevent="doSearch">
+          <input v-model="search" class="form-control me-2" type="search" placeholder="Introducir Ciudad" aria-label="Search">
           <button class="btn btn-outline-grey" type="submit">Buscar</button>
         </form>
       </div>
@@ -38,15 +38,55 @@
 
 
 
+  <CardHome :result="result" />
   
 </template>
 
-<script>
-export default {
-  name: 'HeaderComp',
-//  
- }
+<script setup>
+import CardHome from "./CardHome.vue";
+  import {ref} from "vue"
+  let search = ref("");
+  let result = ref("");
+
+  //
+  const doSearch = async () => {
+    try{
+
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric`);
+            const data = await response.json();
+            result.value = data;
+            console.log("++PADRE+++",result.value.name);
+            }
+            catch(error){
+              console.log(error)
+            }
+        };
 </script>
+
+
+<!-- Parte original abajo -->
+
+<!-- // import { ref } from 'vue'
+
+// export default {
+//   name: 'HeaderComp',
+//   setup(){
+//     const API = "https://api.openweathermap.org/data/2.5/weather?&q=";
+//     const apikey = "&appid=b9964f2d4f56729f81838a84d98556fe";
+//     let search = ref(null)
+//     let result = ref(null)
+//     const dosearch = async() => {
+//       const response = await fetch(API + search.value + apikey)
+//       const data = await response.json()
+//       result.value = data
+//       console.log(result.value)
+//     }
+//     return{
+//       API, apikey, search, dosearch
+//   }
+//   }
+// }  
+</script>-->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
