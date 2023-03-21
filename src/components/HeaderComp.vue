@@ -101,15 +101,7 @@ import CardHome from "./CardHome.vue";
   padding: 0.3em;
   border-radius: 40%;
   margin: 0.1em;
-
 }
-
-
-
-
-
-
-
 .logo {
   max-width: 5em;
  padding: 0.5rem; 
