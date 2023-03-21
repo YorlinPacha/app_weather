@@ -34,12 +34,6 @@
   </div>  -->
 
   
-
-  
-  
-
-
-
 <div class="contenedor">
     <div class="about">
       <!-- <HeaderCompbis /> -->
@@ -54,6 +48,10 @@
 <CompPruebaCard :result="result"/>
 
 </template>
+
+
+
+
 
 <script>
 
@@ -76,6 +74,7 @@ export default {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric`);
             const data = await response.json();
             result.value = data;
+            console.log("+++++",result);
         };
 
 
