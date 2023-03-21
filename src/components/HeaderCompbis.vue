@@ -32,8 +32,6 @@
       <h2 class="result__name">{{ result.name }}</h2>
       <p class="result__bio">Temperatura {{ result.main.temp }}°</p>
   </div> 
-
-  
 </template>
 
 <script>
