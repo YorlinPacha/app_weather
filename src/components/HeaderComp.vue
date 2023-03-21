@@ -28,8 +28,8 @@
             </span></div> -->
 
         </ul>
-        <form class="d-flex col-6">
-          <input class="form-control me-2" type="search" placeholder="Introducir Ciudad" aria-label="Search">
+        <form class="d-flex col-6" v-on:submit.prevent="dosearch">
+          <input v-model="search" class="form-control me-2" type="search" placeholder="Introducir Ciudad" aria-label="Search">
           <button class="btn btn-outline-grey" type="submit">Buscar</button>
         </form>
       </div>
@@ -42,10 +42,27 @@
 </template>
 
 <script>
+
+import { ref } from 'vue'
+
 export default {
   name: 'HeaderComp',
-//  
- }
+  setup(){
+    const API = "https://api.openweathermap.org/data/2.5/weather?&q=";
+    const apikey = "&appid=b9964f2d4f56729f81838a84d98556fe";
+    let search = ref(null)
+    let result = ref(null)
+    const dosearch = async() => {
+      const response = await fetch(API + search.value + apikey)
+      const data = await response.json()
+      result.value = data
+      console.log(result.value)
+    }
+    return{
+      API, apikey, search, dosearch
+  }
+  }
+} 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
