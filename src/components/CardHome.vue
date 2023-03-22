@@ -8,8 +8,8 @@
         <!-- <p>Temperatura {{ result.weather[0]}}°</p> --> 
       </div>
       <div v-else>
-        <p>esperando...</p>
-      </div>
+      <img class="imagenGif"  src="../assets/img/buscar.gif" alt="">
+    </div>
     </section>
   </template>
   
@@ -46,5 +46,11 @@
     padding: 20px 20px 50px;
     margin: 3rem auto 19rem auto ;
   }
+
+  .imagenGif{
+  width: 20rem;
+  height: auto;
+ 
+}
   </style>
   
