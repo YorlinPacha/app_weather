@@ -64,42 +64,18 @@ import CardHome from "./CardHome.vue";
 </script>
 
 
-<!-- Parte original abajo -->
 
-<!-- // import { ref } from 'vue'
-
-// export default {
-//   name: 'HeaderComp',
-//   setup(){
-//     const API = "https://api.openweathermap.org/data/2.5/weather?&q=";
-//     const apikey = "&appid=b9964f2d4f56729f81838a84d98556fe";
-//     let search = ref(null)
-//     let result = ref(null)
-//     const dosearch = async() => {
-//       const response = await fetch(API + search.value + apikey)
-//       const data = await response.json()
-//       result.value = data
-//       console.log(result.value)
-//     }
-//     return{
-//       API, apikey, search, dosearch
-//   }
-//   }
-// }  
-</script>-->
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .bgnav {
   widows: 100%;
-  height: 5rem;
+  height: auto;
   background-color: #C4DDFF;
 }
 
 .nav-link {
   background-color: rgba(218, 218, 218, 0.158);
   padding: 0.3em;
-  border-radius: 40%;
+  border-radius: 9px;
   margin: 0.1em;
 
 }

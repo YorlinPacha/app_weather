@@ -8,7 +8,7 @@
         <!-- <p>Temperatura {{ result.weather[0]}}°</p> --> 
       </div>
       <div v-else>
-        <p>imagen</p>
+        <p>esperando...</p>
       </div>
     </section>
   </template>
