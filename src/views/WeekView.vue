@@ -34,12 +34,6 @@
   </div>  -->
 
   
-
-  
-  
-
-
-
 <div class="contenedor">
     <div class="about">
       <!-- <HeaderCompbis /> -->
@@ -54,6 +48,10 @@
 <CompPruebaCard :result="result"/>
 
 </template>
+
+
+
+
 
 <script>
 
