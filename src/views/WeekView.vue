@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>View 1</h2>
-    <!-- <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>-->
+    <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
    
     <hr>
    
@@ -12,7 +12,7 @@
 
 <script setup>
 import MyComponent from '../components/MyComponent.vue';
-// import CardHome from '../components/CardHome.vue';
+import CardHome from '../components/CardHome.vue';
 import { defineProps } from "vue"
 
 
