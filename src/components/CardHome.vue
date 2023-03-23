@@ -1,10 +1,10 @@
 <template>
     <section class="weather-content">
       <h1>Indicador del clima</h1>
-      <div class="result" v-if="result">
-        <p>{{ result.name }}</p>
-        <p>Temperatura {{ result.main.temp }}°</p>
-        <img :src="`https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`" alt="icon">
+      <div class="result" v-if="climaActual">
+        <p>{{ climaActual.name }}</p>
+        <p>Temperatura {{ climaActual.main.temp }}°</p>
+        <img :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">
         <!-- <p>Temperatura {{ result.weather[0]}}°</p> --> 
       </div>
       <div v-else>
@@ -21,6 +21,8 @@
     result: {
       type: Object
     },
+    climaActual: Object,
+    climaCompleto: Object
   });
 //   console.log("captura+++", props.result.value);
   </script>
@@ -43,8 +45,8 @@
   
     max-width: 501px;
     text-align: center;
-    padding: 20px 20px 50px;
-    margin: 3rem auto 19rem auto ;
+    padding: 20px 20px 20px;
+    margin: 3rem auto 3rem auto ;
   }
 
   .imagenGif{

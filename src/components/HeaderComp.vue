@@ -38,7 +38,7 @@
 
 
 
-  <CardHome :result="result" />
+  <CardHome />
   
 </template>
 
