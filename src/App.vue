@@ -34,7 +34,6 @@
       </div>
     </div>
   </nav>
-
  
   <RouterView :climaActual="climaActual" :climaCompleto="climaCompleto" />
 </template>
@@ -42,21 +41,18 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { defineProps } from 'vue';
-
-
 import { ref } from "vue"
+
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
 
 const doSearch = async () => {
   try {
-
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric`);
     const data = await response.json();
     climaActual.value = data;
     console.log(climaActual.value.name);
-
     console.log("Latitud" + climaActual.value.coord.lat);
     console.log("Longitud" + climaActual.value.coord.lon);
 
@@ -68,17 +64,18 @@ const doSearch = async () => {
   }
 };
 
-
 async function datosCompletos(lat, lon) {
   try {
   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=es&appid=${apiKey}`;
   const respuesta = await fetch(url);
   const dataWeather = await respuesta.json();
   climaCompleto.value = dataWeather
 
   // console.log("EquipoVUE" + climaCompleto.value.name);
   return dataWeather;
+
+
 
 }
   catch (error) {
