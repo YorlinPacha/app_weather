@@ -4,7 +4,7 @@
     <!-- <CardHome v-if="climaActual" :climaActual="climaActual" :climaCompleto="climaCompleto"/> -->
     
     
-
+   <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
     
     <hr>
     <MyOtherComponent :climaActual="climaActual" :climaCompleto="climaCompleto" />
@@ -15,6 +15,7 @@
 <script setup>
 import MyOtherComponent from '../components/MyOtherComponent.vue';
 // import CardHome from '@/components/CardHome.vue';
+import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 
 import { defineProps } from 'vue';
 

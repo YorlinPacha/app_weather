@@ -28,6 +28,8 @@
       </div>
     </div>
 
+    <p> {{  }}</p>
+
 <!-- <div class="contenedor_clima_semana">
   <h2 >Clima de la semana</h2>
 
