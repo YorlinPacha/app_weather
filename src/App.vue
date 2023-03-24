@@ -21,6 +21,7 @@
 
             <router-link to="/daily" class="nav-link active border borde-muted" id="nav2">Diario</router-link>
           </li>
+  
           <!-- <div><span class="material-icons-outlined ">
               language
             </span></div> -->
