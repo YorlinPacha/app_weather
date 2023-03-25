@@ -23,8 +23,8 @@
           </li>
           <li class="nav-item">
 
-<router-link to="/blog" class="nav-link active border borde-muted" id="nav2">
-  Blog
+            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">
+Blog
 </router-link>
 </li>
 
