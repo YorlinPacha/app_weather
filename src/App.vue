@@ -21,9 +21,13 @@
 
             <router-link to="/daily" class="nav-link active border borde-muted" id="nav2">Diario</router-link>
           </li>
-          <!-- <div><span class="material-icons-outlined ">
-              language
-            </span></div> -->
+          <li class="nav-item">
+
+            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">
+Blog
+</router-link>
+</li>
+
 
         </ul>
         <form class="d-flex col-6" v-on:submit.prevent="doSearch">
