@@ -34,11 +34,15 @@
             </p>
           <img
               
-              :src="
-                `http://openweathermap.org/img/wn/${climaHoras.weather[0].icon}@2x.png`
-              "
+              :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
+              
+              
+
+
               alt=""
             />
+            <!-- "`http://openweathermap.org/img/wn/${climaHoras.weather[0].icon}@2x.png`" -->
+            
             <p >
               {{ Math.round(climaHoras.temp) }}&deg;
             </p>
@@ -75,7 +79,7 @@ defineProps({
 }
 .clima_horas{
     display: flex;
-    gap: .5rem;
+    gap: .8rem;
     overflow: auto;
     white-space: nowrap;
 
@@ -91,7 +95,7 @@ defineProps({
 }
 
 .clima_hora img{
-  width: 5rem;
+  width: 2.5rem;
 }
 
 

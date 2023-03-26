@@ -54,7 +54,8 @@ let climaCompleto = ref("");
 
 const doSearch = async () => {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric&lang=es`);
+    // &lang=es  **Esto fue agregado para recibir los datos en español desde la api**
     const data = await response.json();
     climaActual.value = data;
     console.log(climaActual.value.name);

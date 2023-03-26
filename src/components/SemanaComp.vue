@@ -2,13 +2,8 @@
 
 
   <div class="contenedor_clima_semana" v-if="climaCompleto">
-      <h2>Clima de la Semana</h2>
-      <img class="icono_clima"
-          src="../assets/img/weather_icons/01d.png" 
-          
-          
-          alt=""
-        />
+      <h2 class="titulo_clima_semana">Clima de la Semana</h2>
+
       <div class="contenedor_clima_dia"
       v-for="day in climaCompleto.daily"
           :key="day.dt"
@@ -24,7 +19,7 @@
           }}
         </p>
         <img class="icono_clima"
-          :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
+          :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${day.weather[0].icon}.png`"
           alt=""
         />
 
@@ -85,8 +80,10 @@ defineProps({
     border: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
     padding: 20px 20px 20px;
-    
+ }
 
+ .titulo_clima_semana{
+  margin-bottom: 1.5rem;
  }
 
  .contenedor_clima_dia{
@@ -100,8 +97,8 @@ defineProps({
  }
 
  .icono_clima{
-  width: 75px;
-  height: 75px;
+  width: 3rem;
+  height: 3rem;
  }
  .descripcion_clima_dia{
     text-transform: capitalize;

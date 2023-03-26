@@ -7,15 +7,16 @@
         <div class="detalles_clima_hoy">
             <img 
             class="imagen_clima_hoy"
-            src="../assets/img/weather_icons/10d.png" 
+            :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`"
             alt="">
             <div 
             class="info_clima_hoy">
-                <p>Humedad: </p>
-                <p>Viento: </p>
-                <p>Nubosidad: </p>
-                <p>Presion: </p>
-                <p>Indice UV: </p>
+                <p>Temperatura: {{ Math.round(climaActual.main.temp_max) }} &deg;C / {{ Math.round(climaActual.main.temp_min) }} &deg;C</p>
+                <p>Humedad: {{ climaActual.main.humidity }}%</p>
+                <p>Viento: {{ Math.round(climaActual.wind.speed * 3.6) }} km/h</p>
+                <p>Nubosidad: {{ climaActual.clouds.all }}% - <span class="clima_hoy_descripcion">{{ climaActual.weather[0].description}}</span></p>
+                <p>Presión: {{ climaActual.main.pressure }} mbar</p>
+                <p>Indice UV: {{ climaCompleto.current.uvi }} </p>
             </div>
 
         </div>
@@ -55,10 +56,13 @@
 }
 
 .detalles_clima_hoy img{
-    width: 75px;
-    height: 75px;
+    width: 10vw;
     margin: auto 1rem;
    
+}
+
+.clima_hoy_descripcion{
+    text-transform: capitalize;
 }
 
 
