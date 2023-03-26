@@ -3,6 +3,12 @@
 
   <div class="contenedor_clima_semana" v-if="climaCompleto">
       <h2>Clima de la Semana</h2>
+      <img class="icono_clima"
+          src="../assets/img/weather_icons/01d.png" 
+          
+          
+          alt=""
+        />
       <div class="contenedor_clima_dia"
       v-for="day in climaCompleto.daily"
           :key="day.dt"
@@ -21,9 +27,18 @@
           :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
           alt=""
         />
+
+        <p class="descripcion_clima_dia">{{ day.weather[0].description }}</p>
+        <!-- :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"-->
+           
+        <!-- Idea de como se podria cambiar los iconos a los nuestros -->
+        <!-- :src="`../assets/img/weather_icons/${day.weather[0].icon}.png`" -->
+
+        
+
         <div class="d-flex gap-2 ms-auto">
-          <p>Max: {{ Math.round(day.temp.max)  }} &deg;C</p> - 
-          <p>Min: {{ Math.round(day.temp.min)  }} &deg;C </p>
+          <p>{{ Math.round(day.temp.max)  }} &deg;C / {{ Math.round(day.temp.min)  }} &deg;C </p>
+          
         </div>
       </div>
     </div>
@@ -52,16 +67,32 @@ defineProps({
 </script>
 
 <style  scoped>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
  .contenedor_clima_semana{
     width: 50vw;
     margin: 0 auto;
     text-align: center;
 
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10.5px);
+    -webkit-backdrop-filter: blur(10.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    padding: 20px 20px 20px;
+    
+
  }
 
  .contenedor_clima_dia{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
  }
 
  .nombre_dia{
@@ -69,7 +100,10 @@ defineProps({
  }
 
  .icono_clima{
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
+ }
+ .descripcion_clima_dia{
+    text-transform: capitalize;
  }
 </style>
