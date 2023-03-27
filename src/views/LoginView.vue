@@ -14,12 +14,13 @@
                   <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario" v-model="usuario">
                   <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
                   <input type="submit" class="fadeIn fourth" value="Log In">
+                  <div class="error" v-if="error">{{ error }}</div>
                 </form>
 
                 <!-- Remind Passowrd -->
-                <div class="alert alert-danger" role="alert" v-if="error">
+                <!-- <div class="alert alert-danger" role="alert" v-if="error">
                    {{error_msg}}
-                </div>
+                </div> -->
 
               </div>
             </div>
@@ -28,37 +29,72 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
+import { ref} from 'vue'
+import router from '@/router'
 export default {
   name: 'LoginView',
   components: {
   },
-  data: function(){
-    return {
-      usuario: "",
-      password: "",
-      error: false,
-      error_msg: "",
+  setup(){
+    const usuario = ref('')
+    const password = ref('')
+const error = ref('')
+    const login = () =>{
+      if (usuario.value === 'administrador' && password.value === 'contraseña') {
+      // Credenciales válidas, redirigir al usuario a la vista del formulario
+      router.push("/formulario")
+    } else {
+      // Credenciales inválidas, mostrar un mensaje de error al usuario
+      error.value = "Usuario o contraseña incorrectos"
+      //alert('Usuario o contraseña incorrectos')
     }
-  },
-  methods:{
-    login(){
-        let json = {
-          "usuario" : this.usuario,
-          "password": this.password
-        };
-        axios.post('http://solodata.es/auth', json)
-        .then( data =>{
-           if(data.data.status == "ok"){
-             localStorage.token = data.data.result.token;
-             this.$router.push('dashboard');
-           }else{
-             this.error = true;
-             this.error_msg = data.data.result.error_msg;
-           }
-        })
     }
+    return{
+      usuario,
+      login,
+      password,
+      error
+    }
+
   }
+  // data: function(){
+  //   return {
+  //     usuario: "",
+  //     password: "",
+  //     error: false,
+  //     error_msg: "",
+  //   }
+  // },
+  // methods:{
+  //   login(){
+  //     console.log(this.password)
+  //       // let json = {
+  //       //   "usuario" : this.usuario,
+  //       //   "password": this.password
+  //       // };
+  //       // axios.post('http://solodata.es/auth', json)
+  //       // .then( data =>{
+  //       //    if(data.data.status == "ok"){
+  //       //      localStorage.token = data.data.result.token;
+  //       //      this.$router.push('dashboard');
+  //       //    }else{
+  //       //      this.error = true;
+  //       //      this.error_msg = data.data.result.error_msg;
+  //       //    }
+  //       //})
+   
+  //   // Lógica de autenticación del usuario, puede incluir una llamada a una API
+  //   // que verifique las credenciales y devuelva un token de acceso
+  //   if (this.usuario === 'administrador' && this.password === 'contraseña') {
+  //     // Credenciales válidas, redirigir al usuario a la vista del formulario
+  //     this.$router.push('/formulario')
+  //   } else {
+  //     // Credenciales inválidas, mostrar un mensaje de error al usuario
+  //     alert('Usuario o contraseña incorrectos')
+  //   }
+  // }
+  //}
 }
 </script>
 
@@ -67,7 +103,7 @@ export default {
 /* BASIC */
 
 
-a {
+/* a {
   color: #92badd;
   display:inline-block;
   text-decoration: none;
@@ -82,7 +118,7 @@ h2 {
   margin: 40px 8px 10px 8px; 
   color: #cccccc;
 }
-/* STRUCTURE */
+STRUCTURE */
 .wrapper {
   display: flex;
   align-items: center;
@@ -105,22 +141,22 @@ h2 {
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
 }
-#formFooter {
+/* #formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
   padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
-}
+} */
 /* TABS */
-h2.inactive {
+/* h2.inactive {
   color: #cccccc;
 }
 h2.active {
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
-}
+} */
 /* FORM TYPOGRAPHY*/
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
@@ -251,7 +287,7 @@ input[type=text]:placeholder {
   animation-delay: 1s;
 }
 /* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
+/* .underlineHover:after {
   display: block;
   left: 0;
   bottom: -10px;
@@ -260,18 +296,23 @@ input[type=text]:placeholder {
   background-color: #56baed;
   content: "";
   transition: width 0.2s;
-}
-.underlineHover:hover {
+/* }
+.underlineHover:hover { 
   color: #0d0d0d;
 }
 .underlineHover:hover:after{
   width: 100%;
-}
+} */
 /* OTHERS */
+
 *:focus {
     outline: none;
 } 
 #icon {
   width:60%;
+}
+.error{
+  background-color: red;
+  color:white;
 }
 </style>
