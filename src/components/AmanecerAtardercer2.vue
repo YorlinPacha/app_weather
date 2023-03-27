@@ -4,13 +4,11 @@
     <div class="contenedor_amanecer_atardecer">
       <div class="contenedor_amanecer center text-center">
         <img
-        src="../assets/img/amanecer.gif"
+        :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/01d.png`"
         :style="{ width: 75 + 'px', height: 75 + 'px' }"
           
           alt=""
         />
-
-        <!-- :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/01d.png`" -->
 
         <p>{{ new Date((climaActual.sys.sunrise  * 1000)+ 7200).toLocaleTimeString("en-us", {
                   hour: "numeric",
@@ -22,21 +20,15 @@
         
         
 
-<!-- new Date((climaActual.sys.sunset  * 1000)+ 7200).toLocaleTimeString("en-us", {
-                  hour: "numeric",
-                  hour: '2-digit',
-                  minute: "numeric",
-                  minute: "2-digit"
-                }) -->
+
       </div>
 
       <div class="contenedor_atardecer center text-center">
         <img
-          src="../assets/img/puesta-de-sol.gif" :style="{ width: 75 + 'px', height: 75 + 'px' }"
+        :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/01n.png`"
+          :style="{ width: 75 + 'px', height: 75 + 'px' }"
         />
 
-        <!-- :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/01n.png`"
-          alt="" -->
 
         <p> {{ new Date((climaActual.sys.sunset  * 1000)+ 7200).toLocaleTimeString("en-us", {
                   hour: "numeric",
@@ -63,6 +55,8 @@ defineProps({
 </script>
 
 <style scoped>
+
+/* https://www.flaticon.es/resultados?word=amanecer */
 .contenedor_amanecer_atardecer {
   display: flex;
   gap: 2rem;

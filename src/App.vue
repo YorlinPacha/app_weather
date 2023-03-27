@@ -15,7 +15,7 @@
           <li class="nav-item ">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
-              aria-current="page">Home</router-link>
+              aria-current="page">Semana</router-link>
           </li>
           <li class="nav-item">
 

@@ -3,7 +3,7 @@
     class="contenedor_detalles_clima"
     v-if="climaCompleto && climaActual"
     >
-        <h3>Detalles del clima de hoy</h3>
+        <h3 class="text-center">Detalles del clima de hoy</h3>
         <div class="detalles_clima_hoy">
             <img 
             class="imagen_clima_hoy"
@@ -39,7 +39,7 @@
 <style scoped>
 
 .contenedor_detalles_clima{
-    width: 50vw;
+    width: 35vw;
     margin: 0 auto;
     
     background: rgba(255, 255, 255, 0.15);
