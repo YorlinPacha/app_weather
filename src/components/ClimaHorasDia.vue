@@ -11,13 +11,17 @@
             :key="climaHoras.dt"
             
           >
-          <!-- <p >
+          <p >
               {{
-                climaHoras.dt
-              }}
-            </p> -->
+                new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
+                  hour: "numeric",
+                  hour: '2-digit',
 
-            <p >
+                })
+              }}
+            </p>
+
+            <!-- <p >
               {{
                 // let timestamp = climaHoras.dt;
                 // let hora = new Date(timestamp * 1000);
@@ -31,7 +35,7 @@
                   hour: "numeric",
                 })
               }}
-            </p>
+            </p> -->
           <img
               
               :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
