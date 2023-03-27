@@ -3,19 +3,26 @@
     <h2>View 1</h2>
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    <br>
+    <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
+    <br>
+    <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
    
     <hr>
-   
-    <MyComponent :climaActual="climaActual" :climaCompleto="climaCompleto"/> 
+    <!-- Descomenta las dos lineas de abajo para mirar todos los datos que tiene clima Actual -->
+    <!-- <h3>Informacion clima Actual - My component</h3>
+    <p>{{ climaActual }}</p> -->
 
   </div>
 </template>
 
 <script setup>
-import MyComponent from '../components/MyComponent.vue';
+
 import CardHome from '../components/CardHome.vue';
 import { defineProps } from "vue"
 import SemanaComp from '@/components/SemanaComp.vue';
+import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
+import DetallesClimaDia from '@/components/DetallesClimaDia.vue';
 
 
 defineProps({
