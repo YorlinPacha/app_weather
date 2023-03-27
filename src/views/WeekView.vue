@@ -9,13 +9,11 @@
     <br>
     <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
-    <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
-  
-  
-
-    
+    <AmanecerAtardercer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    <br>
    
-    <hr>
+   
+    <!-- <hr> -->
     <!-- Descomenta las dos lineas de abajo para mirar todos los datos que tiene clima Actual -->
     <!-- <h3>Informacion clima Actual - My component</h3>
     <p>{{ climaActual }}</p> -->
@@ -24,13 +22,12 @@
 </template>
 
 <script setup>
-
-import CardHome from '../components/CardHome.vue';
 import { defineProps } from "vue"
+import CardHome from '../components/CardHome.vue';
 import SemanaComp from '@/components/SemanaComp.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 import DetallesClimaDia from '@/components/DetallesClimaDia.vue';
-import AmanecerAtardecer from '@/components/AmanecerAtardercer.vue'
+import AmanecerAtardercer from '../components/AmanecerAtardercer.vue';
 
 
 

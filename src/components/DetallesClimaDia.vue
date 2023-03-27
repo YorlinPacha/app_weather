@@ -1,7 +1,7 @@
 <template>
     <div 
     class="contenedor_detalles_clima"
-    v-if="climaCompleto || climaActual"
+    v-if="climaCompleto && climaActual"
     >
         <h3>Detalles del clima de hoy</h3>
         <div class="detalles_clima_hoy">

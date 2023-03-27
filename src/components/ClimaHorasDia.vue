@@ -15,6 +15,8 @@
               {{
                 new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
                   hour: "numeric",
+                  hour: '2-digit',
+
                 })
               }}
             </p>

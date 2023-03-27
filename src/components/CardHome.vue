@@ -3,7 +3,7 @@
       <h1>Indicador del clima</h1>
       <div class="result" v-if="climaActual">
         <p>{{ climaActual.name }}</p>
-        <p>Temperatura {{ climaActual.main.temp }}°</p>
+        <p>Temperatura {{ Math.round(climaActual.main.temp) }}°</p>
         <img :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaActual.weather[0].icon}.png`" alt="icon">
         <!-- <img :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon"> -->
         <!-- <p>Temperatura {{ result.weather[0]}}°</p> --> 
