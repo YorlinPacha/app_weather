@@ -17,7 +17,8 @@
             <p >
               {{
                 new Date(
-                  climaHoras.currentTime
+                  //climaHoras.currentTime
+                  climaHoras.dt
                 ).toLocaleTimeString("en-us", {
                   hour: "numeric",
                 })
