@@ -53,10 +53,12 @@ import { ref } from "vue"
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
+// let climaHora = ref("");
 
 const doSearch = async () => {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric&lang=es`);
+    // &lang=es  **Esto fue agregado para recibir los datos en español desde la api**
     const data = await response.json();
     climaActual.value = data;
     console.log(climaActual.value.name);
@@ -71,10 +73,13 @@ const doSearch = async () => {
   }
 };
 
+
+
 async function datosCompletos(lat, lon) {
   try {
   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=es&appid=${apiKey}`;
+  
   const respuesta = await fetch(url);
   const dataWeather = await respuesta.json();
   climaCompleto.value = dataWeather
@@ -82,13 +87,26 @@ async function datosCompletos(lat, lon) {
   // console.log("EquipoVUE" + climaCompleto.value.name);
   return dataWeather;
 
+  
 
+  // climaHora(climaCompleto.value.hourly.dt);
+  
+  
 
 }
   catch (error) {
     console.log(error)
   }
 }
+
+// function climaHora(timestamp) {
+//       const date = new Date(timestamp * 1000);
+//       const hora = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+//       return hora;
+
+//       console.log(hora);
+//     }
+
 
 
 /* No borrar la funcion de abajo "function gg(lat,lon)" para poder guiarme en la codificacion de la captura de errores al momento de hacer una busqueda  */
@@ -126,18 +144,19 @@ climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.or
 
  defineProps({
   climaActual: Object,
-  climaCompleto: Object
+  climaCompleto: Object,
+  // climaHora: Object
 });
 
 </script>
 
 <style scoped>
 
-*{
+/* *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
 #app{
   font-family: 'Lato', sans-serif;

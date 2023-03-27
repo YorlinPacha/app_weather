@@ -5,17 +5,7 @@
       
       
 
-      <!-- <section class="weather-content">
-      <h1>Indicador del clima</h1>
-      <div class="result" v-if="climaActual">
-        <p>{{ climaActual.name }}</p>
-        <p>Temperatura {{ Math.round(climaActual.main.temp) }}°</p>
-        <img  :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">
-      </div>
-      <div v-else>
-        <img class="imagen" :src="`https://cdn.pixabay.com/photo/2022/06/15/18/29/landscape-7264427_1280.png`" alt="">
-      </div>
-    </section> -->
+
 
      </div>
    </template>

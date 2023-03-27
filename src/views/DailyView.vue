@@ -7,13 +7,14 @@
    <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
     
     <hr>
-    <MyOtherComponent :climaActual="climaActual" :climaCompleto="climaCompleto" />
+    <!-- Descomenta las dos lineas de abajo para mirar todos los datos que tiene clima Completo -->
+    <!-- <h2>Informacion Clima completo - MyOtherComponent</h2>
+    <p>{{ climaCompleto }}</p> -->
   
   </div>
 </template>
 
 <script setup>
-import MyOtherComponent from '../components/MyOtherComponent.vue';
 // import CardHome from '@/components/CardHome.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 
