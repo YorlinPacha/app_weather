@@ -1,12 +1,19 @@
 <template>
   <div>
     <h2>View 1</h2>
+    
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
     <br>
     <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    <br>
+    <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+  
+  
+
+    
    
     <hr>
     <!-- Descomenta las dos lineas de abajo para mirar todos los datos que tiene clima Actual -->
@@ -23,6 +30,9 @@ import { defineProps } from "vue"
 import SemanaComp from '@/components/SemanaComp.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 import DetallesClimaDia from '@/components/DetallesClimaDia.vue';
+import AmanecerAtardecer from '@/components/AmanecerAtardercer.vue'
+
+
 
 
 defineProps({
