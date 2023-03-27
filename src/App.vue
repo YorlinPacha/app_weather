@@ -23,9 +23,7 @@
           </li>
           <li class="nav-item">
 
-            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">
-Blog
-</router-link>
+            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">Blog</router-link>
 </li>
 
 
@@ -38,8 +36,13 @@ Blog
       </div>
     </div>
   </nav>
- 
   <RouterView :climaActual="climaActual" :climaCompleto="climaCompleto" />
+   <!-- <router-view v-slot=" { Component }">
+<transition name="fadeUp" mode="out-in">
+<component :is="Component" :key="$router.path"></component>
+</transition>
+</router-view>  -->
+ 
 </template>
 
 <script setup>
@@ -161,16 +164,27 @@ color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
  
 }
-#nav2.router-link-active {
+#nav2.router-link-active,
+#nav3.router-link-active {
 color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
 
 }
- #nav, #nav2 {
+ #nav, #nav2, #nav3{
   color: rgb(196, 187, 66);
 
 } 
 .navbar {
   padding: 0;
 }
+  /* .fadeUp-enter-active, 
+.fadeUp-leave-active {
+  transition: opacity 0.25s, transform 0.25s;
+
+}
+ .fadeUp-enter, 
+.fadeUp-leave-to {
+  opacity: 0;
+  transform: translateX(30%);
+}  */
 </style>
