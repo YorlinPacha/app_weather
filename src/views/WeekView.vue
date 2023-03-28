@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h2>View 1</h2>
-    
+  <div class="fondo">
+     
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
@@ -45,5 +44,6 @@ defineProps({
 });
 </script>
 
-
-
+<style scoped>
+  
+</style>
