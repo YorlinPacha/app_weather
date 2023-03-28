@@ -16,12 +16,6 @@
                   <input type="submit" class="fadeIn fourth" value="Log In">
                   <div class="error" v-if="error">{{ error }}</div>
                 </form>
-
-                <!-- Remind Passowrd -->
-                <!-- <div class="alert alert-danger" role="alert" v-if="error">
-                   {{error_msg}}
-                </div> -->
-
               </div>
             </div>
 
@@ -29,7 +23,7 @@
 </template>
 
 <script>
-//import axios from 'axios';
+
 import { ref} from 'vue'
 import router from '@/router'
 export default {
@@ -42,12 +36,9 @@ export default {
 const error = ref('')
     const login = () =>{
       if (usuario.value === 'administrador' && password.value === 'contraseña') {
-      // Credenciales válidas, redirigir al usuario a la vista del formulario
       router.push("/formulario")
     } else {
-      // Credenciales inválidas, mostrar un mensaje de error al usuario
       error.value = "Usuario o contraseña incorrectos"
-      //alert('Usuario o contraseña incorrectos')
     }
     }
     return{
@@ -58,67 +49,13 @@ const error = ref('')
     }
 
   }
-  // data: function(){
-  //   return {
-  //     usuario: "",
-  //     password: "",
-  //     error: false,
-  //     error_msg: "",
-  //   }
-  // },
-  // methods:{
-  //   login(){
-  //     console.log(this.password)
-  //       // let json = {
-  //       //   "usuario" : this.usuario,
-  //       //   "password": this.password
-  //       // };
-  //       // axios.post('http://solodata.es/auth', json)
-  //       // .then( data =>{
-  //       //    if(data.data.status == "ok"){
-  //       //      localStorage.token = data.data.result.token;
-  //       //      this.$router.push('dashboard');
-  //       //    }else{
-  //       //      this.error = true;
-  //       //      this.error_msg = data.data.result.error_msg;
-  //       //    }
-  //       //})
    
-  //   // Lógica de autenticación del usuario, puede incluir una llamada a una API
-  //   // que verifique las credenciales y devuelva un token de acceso
-  //   if (this.usuario === 'administrador' && this.password === 'contraseña') {
-  //     // Credenciales válidas, redirigir al usuario a la vista del formulario
-  //     this.$router.push('/formulario')
-  //   } else {
-  //     // Credenciales inválidas, mostrar un mensaje de error al usuario
-  //     alert('Usuario o contraseña incorrectos')
-  //   }
-  // }
-  //}
 }
 </script>
 
 
 <style scoped>
-/* BASIC */
 
-
-/* a {
-  color: #92badd;
-  display:inline-block;
-  text-decoration: none;
-  font-weight: 400;
-}
-h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
-}
-STRUCTURE */
 .wrapper {
   display: flex;
   align-items: center;
@@ -141,23 +78,7 @@ STRUCTURE */
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
 }
-/* #formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-} */
-/* TABS */
-/* h2.inactive {
-  color: #cccccc;
-}
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
-} */
-/* FORM TYPOGRAPHY*/
+
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
   border: none;
@@ -189,7 +110,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -216,8 +137,7 @@ input[type=text]:focus {
 input[type=text]:placeholder {
   color: #cccccc;
 }
-/* ANIMATIONS */
-/* Simple CSS3 Fade-in-down Animation */
+
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -286,24 +206,6 @@ input[type=text]:placeholder {
   -moz-animation-delay: 1s;
   animation-delay: 1s;
 }
-/* Simple CSS3 Fade-in Animation */
-/* .underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
-/* }
-.underlineHover:hover { 
-  color: #0d0d0d;
-}
-.underlineHover:hover:after{
-  width: 100%;
-} */
-/* OTHERS */
 
 *:focus {
     outline: none;
