@@ -54,6 +54,7 @@
   width: 20rem;
   height: auto;
   border-radius: 50%;
+
  
 }
 
