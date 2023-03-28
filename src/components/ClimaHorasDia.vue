@@ -37,12 +37,19 @@
               }}
             </p>
 
-            <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp > 8 && climaHoras.temp < 15">
-        </div>
+            <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ">
+        
+              <!-- && new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString > 6 && new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString < 22  -->
+        
+            </div>
       </div>
 
+      <!-- hora => hora.temp >= 10 && hora.temp <= 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 -->
+
       <hr>
+      
       <h6>Mejores horas para hacer ejercicio</h6>
+      
     </div>
 </template>
 
@@ -62,7 +69,7 @@ defineProps({
     width: 60vw;
     margin: 0 auto;
 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(10.5px);
     -webkit-backdrop-filter: blur(10.5px);
