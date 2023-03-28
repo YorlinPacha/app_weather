@@ -1,35 +1,31 @@
 <template>
-     <div class="home">
-      <div class="wrapper fadeInDown">
-              <div id="formContent">
-                <div class="fadeIn first">
-<h1>Formulario Blog</h1>
-</div>
-
-    <form v-on:submit.prevent="formulario">
-                 
-                  <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-                  <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
-                  <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
-                  <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="lacation">
-                  <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
-                  <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
-                  
-                  <input type="submit" class="fadeIn tenth" value="Post">
-                  <div class="error" v-if="error">{{ error }}</div>
-                </form>
-            </div>
-            <div class="wrapper fadeInDown">
+  <div class="home">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <h1>Formulario Blog</h1>
+        </div>
+          <form v-on:submit.prevent="postNew">
+            <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
+            <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
+            <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
+            <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
+            <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
+             <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
+            <input type="submit" class="fadeIn tenth" value="Post">
+            <div class="error" v-if="error">{{ error }}</div>
+            </form>
+        </div>
+          <div class="wrapper fadeInDown">
             <div id="formContent-2">
-                <form v-on:submit.prevent="formulario">
-                  <input type="text" id="id" class="fadeIn second" name="id" placeholder="Introducir el Id" v-model="id">
+                <form v-on:submit.prevent="delNew">
+                  <input type="text" id="delid" class="fadeIn second margin" name="id" placeholder="Introducir el Id" v-model="id">
                   <input type="submit" class="fadeIn ninth" value="Delete">
-                  <div class="error" v-if="error">{{ error }}</div>
                 </form>
             </div>
-            </div>
-</div>
-      </div>
+          </div>
+     </div>
+   </div>
 </template>
 
 <script>
@@ -116,6 +112,7 @@ axios2.request(configDEL)
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
+ 
 }
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
@@ -254,5 +251,8 @@ input[type=text]:placeholder {
 .error{
   background-color: red;
   color:white;
+}
+#delid{
+  margin-top: 2rem;
 }
 </style>
