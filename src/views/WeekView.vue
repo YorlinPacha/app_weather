@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h2>View 1</h2>
-    
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
@@ -18,10 +16,8 @@
     <AmanecerAtardercer2 :climaActual="climaActual" :climaCompleto="climaCompleto"/>
    
    
-    <!-- <hr> -->
-    <!-- Descomenta las dos lineas de abajo para mirar todos los datos que tiene clima Actual -->
-    <!-- <h3>Informacion clima Actual - My component</h3>
-    <p>{{ climaActual }}</p> -->
+    <br>
+    <FooterComp />
 
   </div>
 </template>
@@ -35,6 +31,7 @@ import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 import DetallesClimaDia from '@/components/DetallesClimaDia.vue';
 import AmanecerAtardercer from '../components/AmanecerAtardercer.vue';
 import AmanecerAtardercer2 from '../components/AmanecerAtardercer2.vue';
+import FooterComp from "../components/FooterComp.vue"
 
 
 

@@ -1,6 +1,6 @@
 <template>
     <section class="weather-content">
-      <h1>Indicador del clima</h1>
+      <h1 class="tituloClima">Clima</h1>
       <div class="result" v-if="climaActual">
         <p>{{ climaActual.name }}</p>
         <p>Temperatura {{ Math.round(climaActual.main.temp) }}°</p>
@@ -9,7 +9,7 @@
         <!-- <p>Temperatura {{ result.weather[0]}}°</p> --> 
       </div>
       <div v-else>
-      <img class="imagenGif"  src="../assets/img/buscar.gif" alt="">
+      <img class="imagenGif"  src="../assets/img/entrada.gif" alt="">
     </div>
     </section>
   </template>
@@ -54,6 +54,33 @@
   width: 20rem;
   height: auto;
  
+}
+
+.tituloClima{
+  color: rgb(145, 151, 151);
+}
+
+
+
+/* --------------Responsive tablet --------------   -768*/
+@media screen and (min-width: 481px) and (max-width: 835px){
+  .weather-content{
+    max-width: 501px;
+  }
+}
+
+
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+  .weather-content{
+    max-width: 300px;
+  }
+  .imagenGif{
+  width: 10rem;
+  height: auto;
+ 
+}
 }
   </style>
   
