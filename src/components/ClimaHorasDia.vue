@@ -3,35 +3,15 @@
       <div 
       class="contenedor_clima_horas"
       v-if="climaCompleto">
-        <h2 >Clima por horas durante el dia</h2>
+        <h2 >Clima próximas 48 hrs</h2>
         <div class="clima_horas">
           <div
             class="clima_hora"
             v-for="climaHoras in climaCompleto.hourly"
-            :key="climaHoras.dt"
+            :key="climaHoras"
             
           >
-          <!-- <p >
-              {{
-                climaHoras.dt
-              }}
-            </p> -->
 
-            <p >
-              {{
-                // let timestamp = climaHoras.dt;
-                // let hora = new Date(timestamp * 1000);
-                // hora.gettime();
-
-                new Date(
-                  climaHoras.dt
-                  // climaHoras.current
-                  // 
-                ).toLocaleTimeString("en-us", {
-                  hour: "numeric",
-                })
-              }}
-            </p>
           <img
               
               :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
@@ -42,13 +22,27 @@
               alt=""
             />
             <!-- "`http://openweathermap.org/img/wn/${climaHoras.weather[0].icon}@2x.png`" -->
-            
-            <p >
-              {{ Math.round(climaHoras.temp) }}&deg;
+
+          <p>
+            {{ Math.round(climaHoras.temp) }}&deg;
+          </p>
+
+          <p>
+              {{
+                new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
+                  hour: "numeric",
+                  hour: '2-digit',
+
+                })
+              }}
             </p>
-            
+
+            <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp > 8 && climaHoras.temp < 15">
         </div>
       </div>
+
+      <hr>
+      <h6>Mejores horas para hacer ejercicio</h6>
     </div>
 </template>
 
@@ -96,6 +90,10 @@ defineProps({
 
 .clima_hora img{
   width: 2.5rem;
+}
+
+.clima_hora .goToRun{
+  width: 2rem;
 }
 
 

@@ -1,37 +1,72 @@
 <template>
-  <h1 class="text-center">Blog</h1>
+  <div class=" cuerpo ">
+  <h1 class="text-center p-5 ">Blog</h1>
+  <hr>
   <img v-if="isError" src="@/assets/logo.png" alt="error">
       <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
       <div v-if="!isError && !isLoading" >
-                <div v-for="getNew in getNews" :key="getNew.id">
-                    <!-- <p>{{ getNew.name }}</p>
-                    <p>{{ getNew.fecha }}</p> -->
-                   <div class="d-flex justify-content-center">
-                    <div class="card-header">
-        <div class="row">
-            <div class="col-2 col-sm-2">
+        <div class="container">
+          
+
+        <div v-for="getNew in getNews" :key="getNew.id">
+          <!-- <p>{{ getNew.name }}</p>
+            <p>{{ getNew.fecha }}</p> -->
+            
+             <!-- <div class="row">  -->
+              <!-- <div class="col sm-4">  -->
+                <!-- <div class="card m-5 col-12 d-flex justify-content-center">
+                  <div class="row"> -->
+                     <!-- <div class="card-header col-12">
+        <div class="p-2 bd-highlight col-12">
+            <div class="col-4 col-sm-4">
                 
-                 <img class="avatar-img" :src=" getNew.avatar " alt="Avatar de May" /> 
+                 <img class="avatar-img  " :src=" getNew.avatar " alt="Avatar de May" /> 
             </div>
-            <div class="col-8 col-sm-8">
-                <h4 class="card-header-title m-0">
+            <div class="col-8  ">
+                <h4 class="card-header-title">
                     
                         {{ getNew.name }}
                    
                 </h4>
-                <small>{{getNew.fecha}}</small>
-                <div class="foto-paisaje">
+                <small class="fecha">{{getNew.fecha}}</small>
+                </div>
+                </div>
+                </div>
+                <div class="foto-paisaje ">
                     <p>{{ getNew.location }}</p>
-                <img class="foto " :src=" getNew.foto " alt="fotos" />
+                <img class="foto" :src=" getNew.foto " alt="fotos" />
             </div>
                 <p>{{ getNew.comentario }}</p>
             </div>
         </div>
-            
-        </div>
-    </div>
-                </div>
+      </div>    -->
+        <!-- </div>
+      </div> -->
+ 
+ <div class="card  ">
+  <div class="card-body col-12 ">
+    <div >
+      <div class="lalala">
+      <img class="avatar-img col-3" :src=" getNew.avatar " alt="Avatar de May" /> 
+      <div class="px-2">
+        <h4 class="card-header-title mb-0">{{ getNew.name }}</h4>
+        <small class="text-muted py-0">{{getNew.fecha}} </small>
+      </div>
+  </div>
 </div>
+    
+    
+  </div >
+  <div class="p-2">
+    <p class="px-4">{{ getNew.location }} </p>
+    <img class="foto " :src=" getNew.foto " alt="fotos" />
+    <p >{{ getNew.comentario }}</p>
+  </div>
+</div> 
+         </div>
+        </div> 
+        </div>
+      </div>
 </template>
 <script setup>
 
@@ -99,6 +134,13 @@ async function getInfo(){
 </script>
 
 <style scoped>
+.container{
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    
+}
 .avatar-img {
  border-radius: 50%;
   width: 40px;
@@ -107,18 +149,37 @@ async function getInfo(){
  } 
 .card-header-title {
   line-height: 0.7;
+  font-size: large;
 }
-.card-header-subTitle {
-  font-size: 0.8em;
+.fecha {
+  font-size: 0.7em;
 }
-  .card-header {
+  /* .card-header {
     background-color: transparent;
     padding: 0.5rem 1rem;
     border-bottom: none;
-  }
-  .foto {
-    width: 18rem;
+  } */
+   .foto {
+    max-width: 100%;
+   width: 25rem;
+   height: 20rem;
+   border-radius: 10px;
+   
+  } 
+  .card {
+    border: 1px solid rgba(236, 231, 231, 0.11);
+    box-shadow: 5px 5px 6px 4px rgb(197, 195, 195);
+    margin-bottom: 4rem;
+
   }
 
+ .lalala {
+  display: flex;
+ }
+  .cuerpo {
+    background-color: #c4ddff75;
+    
+  }  
+  
 
 </style>

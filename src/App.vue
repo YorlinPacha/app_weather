@@ -15,7 +15,7 @@
           <li class="nav-item ">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
-              aria-current="page">Home</router-link>
+              aria-current="page">Semana</router-link>
           </li>
           <li class="nav-item">
 
@@ -23,9 +23,7 @@
           </li>
           <li class="nav-item">
 
-            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">
-Blog
-</router-link>
+            <router-link to="/blog" class="nav-link active border borde-muted" id="nav3">Blog</router-link>
 </li>
 
 
@@ -38,8 +36,13 @@ Blog
       </div>
     </div>
   </nav>
- 
   <RouterView :climaActual="climaActual" :climaCompleto="climaCompleto" />
+   <!-- <router-view v-slot=" { Component }">
+<transition name="fadeUp" mode="out-in">
+<component :is="Component" :key="$router.path"></component>
+</transition>
+</router-view>  -->
+ 
 </template>
 
 <script setup>
@@ -50,7 +53,6 @@ import { ref } from "vue"
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
-// let climaHora = ref("");
 
 const doSearch = async () => {
   try {
@@ -66,7 +68,7 @@ const doSearch = async () => {
 
   }
   catch (error) {
-    console.log(error)
+    console.log("error funcion doSearch",error)
   }
 };
 
@@ -92,7 +94,7 @@ async function datosCompletos(lat, lon) {
 
 }
   catch (error) {
-    console.log(error)
+    console.log("error funcion datosCompletos",error)
   }
 }
 
@@ -141,8 +143,7 @@ climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.or
 
  defineProps({
   climaActual: Object,
-  climaCompleto: Object,
-  // climaHora: Object
+  climaCompleto: Object
 });
 
 </script>
@@ -180,16 +181,27 @@ color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
  
 }
-#nav2.router-link-active {
+#nav2.router-link-active,
+#nav3.router-link-active {
 color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
 
 }
- #nav, #nav2 {
+ #nav, #nav2, #nav3{
   color: rgb(196, 187, 66);
 
 } 
 .navbar {
   padding: 0;
 }
+  /* .fadeUp-enter-active, 
+.fadeUp-leave-active {
+  transition: opacity 0.25s, transform 0.25s;
+
+}
+ .fadeUp-enter, 
+.fadeUp-leave-to {
+  opacity: 0;
+  transform: translateX(30%);
+}  */
 </style>

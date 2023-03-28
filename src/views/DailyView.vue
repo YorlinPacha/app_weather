@@ -12,6 +12,9 @@
     <p>{{ climaCompleto }}</p> -->
   
   </div>
+
+  <br>
+  <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
 </template>
 
 <script setup>
