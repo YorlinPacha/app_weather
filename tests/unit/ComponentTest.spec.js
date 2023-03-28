@@ -22,7 +22,7 @@ describe('CardHome', () => {
     })
 
     // Busca el título del componente 
-    expect(wrapper.find('h1').text()).toBe('Indicador del clima')
+    expect(wrapper.find('h1').text()).toBe('Clima')
 
     // Busca el div que muestra la información 
     const resultDiv = wrapper.find('.result')
