@@ -47,12 +47,13 @@
     max-width: 501px;
     text-align: center;
     padding: 20px 20px 20px;
-    margin: 3rem auto 3rem auto ;
+    margin: 0 auto 3rem auto ;
   }
 
   .imagenGif{
   width: 20rem;
   height: auto;
+  border-radius: 50%;
  
 }
 
