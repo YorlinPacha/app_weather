@@ -7,7 +7,7 @@
         </div>
           <form v-on:submit.prevent="postNew">
             <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-            <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
+            <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="names">
             <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
             <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
             <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
@@ -28,54 +28,94 @@
    </div>
 </template>
 
-<script>
-// import axios from 'axios'
-const axios = require('axios');
-let data = JSON.stringify({
-  "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
-  "name": "Otro nombre2",
-  "fecha": "22/03/2023",
-  "location": "Bilbao",
-  "foto": "https://s2.ppllstatics.com/elcorreo/www/multimedia/202202/11/media/MM-atardeceres-bilbao/3.JPG",
-  "comentario": "Bonito cielo al atardecer en la ría de Bilbao"
-});
+<script setup>
+ import axios from 'axios'
+ import {ref} from 'vue'
+ 
+ const avatar = ref('')
+ const names = ref('')
+ const fecha = ref('')
+ const location = ref('')
+ const foto = ref('')
+ const comentario = ref('')
+ const id = ref('')
+ const error =ref ('')
+ //const errordel = ref('')
 
-let config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'http://localhost:3000/fotografias',
-  headers: { 
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
-
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
-
-const axios2 = require('axios');
-
-let configDEL = {
-  method: 'delete',
-  maxBodyLength: Infinity,
-  url: 'http://localhost:3000/fotografias/18',
-  headers: { 
-    'Content-Type': 'application/json'
+ const postNew = async() => {
+  try{
+    const response = await axios.post ('http://localhost:3000/fotografias',{
+    avatar:avatar.value,
+    names: names.value,
+    fecha: fecha.value,
+    location: location.value,
+    foto:foto.value,
+    comentario:comentario.value
+  
+  })
+  console.log(response)
+}catch(error) {
+    console.log(error);
+    error.value = 'Error al envia los datos'
   }
-};
+ };
+//  const delNew= async()=>{
+  
+//   try{
+//     await axios.delete(`http//localhost:300/fotografias/${id.value}`)
+//   }catch(error) {
+//     errordel.value ='Error al eliminar los datos'
+//   }
 
-axios2.request(configDEL)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
+ //}
+
+
+// const axios = require('axios');
+// let data = JSON.stringify({
+//   "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
+//   "name": "Otro nombre2",
+//   "fecha": "22/03/2023",
+//   "location": "Bilbao",
+//   "foto": "https://s2.ppllstatics.com/elcorreo/www/multimedia/202202/11/media/MM-atardeceres-bilbao/3.JPG",
+//   "comentario": "Bonito cielo al atardecer en la ría de Bilbao"
+// });
+
+// let config = {
+//   method: 'post',
+//   maxBodyLength: Infinity,
+//   url: 'http://localhost:3000/fotografias',
+//   headers: { 
+//     'Content-Type': 'application/json'
+//   },
+//   data : data
+// };
+
+// axios.request(config)
+// .then((response) => {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
+
+// const axios2 = require('axios');
+
+// let configDEL = {
+//   method: 'delete',
+//   maxBodyLength: Infinity,
+//   url: 'http://localhost:3000/fotografias/18',
+//   headers: { 
+//     'Content-Type': 'application/json'
+//   }
+// };
+
+// axios2.request(configDEL)
+// .then((response) => {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
 </script>
 <style scoped>
 .wrapper {
