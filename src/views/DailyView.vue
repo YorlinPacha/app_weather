@@ -1,9 +1,9 @@
 <template>
   <div >
-    <h2>View 2</h2>
+    <br>
     <!-- <CardHome v-if="climaActual" :climaActual="climaActual" :climaCompleto="climaCompleto"/> -->
     <DiarioPrincipalDeporteVue :climaActual="climaActual" :climaCompleto="climaCompleto" />
-    
+    <br>
    <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
     
     <hr>

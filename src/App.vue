@@ -204,4 +204,22 @@ color: blue;
   opacity: 0;
   transform: translateX(30%);
 }  */
+@media screen and (min-width: 481px) and (max-width: 835px){
+
+}
+
+
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+  .navbar-nav{
+    align-items: center;
+    margin: 1rem auto;
+  }
+  .nav-item {
+  width: 20rem;
+  text-align: center;
+}
+
+}
 </style>

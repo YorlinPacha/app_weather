@@ -10,10 +10,12 @@
              <div v-if="climaActual.weather == null" >
                 imagen.error
             </div>
-            <div v-else class="imagen">
+            <div v-else-if=" climaActual.main.temp > 14 && climaActual.main.temp < 24" class="imagen">
                 <img class="cielo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon"> 
                 <img class="bicicletas" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt="">
-                
+            </div>
+            <div v-else class="imagen">
+                <img class="cieloSolo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">
             </div>
              
             <div class="datosClima">
@@ -30,7 +32,8 @@
                 </div>
             </div>
         </div>
-        <p>Texto que recomendaria salir a hacer deporte?</p>
+        <p v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</p>
+        <p v-else>Otro (sin terminar)  </p>
     </div>
 </template>
 
@@ -41,6 +44,7 @@ defineProps({
     climaActual: Object,
     climaCompleto: Object
 });
+
 
 
 
@@ -63,11 +67,10 @@ defineProps({
     padding-bottom: 1rem;
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
  }
 
 .imagen{
-    width: 50%;
+    width: 70%;
 }
 
  .containerDatos{
@@ -79,7 +82,8 @@ defineProps({
 
  .datosClima{
     display: flex;
-    width: 50%;
+    width: 40%;
+    margin-right: 1rem;
  }
 
  .datosEspecificos{
@@ -110,6 +114,9 @@ defineProps({
     position: absolute;
     bottom: 5rem;
  }
+ .cieloSolo{
+    height: 15rem;
+ }
 
  @media screen and (max-width: 900px){
     .climaPrincipalDiario{
@@ -130,5 +137,6 @@ defineProps({
         position: relative;
     }
  }
+
 
 </style>
