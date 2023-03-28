@@ -1,14 +1,16 @@
 <template>
     <div 
     class="contenedor_detalles_clima"
-    v-if="climaCompleto || climaActual"
+    v-if="climaCompleto && climaActual"
     >
-        <h3>Detalles del clima de hoy</h3>
+        <h3 class="text-center">Detalles del clima de hoy</h3>
         <div class="detalles_clima_hoy">
             <img 
             class="imagen_clima_hoy"
-            :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`"
+            :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaActual.weather[0].icon}.png`"
             alt="">
+
+            <!-- :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" -->
             <div 
             class="info_clima_hoy">
                 <p>Temperatura: {{ Math.round(climaActual.main.temp_max) }} &deg;C / {{ Math.round(climaActual.main.temp_min) }} &deg;C</p>
@@ -37,7 +39,7 @@
 <style scoped>
 
 .contenedor_detalles_clima{
-    width: 50vw;
+    width: 35vw;
     margin: 0 auto;
     
     background: rgba(255, 255, 255, 0.15);

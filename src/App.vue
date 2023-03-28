@@ -15,7 +15,7 @@
           <li class="nav-item ">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
-              aria-current="page">Home</router-link>
+              aria-current="page">Semana</router-link>
           </li>
           <li class="nav-item">
 
@@ -53,7 +53,6 @@ import { ref } from "vue"
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
-// let climaHora = ref("");
 
 const doSearch = async () => {
   try {
@@ -69,7 +68,7 @@ const doSearch = async () => {
 
   }
   catch (error) {
-    console.log(error)
+    console.log("error funcion doSearch",error)
   }
 };
 
@@ -95,7 +94,7 @@ async function datosCompletos(lat, lon) {
 
 }
   catch (error) {
-    console.log(error)
+    console.log("error funcion datosCompletos",error)
   }
 }
 
@@ -144,8 +143,7 @@ climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.or
 
  defineProps({
   climaActual: Object,
-  climaCompleto: Object,
-  // climaHora: Object
+  climaCompleto: Object
 });
 
 </script>
