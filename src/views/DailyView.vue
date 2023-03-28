@@ -2,7 +2,7 @@
   <div >
     <h2>View 2</h2>
     <!-- <CardHome v-if="climaActual" :climaActual="climaActual" :climaCompleto="climaCompleto"/> -->
-    
+    <DiarioPrincipalDeporteVue :climaActual="climaActual" :climaCompleto="climaCompleto" />
     
    <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
     
@@ -16,6 +16,7 @@
 
 <script setup>
 // import CardHome from '@/components/CardHome.vue';
+import DiarioPrincipalDeporteVue from '@/components/DiarioPrincipalDeporte.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 
 import { defineProps } from 'vue';
