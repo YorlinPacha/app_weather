@@ -14,15 +14,15 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-const apiUrl = 'http://localhost:3000/fotografias'
+
 
 const id = ref('')
 
 const delNew = async () => {
   try {
-    await axios.delete(apiUrl + '/' + id.value)
-    console.log(apiUrl + '/' + id.value)
-    alert(`La entrada ${id.value} ha sido eliminada de la base de datos`)
+    await axios.delete('http://localhost:3000/fotografias/' + id.value)
+    console.log('http://localhost:3000/fotografias/' + id.value)
+    alert(`La entrada id: ${id.value} ha sido eliminada de la base de datos`)
     id.value =''
   } catch (error) {
     console.log(error)
