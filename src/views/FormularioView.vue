@@ -7,19 +7,27 @@
 </div>
 
     <form v-on:submit.prevent="formulario">
-                  <input type="text" id="id" class="fadeIn second" name="id" placeholder="Introducir el Id" v-model="id">
+                 
                   <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
                   <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
                   <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
                   <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="lacation">
                   <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
                   <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
-                  <input type="submit" class="fadeIn ninth" value="Delete">
+                  
                   <input type="submit" class="fadeIn tenth" value="Post">
                   <div class="error" v-if="error">{{ error }}</div>
                 </form>
-
-</div>
+            </div>
+            <div class="wrapper fadeInDown">
+            <div id="formContent-2">
+                <form v-on:submit.prevent="formulario">
+                  <input type="text" id="id" class="fadeIn second" name="id" placeholder="Introducir el Id" v-model="id">
+                  <input type="submit" class="fadeIn ninth" value="Delete">
+                  <div class="error" v-if="error">{{ error }}</div>
+                </form>
+            </div>
+            </div>
 </div>
       </div>
 </template>
@@ -44,6 +52,19 @@
   padding: 30px;
   width: 90%;
   max-width: 850px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+#formContent-2 {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 40px;
+  width: 90%;
+  max-width: 550px;
   position: relative;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);

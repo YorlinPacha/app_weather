@@ -179,7 +179,19 @@ async function getInfo(){
   .cuerpo {
     background-color: #c4ddff75;
     
-  }  
+  } 
+  @media (max-width: 1020px){
+    .container{
   
-
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+  }
+  @media (max-width: 740px){
+    .container{
+  
+    grid-template-columns: repeat(1, 1fr);
+    
+  }
+  }
 </style>
