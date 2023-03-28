@@ -12,7 +12,7 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end col-4">
-          <li class="nav-item ">
+          <li class="nav-item">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
               aria-current="page">Semana</router-link>
@@ -204,4 +204,6 @@ color: blue;
   opacity: 0;
   transform: translateX(30%);
 }  */
+
+
 </style>
