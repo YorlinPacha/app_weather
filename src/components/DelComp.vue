@@ -12,28 +12,24 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import axios from 'axios'
-import { response } from 'express';
-import { defineEmits } from 'vue';
-const emits = defineEmits(['new-updated'])
+const apiUrl = 'http://localhost:3000/fotografias'
 
-const data =()=> {
-    return{
-        id:''
-    }
-}
+const id = ref('')
 
-   const delNew= async()=>{
-     try{
-     await axios.delete(`http//localhost:300/fotografias/${data.id}`)
-     console.log(response.data)
-     emits('news-update');
-    }catch(error) {
-      error.value ='Error al eliminar los datos'
-    }
- 
+const delNew = async () => {
+  try {
+    await axios.delete(apiUrl + '/' + id.value)
+    console.log(apiUrl + '/' + id.value)
+    alert(`La entrada ${id.value} ha sido eliminada de la base de datos`)
+    id.value =''
+  } catch (error) {
+    console.log(error)
   }
+}
 </script>
+
 
  <style scoped>
  .wrapper {
