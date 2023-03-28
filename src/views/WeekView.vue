@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h2>View 1</h2>
-    
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
