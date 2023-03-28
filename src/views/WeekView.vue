@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nuvesfondo">
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
@@ -41,6 +41,14 @@ defineProps({
   climaCompleto: Object
 });
 </script>
+
+<style scoped>
+
+.nuvesfondo{
+  background-image:url("../assets/img/v1015-101a.jpg");
+  background-size: cover;
+}
+</style>
 
 
 
