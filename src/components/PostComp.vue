@@ -7,7 +7,7 @@
           </div>
             <form v-on:submit.prevent="postNew">
               <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-              <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="names">
+              <input type="text" id="names" class="fadeIn fourth" name="names" placeholder="Introducir el nombre" v-model="names">
               <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
               <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
               <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
