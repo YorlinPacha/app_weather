@@ -5,7 +5,7 @@
 <template>
    <div class="cajaGeneral">
         <p class="info">Informacion</p>
-        <p class="copyright">copyright</p>
+        <p class="copyright">Copyright</p>
         <p class="datos">Datos</p>
 
     </div>
@@ -17,12 +17,13 @@
 
     display: flex;
     justify-content: space-around;
-    background-color: #FFBFA9;
+    background-color: #C4DDFF;
     margin-bottom: 0;
+    align-items: center;
 }
 
 .copyright{
-    font-size: 40px;
+    align-items: center;
     color: #424642;
 }
 .info{
