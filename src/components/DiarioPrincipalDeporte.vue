@@ -10,10 +10,12 @@
              <div v-if="climaActual.weather == null" >
                 imagen.error
             </div>
-            <div v-else class="imagen">
+            <div v-else-if=" climaActual.main.temp > 8 && climaActual.main.temp < 15" class="imagen">
                 <img class="cielo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon"> 
                 <img class="bicicletas" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt="">
-                
+            </div>
+            <div v-else class="imagen">
+                <img class="cieloSolo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">
             </div>
              
             <div class="datosClima">
@@ -44,6 +46,7 @@ defineProps({
 
 
 
+
 </script>
 
 <style scoped>
@@ -67,7 +70,7 @@ defineProps({
  }
 
 .imagen{
-    width: 50%;
+    width: 70%;
 }
 
  .containerDatos{
@@ -79,7 +82,8 @@ defineProps({
 
  .datosClima{
     display: flex;
-    width: 50%;
+    width: 40%;
+    margin-right: 1rem;
  }
 
  .datosEspecificos{
@@ -109,6 +113,9 @@ defineProps({
     width: 20rem;
     position: absolute;
     bottom: 5rem;
+ }
+ .cieloSolo{
+    width: 20rem;
  }
 
  @media screen and (max-width: 900px){
