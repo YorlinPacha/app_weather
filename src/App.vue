@@ -12,7 +12,7 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end col-4">
-          <li class="nav-item ">
+          <li class="nav-item">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
               aria-current="page">Semana</router-link>
@@ -204,22 +204,6 @@ color: blue;
   opacity: 0;
   transform: translateX(30%);
 }  */
-@media screen and (min-width: 481px) and (max-width: 835px){
-
-}
 
 
-/* -------------------Responsive mobile ----------------*/
-
-@media screen and (min-width: 320px) and (max-width: 480px){
-  .navbar-nav{
-    align-items: center;
-    margin: 1rem auto;
-  }
-  .nav-item {
-  width: 20rem;
-  text-align: center;
-}
-
-}
 </style>

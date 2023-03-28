@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <p v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</p>
+        <p v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >=40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</p>
         <p v-else>Otro (sin terminar)  </p>
     </div>
 </template>
