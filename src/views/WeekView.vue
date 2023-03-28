@@ -10,7 +10,6 @@
     <br>
     <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
-    <p>Elegir uno de los dos:</p>
     <AmanecerAtardercer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <AmanecerAtardercer2 :climaActual="climaActual" :climaCompleto="climaCompleto"/>
