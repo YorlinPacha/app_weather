@@ -3,6 +3,9 @@
     <h2>View 1</h2>
     
     <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    <br>
+    <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    <br>
     <SemanaComp2 :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
     <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" /> 
@@ -26,6 +29,7 @@
 <script setup>
 import { defineProps } from "vue"
 import CardHome from '../components/CardHome.vue';
+import SemanaComp from '@/components/SemanaComp.vue';
 import SemanaComp2 from '@/components/SemanaComp2.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
 import DetallesClimaDia from '@/components/DetallesClimaDia.vue';
