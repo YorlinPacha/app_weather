@@ -10,7 +10,7 @@
                   <input type="text" id="id" class="fadeIn second" name="id" placeholder="Introducir el Id" v-model="id">
                   <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
                   <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
-                  <input type="text" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
+                  <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
                   <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="lacation">
                   <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
                   <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
@@ -81,7 +81,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-input[type=text] {
+input[type=text], [type=date] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
