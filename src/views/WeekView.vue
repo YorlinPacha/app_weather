@@ -1,7 +1,9 @@
 <template>
-  <div class="fondo">
-     
-    <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+  <div class="nuvesfondo">
+    <div class="margenCardContenedor">
+      <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+    </div>
+    
     <br>
     <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
     <br>
@@ -43,5 +45,16 @@ defineProps({
 </script>
 
 <style scoped>
-  
+
+.nuvesfondo{
+  background-image:url("../assets/img/v1015-101a.jpg");
+  background-size: cover;
+}
+
+.margenCardContenedor{
+  padding: 2rem;
+}
 </style>
+
+
+
