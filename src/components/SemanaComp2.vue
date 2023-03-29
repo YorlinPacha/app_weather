@@ -113,4 +113,19 @@ defineProps({
   font-size: 0.8rem;
   
  }
+
+
+ /* --------------Responsive tablet --------------   -768*/
+@media screen and (min-width: 481px) and (max-width: 835px){
+  
+}
+
+
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+ 
+
+}
 </style>
