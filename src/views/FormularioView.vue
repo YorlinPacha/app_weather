@@ -116,6 +116,7 @@ axios2.request(configDEL)
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
+ padding-top: 20px;
 }
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
@@ -174,6 +175,9 @@ input[type=text]:focus {
 }
 input[type=text]:placeholder {
   color: #cccccc;
+}
+#formContent-2 {
+  margin-top: 2rem;
 }
 /* ANIMATIONS */
 /* Simple CSS3 Fade-in-down Animation */
