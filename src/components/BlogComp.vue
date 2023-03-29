@@ -45,15 +45,23 @@
  
  <div class="card  ">
   <div class="card-body col-12 ">
-    <div >
+    <div>
       <div class="lalala">
-      <img class="avatar-img col-3" :src=" getNew.avatar " alt="Avatar de May" /> 
-      <div class="px-2">
-        <h4 class="card-header-title mb-0">{{ getNew.name }}</h4>
-        <small class="text-muted py-0">{{getNew.fecha}} </small>
+        <img class="avatar-img col-3" :src=" getNew.avatar " alt="Avatar de May" /> 
+        <div class="px-2">
+          <h4 class="card-header-title mb-0">{{ getNew.name }}</h4>
+          <small class="text-muted py-0">{{getNew.fecha}} </small>
+         </div>
+         <!-- <div class="boton">
+       
+       <button class="MeGusta" ><img src="https://img.icons8.com/color/1x/facebook-like--v3.gif" alt=""> </button>
+       <p>Me gusta 0</p>
+   </div> -->
+         
+         <!-- <div class="megusta"><BotonMeGusta /></div> -->
+        
       </div>
-  </div>
-</div>
+    </div>
     
     
   </div >
@@ -69,6 +77,7 @@
       </div>
 </template>
 <script setup>
+
 
 // import { ref } from 'vue'
 // export default {
@@ -97,7 +106,7 @@
 // }
 
 
-
+// import BotonMeGusta from './BotonMeGusta.vue';
 
 import axios from 'axios'
 import {ref} from 'vue'
@@ -151,6 +160,7 @@ async function getInfo(){
   line-height: 0.7;
   font-size: large;
 }
+
 .fecha {
   font-size: 0.7em;
 }
@@ -175,7 +185,17 @@ async function getInfo(){
 
  .lalala {
   display: flex;
+
  }
+ .megusta{
+  display: block;
+  justify-content: end;
+  margin-right: 0;
+ }
+ .boton{
+  justify-content: end;
+ }
+
   .cuerpo {
      background-color: #c4ddff75; 
     /* background-image:url("../assets/img/v1015-101a.jpg");
