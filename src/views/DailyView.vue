@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="nuvesfondo">
     <br>
     <!-- <CardHome v-if="climaActual" :climaActual="climaActual" :climaCompleto="climaCompleto"/> -->
     <DiarioPrincipalDeporteVue :climaActual="climaActual" :climaCompleto="climaCompleto" />
@@ -13,14 +13,17 @@
   
   </div>
 
-  <br>
+ 
   <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+  
+  <FooterComp />
 </template>
 
 <script setup>
 // import CardHome from '@/components/CardHome.vue';
 import DiarioPrincipalDeporteVue from '@/components/DiarioPrincipalDeporte.vue';
 import ClimaHorasDia from '@/components/ClimaHorasDia.vue';
+import FooterComp from "../components/FooterComp.vue"
 
 import { defineProps } from 'vue';
 
@@ -30,3 +33,13 @@ defineProps({
   climaCompleto: Object
 });
 </script>
+<style>
+.nuvesfondo{
+  background-image:url("../assets/img/v1015-101a.jpg");
+ 
+  background-size: cover;
+  min-height: 100vh;
+}
+
+
+</style>
