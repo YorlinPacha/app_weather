@@ -7,7 +7,7 @@
           </div>
             <form v-on:submit.prevent="postNew">
               <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-              <input type="text" id="names" class="fadeIn fourth" name="names" placeholder="Introducir el nombre" v-model="names">
+              <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
               <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
               <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
               <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
@@ -25,7 +25,7 @@
   import {ref} from 'vue'
   
   const avatar = ref('')
-  const names = ref('')
+  const name = ref('')
   const fecha = ref('')
   const location = ref('')
   const foto = ref('')
@@ -36,13 +36,13 @@
  
   const postNew = async() => {
    try{
-     if(!names.value|| !fecha.value|| !location.value || !comentario.value || !foto.value || !avatar.value){
+     if(!name.value|| !fecha.value|| !location.value || !comentario.value || !foto.value || !avatar.value){
      error.value = 'No puede haber campos vacios'
      return
      }
      const response = await axios.post ('http://localhost:3000/fotografias',{
      avatar:avatar.value,
-     names: names.value,
+     name: name.value,
      fecha: fecha.value,
      location: location.value,
      foto:foto.value,
@@ -51,7 +51,7 @@
    })
    console.log(response)
    avatar.value=''
-   names.value = ''
+   name.value = ''
    fecha.value = ''
    location.value = ''
      foto.value = ''
