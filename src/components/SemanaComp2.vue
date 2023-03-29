@@ -88,6 +88,7 @@ defineProps({
 
  .clima_semana{
   display: flex;
+  flex-direction: column;
     justify-content: space-between;
     overflow: auto;
     white-space: nowrap;

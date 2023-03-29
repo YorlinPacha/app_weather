@@ -43,10 +43,15 @@
 <component :is="Component" :key="$router.path"></component>
 </transition>
 </router-view>  -->
+
+<FooterComp />
  
 </template>
 
 <script setup>
+import FooterComp from "./components/FooterComp.vue"
+
+
 import { RouterLink, RouterView } from 'vue-router'
 import { defineProps } from 'vue';
 import { ref } from "vue"
