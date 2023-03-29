@@ -177,8 +177,9 @@ async function getInfo(){
   display: flex;
  }
   .cuerpo {
-    background-color: #c4ddff75;
-    
+     background-color: #c4ddff75; 
+    /* background-image:url("../assets/img/v1015-101a.jpg");
+  background-size: cover; */
   } 
   @media (max-width: 1020px){
     .container{

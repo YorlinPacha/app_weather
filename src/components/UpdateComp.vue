@@ -1,11 +1,10 @@
 <template>
-    <div class="home">
+     <div class="home">
       <div class="wrapper fadeInDown">
         <div id="formContent">
-          <div class="fadeIn first">
-            <h1>Formulario Blog</h1>
-          </div>
+          
             <form v-on:submit.prevent="postNew">
+                <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id">
               <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
               <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
               <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
@@ -13,109 +12,28 @@
               <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
                <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
               <input type="submit" class="fadeIn tenth" value="Post">
+              <input type="submit" class="fadeIn twelfth" value="Update">
+              <input type="submit" class="fadeIn ninth" value="delete">
               <div class="error" v-if="error">{{ error }}</div>
               </form>
           </div>
            
        </div>
      </div>
-  </template>
-  <script setup>
-  import axios from 'axios'
-  import {ref} from 'vue'
-  
-  const avatar = ref('')
-  const name = ref('')
-  const fecha = ref('')
-  const location = ref('')
-  const foto = ref('')
-  const comentario = ref('')
-  
-  const error =ref ('')
-  
- 
-  const postNew = async() => {
-   try{
-     if(!name.value|| !fecha.value|| !location.value || !comentario.value || !foto.value || !avatar.value){
-     error.value = 'No puede haber campos vacios'
-     return
-     }
-     const response = await axios.post ('http://localhost:3000/fotografias',{
-     avatar:avatar.value,
-     name: name.value,
-     fecha: fecha.value,
-     location: location.value,
-     foto:foto.value,
-     comentario:comentario.value
    
-   })
-   console.log(response)
-   avatar.value=''
-   name.value = ''
-   fecha.value = ''
-   location.value = ''
-     foto.value = ''
-     comentario.value = ''
-     error.value = ''
-     alert ('Nuevo post añadido')
-   
- }catch(error) {
-     console.log(error);
-     error.value = 'Error al envia los datos'
-   }
-  };
+</template>
 
- 
- 
- // const axios = require('axios');
- // let data = JSON.stringify({
- //   "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
- //   "name": "Otro nombre2",
- //   "fecha": "22/03/2023",
- //   "location": "Bilbao",
- //   "foto": "https://s2.ppllstatics.com/elcorreo/www/multimedia/202202/11/media/MM-atardeceres-bilbao/3.JPG",
- //   "comentario": "Bonito cielo al atardecer en la ría de Bilbao"
- // });
- 
- // let config = {
- //   method: 'post',
- //   maxBodyLength: Infinity,
- //   url: 'http://localhost:3000/fotografias',
- //   headers: { 
- //     'Content-Type': 'application/json'
- //   },
- //   data : data
- // };
- 
- // axios.request(config)
- // .then((response) => {
- //   console.log(JSON.stringify(response.data));
- // })
- // .catch((error) => {
- //   console.log(error);
- // });
- 
- // const axios2 = require('axios');
- 
- // let configDEL = {
- //   method: 'delete',
- //   maxBodyLength: Infinity,
- //   url: 'http://localhost:3000/fotografias/18',
- //   headers: { 
- //     'Content-Type': 'application/json'
- //   }
- // };
- 
- // axios2.request(configDEL)
- // .then((response) => {
- //   console.log(JSON.stringify(response.data));
- // })
- // .catch((error) => {
- //   console.log(error);
- // });
- </script>
- <style scoped>
- .wrapper {
+<script>
+export default {
+  name: 'UpdateComp',
+  components: {
+  },
+}
+
+</script>
+
+<style scoped>
+.wrapper {
    display: flex;
    align-items: center;
    flex-direction: column; 
@@ -292,4 +210,5 @@
  #delid{
    margin-top: 2rem;
  }
- </style>
+ 
+</style>
