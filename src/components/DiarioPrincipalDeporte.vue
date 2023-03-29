@@ -5,32 +5,28 @@
     </div>
     <!-- div principal -->
     <div v-else class="climaPrincipalDiario">
-         <p class="ciudad">{{ climaActual.name }}</p> 
+         <p class="ciudad"><img :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">{{ climaActual.name }}</p>
          <div class="containerDatos ">
-             <div v-if="climaActual.weather == null" >
+            <div class="grados">
+                    <p  v-if="climaActual.main == null">Error</p>
+                    <p v-else>
+                    {{Math.round(climaActual.main.temp)}}º
+                    </p>
+                </div>
+             <div v-if="climaActual.weather == null">
                 imagen.error
             </div>
-            <div v-else-if=" climaActual.main.temp > 14 && climaActual.main.temp < 24" class="imagen">
-                <img class="cielo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon"> 
-                <img class="bicicletas" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt="">
-            </div>
+                <!-- <img class="bicicletas" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt=""> -->
             <div v-else class="imagen">
-                <img class="cieloSolo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon">
+                <!-- <img class="cieloSolo" :src="`https://openweathermap.org/img/wn/${climaActual.weather[0].icon}@2x.png`" alt="icon"> -->
+                <img class="gif" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt="">
             </div>
-             
-            <div class="datosClima">
-                <p  v-if="climaActual.main == null" class="grados">Error</p>
-                <p v-else class="grados">
-                   {{Math.round(climaActual.main.temp)}}º
-                </p>
-
                 <div class="datosEspecificos">
-                    <p v-if="climaActual.main == null">Humedad:Error </p> 
-                    <p v-else>Humedad:{{ climaActual.main.humidity }}% </p> 
-                    <p v-if="climaActual.wind == null">Viento:error</p>     
+                    <p v-if="climaActual.main == null">Humedad:Error </p>
+                    <p v-else>Humedad:{{ climaActual.main.humidity }}% </p>
+                    <p v-if="climaActual.wind == null">Viento:error</p>
                     <p v-else>Viento:{{ climaActual.wind.speed }}km/h</p>
                 </div>
-            </div>
         </div>
         <p v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >=40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</p>
         <p v-else>Otro (sin terminar)  </p>
@@ -69,45 +65,32 @@ defineProps({
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
  }
 
-.imagen{
-    width: 70%;
-}
-
  .containerDatos{
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 14rem;
     position: relative;
- }
-
- .datosClima{
-    display: flex;
-    width: 40%;
-    margin-right: 1rem;
+    justify-content: space-evenly;
  }
 
  .datosEspecificos{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 0 auto; 
     gap: 4rem;
  }
 
  .grados{
-    width: 50%;
     place-self: center;
-    font-size: 7rem;
+    font-size: 5rem;
  }
 
  .ciudad{
     font-size: 2rem;
  }
 
- .bicicletas{
-    width: 18rem;
-    margin-top: 5rem;
-    margin-left: 1rem;
+ .gif{
+    width: 25rem;
  }
  .cielo{
     width: 20rem;
