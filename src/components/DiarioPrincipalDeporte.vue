@@ -1,7 +1,8 @@
 <template>
 
     <!-- Solo se muestra si ninguna ciudad esta seleccionada -->
-    <div v-if="climaActual == ''" class="climaPrincipalDiario">
+    <div v-if="climaActual == ''" class="gifBuscar">
+        <h1>Clima</h1>
         <img class="imagenGif"  src="../assets/img/entrada.gif" alt="">
     </div>
 
@@ -33,7 +34,7 @@
                 <img src="../assets/img/giphy-unscreen.gif" alt="">
             </div>
             <div v-else class="gif">
-                nada entra dentro del filtro
+                nada entra dentro del filtro(por terminar)
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
@@ -80,6 +81,19 @@ function obtenerFechaActual(){
     margin: 0;
 }
 
+.gifBuscar{
+    background-color: rgba(255, 255, 255, 0.144);
+    border: 1px solid rgba(221, 221, 221, 0.301);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    width:30rem;
+    height: 25rem;
+    margin: 0 auto;
+}
+.gifBuscar > img {
+    border-radius: 100%;
+    width: 20em;
+}
 /* Datos generales de la tarjeta */
  .climaPrincipalDiario{
     margin: 0 auto;
@@ -112,7 +126,7 @@ function obtenerFechaActual(){
     justify-content: space-around;
     gap: 4rem;
  }
-
+ 
  .datosEspecificos > p{
     text-align: left;
  }
