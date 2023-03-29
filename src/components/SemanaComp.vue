@@ -4,36 +4,38 @@
   <div class="contenedor_clima_semana" v-if="climaCompleto">
       <h2 class="titulo_clima_semana">Clima de la Semana</h2>
 
-      <div class="contenedor_clima_dia"
-      v-for="day in climaCompleto.daily"
-          :key="day.dt"
-          >
-        <p class="nombre_dia">
-          {{
-            new Date(day.dt * 1000).toLocaleDateString(
-              "es-sp",
-              {
-                weekday: "long",
-              }
-            )
-          }}
-        </p>
-        <img class="icono_clima"
-          :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${day.weather[0].icon}.png`"
-          alt=""
-        />
+      <div class="clima_semana">
+        <div class="clima_dia"
+        v-for="day in climaCompleto.daily"
+            :key="day.dt"
+            >
+          <p class="nombre_dia">
+            {{
+              new Date(day.dt * 1000).toLocaleDateString(
+                "es-sp",
+                {
+                  weekday: "long",
+                }
+              )
+            }}
+          </p>
+          <img class="icono_clima"
+            :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${day.weather[0].icon}.png`"
+            alt=""
+          />
 
-        <p class="descripcion_clima_dia">{{ day.weather[0].description }}</p>
-        <!-- :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"-->
-           
-        <!-- Idea de como se podria cambiar los iconos a los nuestros -->
-        <!-- :src="`../assets/img/weather_icons/${day.weather[0].icon}.png`" -->
+          <p class="descripcion_clima_dia">{{ day.weather[0].description }}</p>
+          <!-- :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"-->
+            
+          <!-- Idea de como se podria cambiar los iconos a los nuestros -->
+          <!-- :src="`../assets/img/weather_icons/${day.weather[0].icon}.png`" -->
 
-        
-
-        <div class="d-flex gap-2 ms-auto">
-          <p>{{ Math.round(day.temp.max)  }} &deg;C / {{ Math.round(day.temp.min)  }} &deg;C </p>
           
+
+          <div class="d-flex gap-2 ms-auto">
+            <p>{{ Math.round(day.temp.max)  }} &deg;C / {{ Math.round(day.temp.min)  }} &deg;C </p>
+            
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +70,7 @@ defineProps({
   box-sizing: border-box;
 }
  .contenedor_clima_semana{
-    width: 50vw;
+    width: 90vw;
     margin: 0 auto;
     text-align: center;
 
@@ -86,10 +88,12 @@ defineProps({
   margin-bottom: 1.5rem;
  }
 
- .contenedor_clima_dia{
+ .clima_dia{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
     align-items: center;
+    margin-bottom: 1.5rem;
  }
 
  .nombre_dia{
@@ -97,10 +101,54 @@ defineProps({
  }
 
  .icono_clima{
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
  }
  .descripcion_clima_dia{
     text-transform: capitalize;
  }
+ .temp-max-min{
+  font-size: 0.8rem;
+  
+ }
+
+ /* --------------Responsive tablet --------------   -768*/
+ @media screen and (min-width: 481px){
+
+  .contenedor_clima_semana{
+    width: 70vw;
+  }
+
+
+  .clima_semana{
+  display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    white-space: nowrap;
+    gap: 1.5rem;
+ }
+ .clima_dia{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  margin-bottom: 0rem;
+ }
+ .icono_clima{
+  margin: 0 auto;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+ }
+
+}
+
+
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+ 
+
+}
 </style>
