@@ -1,43 +1,48 @@
 <template>
+
     <!-- Solo se muestra si ninguna ciudad esta seleccionada -->
     <div v-if="climaActual == ''" class="climaPrincipalDiario">
         <img class="imagenGif"  src="../assets/img/entrada.gif" alt="">
     </div>
+
     <!-- div principal -->
     <div v-else class="climaPrincipalDiario">
+
+        <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
             <p class="fecha">{{ obtenerFechaActual() }}</p>
             <p class="ciudad">{{ climaActual.name }}</p>
             <p class="hora">{{obtenerHoraActual()}}</p>
         </div>
+
+        <!-- resto de datos  -->
         <div class="containerDatos ">
+
+            <!-- Imagen del cielo y grados -->
             <div class="nubesGrados">
                 <img :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaActual.weather[0].icon}.png`" alt="icon">
                 <div class="grados">
-                    <p  v-if="climaActual.main == null">Error</p>
-                    <p v-else>
+                    <p>
                     {{Math.round(climaActual.main.temp)}}º
                     </p>
                 </div>
             </div>
-            <div v-if="climaActual.weather == null">
-                imagen.error
-            </div>
-                <!-- <img class="bicicletas" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt=""> -->
-            <div v-else class="gif">
-                <!-- <img class="gif" src="../assets/img/fd4638442247e11430ff221fea8bed-unscreen.gif" alt=""> -->
+
+            <!-- gif en el centro -->
+            <div class="gif">
                 <img src="../assets/img/giphy.gif" alt="">
             </div>
+
+                <!-- Detalles de la humedad y el viento a la derecha -->
                 <div class="datosEspecificos">
-                    <p v-if="climaActual.main == null">Humedad:Error </p>
-                    <p v-else class="humedadimg" ><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
-                    <p v-if="climaActual.wind == null">Viento:error</p>
-                    <p v-else class="vientoimg"><img src="../assets/img/png-transparent-wind-symbol-weather-map-computer-icons-weather-forecasting-wind-text-logo-weather-forecasting-removebg-preview.png" alt="" >{{ climaActual.wind.speed }}km/h</p>
+                    <p class="humedadimg" ><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
+                    <p class="vientoimg"><img src="../assets/img/png-transparent-wind-symbol-weather-map-computer-icons-weather-forecasting-wind-text-logo-weather-forecasting-removebg-preview.png" alt="" >{{ climaActual.wind.speed }}km/h</p>
                 </div>
         </div>
+
+        <!-- texto de recomendacion abajo -->
         <div class="recomendacion">
             <div v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >=40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</div>
-
             <div v-else>
                 <h2>Ejemplo de texto</h2>
                 <p>Ejemplo de mas texto pero mas pequeño que serian los detalles</p>
@@ -82,6 +87,7 @@ function obtenerFechaActual(){
     padding-bottom: 1rem;
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background-color: rgba(255, 255, 255, 0.637);
  }
 
  .titulo{
@@ -137,7 +143,7 @@ function obtenerFechaActual(){
     border-radius: 20px;
     margin: 0 4rem 0 4rem;
     z-index: 10;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.733);
     box-shadow: 2px 2px 2px 2px rgba(155, 153, 153, 0.438);
 }
 
