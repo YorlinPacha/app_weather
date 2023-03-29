@@ -29,8 +29,11 @@
             </div>
 
             <!-- gif en el centro -->
-            <div class="gif">
-                <img src="../assets/img/giphy.gif" alt="">
+            <div  v-if="climaActual.main.temp >12 && climaActual.main.temp <21" class="gif">
+                <img src="../assets/img/giphy-unscreen.gif" alt="">
+            </div>
+            <div v-else class="gif">
+                nada entra dentro del filtro
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
