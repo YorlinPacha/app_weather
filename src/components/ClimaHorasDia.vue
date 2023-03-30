@@ -1,11 +1,11 @@
 <template>
 
       <div class="text-center">
-        <h2 >Clima próximas 48 hrs</h2>
+        
         <div  class="contenedor_clima_horas"
         v-if="climaCompleto">
 
-          
+        <h2 >Clima próximas 48 hrs</h2>
           
           <div class="clima_horas">
           
@@ -14,34 +14,32 @@
                 v-for="climaHoras in climaCompleto.hourly"
                 :key="climaHoras"
               >
-              <img
-          
-                  :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
-          
-          
-                  alt=""
-                />
-                <!-- "`http://openweathermap.org/img/wn/${climaHoras.weather[0].icon}@2x.png`" -->
-              <p>
-                {{ Math.round(climaHoras.temp) }}&deg;
-              </p>
-              <p>
-                  {{
-                    new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
-                      hour: "numeric",
-                      hour: '2-digit',
-                    })
-                  }}
-              </p>
-                <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ">
-            </div>
-                <!-- && new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString > 6 && new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString < 22  -->
-          
+                <img
+                    :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
+                    alt=""
+                  />
+                  <!-- "`http://openweathermap.org/img/wn/${climaHoras.weather[0].icon}@2x.png`" -->
+                <p>
+                  {{ Math.round(climaHoras.temp) }}&deg;
+                </p>
+                <p>
+                    {{
+                      new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
+                        hour: "numeric",
+                        hour: '2-digit',
+                      })
+                    }}
+                </p>
+                  <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ">
               
                 </div>
+              
+              </div>
           
-                <!-- hora => hora.temp >= 10 && hora.temp <= 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 -->
-          
+               
+                
+                  <!-- LAlalalla -->
+                  <!-- {{(climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ).classList.add(dorado)}} -->
                 <hr>
                 
                 <h6>Mejores horas para hacer ejercicio</h6>
@@ -63,7 +61,7 @@ defineProps({
 <style  scoped>
 
 .contenedor_clima_horas{
-    width: 60vw;
+    width: 90vw;
     margin: 0 auto;
 
     background: rgba(255, 255, 255 , 0.15);
@@ -94,10 +92,29 @@ defineProps({
 
 .clima_hora img{
   width: 2.5rem;
+
 }
 
 .clima_hora .goToRun{
   width: 2rem;
+}
+
+ /* --------------Responsive tablet --------------   -768*/
+ @media screen and (min-width: 481px){
+
+  .contenedor_clima_horas{
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+}
+
+
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+  
 }
 
 

@@ -70,7 +70,7 @@ defineProps({
 }
 
 .contenedor_amanecer_atardecer_comp{
-    width: 25vw;
+    width: 90vw;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -79,5 +79,29 @@ defineProps({
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 20px 20px 20px;
+    text-align: center;
+}
+
+/* -------------------Responsive Tablet ----------------*/
+
+
+@media screen and (min-width: 481px) and (max-width: 835px){
+
+  .contenedor_amanecer_atardecer_comp{
+    width: 45vw;
+    margin: 0 ;
+  }
+
+}
+
+
+/* -------------------Responsive Desktop ----------------*/
+
+@media screen and (min-width: 836px){
+  .contenedor_amanecer_atardecer_comp{
+    width: 25vw;
+    margin: 0 ;
+  }
+
 }
 </style>
