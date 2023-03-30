@@ -53,12 +53,12 @@
           <small class="text-muted py-0">{{getNew.fecha}} </small>
          </div>
          <!-- <div class="boton">
-       
-       <button class="MeGusta" ><img src="https://img.icons8.com/color/1x/facebook-like--v3.gif" alt=""> </button>
-       <p>Me gusta 0</p>
-   </div> -->
+           <button class="MeGusta" ><img src="https://img.icons8.com/color/1x/facebook-like--v3.gif" alt=""> </button>
+           <p>Me gusta 0</p>
+          </div> -->
+          
+          
          
-         <!-- <div class="megusta"><BotonMeGusta /></div> -->
         
       </div>
     </div>
@@ -67,8 +67,11 @@
   </div >
   <div class="p-2">
     <p class="px-4">{{ getNew.location }} </p>
+    
     <img class="foto " :src=" getNew.foto " alt="fotos" />
-    <p >{{ getNew.comentario }}</p>
+    <p>{{ getNew.comentario }}</p>
+  
+    <div class="megusta"><BotonMeGusta /></div> 
   </div>
 </div> 
          </div>
@@ -106,7 +109,7 @@
 // }
 
 
-// import BotonMeGusta from './BotonMeGusta.vue';
+ import BotonMeGusta from './BotonMeGusta.vue';
 
 import axios from 'axios'
 import {ref} from 'vue'
@@ -191,6 +194,8 @@ async function getInfo(){
   display: block;
   justify-content: end;
   margin-right: 0;
+ 
+  
  }
  .boton{
   justify-content: end;
@@ -201,6 +206,22 @@ async function getInfo(){
     /* background-image:url("../assets/img/v1015-101a.jpg");
   background-size: cover; */
   } 
+  /* .contenedor{
+    position: relative;
+    display: inline-block;
+    /* text-align: center; */
+/* }
+
+
+
+.centrado{
+    position: absolute;
+     top: 90%;
+     left: 40%; 
+    transform: translate(-50%, -50%); 
+    color: white;
+} */ 
+
   @media (max-width: 1020px){
     .container{
   

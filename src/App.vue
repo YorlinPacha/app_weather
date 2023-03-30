@@ -38,11 +38,7 @@
   </nav>
   <RouterView :climaActual="climaActual" :climaCompleto="climaCompleto" />
 
-   <!-- <router-view v-slot=" { Component }">
-<transition name="fadeUp" mode="out-in">
-<component :is="Component" :key="$router.path"></component>
-</transition>
-</router-view>  -->
+   
 
 <FooterComp />
  
