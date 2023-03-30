@@ -5,11 +5,16 @@
         <br>
         <ClimaHorasDia :climaActual="climaActual" :climaCompleto="climaCompleto" />
         <br>
-        <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
-        <br>
+
+        <div class="contenedorDetalles_AmanecerAtarceder">
+          <DetallesClimaDia :climaActual="climaActual" :climaCompleto="climaCompleto"/>
         
-        <hr>
-        <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+          <div>
+            <AmanecerAtardecer :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+          </div>
+          
+        </div>
+        
         <br>
       
     </div>
@@ -39,6 +44,32 @@ defineProps({
   background-image:url("../assets/img/v1015-101a.jpg");
   background-size: cover;
   min-height: 100vh;
+}
+
+/* -------------------Responsive Tablet ----------------*/
+
+
+@media screen and (min-width: 481px) and (max-width: 835px){
+
+  .contenedorDetalles_AmanecerAtarceder{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: blueviolet;
+}
+
+
+}
+
+
+/* -------------------Responsive Desktop ----------------*/
+
+@media screen and (min-width: 836px){
+
+  .contenedorDetalles_AmanecerAtarceder{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 }
 
 

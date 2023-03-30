@@ -39,7 +39,7 @@
 <style scoped>
 
 .contenedor_detalles_clima{
-    width: 35vw;
+    width: 90vw;
     margin: 0 auto;
     
     background: rgba(255, 255, 255, 0.15);
@@ -50,22 +50,72 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
 
     padding: 20px 20px 20px;
+    margin-bottom: 1rem;
 }
 
 .detalles_clima_hoy{
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
 .detalles_clima_hoy img{
-    width: 10vw;
-    margin: auto 1rem;
-   
+    width: 25vw;
+    margin: 0 auto;
+
 }
 
 .clima_hoy_descripcion{
     text-transform: capitalize;
 }
+
+/* -------------------Responsive Tablet ----------------*/
+
+
+@media screen and (min-width: 481px) and (max-width: 835px){
+
+    .contenedor_detalles_clima{
+    width: 45vw;
+    margin: 0;
+}
+    .detalles_clima_hoy{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.detalles_clima_hoy img{
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+
+}
+
+}
+
+
+/* -------------------Responsive Desktop ----------------*/
+ 
+@media screen and (min-width: 836px){
+    .contenedor_detalles_clima{
+    width: 35vw;
+    margin: 0;
+}
+
+.detalles_clima_hoy{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.detalles_clima_hoy img{
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+
+}
+}
+
 
 
 </style>
