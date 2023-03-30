@@ -116,7 +116,7 @@ defineProps({
  @media screen and (min-width: 481px){
 
   .contenedor_clima_semana{
-    width: 70vw;
+    width: 80vw;
   }
 
 

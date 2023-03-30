@@ -2,11 +2,11 @@
   <div class="nubesfondo">
     <div class="contenedor_componentes">
         
-      <div class="margenCardContenedor">
+    
           <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
           <br>
         <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
-        </div>
+        
 
   </div>
   </div>
@@ -40,8 +40,8 @@ defineProps({
   min-height: 100vh;
 
 }
-.margenCardContenedor{
-  padding: 2rem;
+.contenedor_componentes{
+  padding: 2rem 0 2rem 0;
 }
 
 </style>
