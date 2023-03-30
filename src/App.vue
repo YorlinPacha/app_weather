@@ -46,16 +46,12 @@
 
 <script setup>
 import FooterComp from "./components/FooterComp.vue"
-
-
 import { RouterLink, RouterView } from 'vue-router'
 import { defineProps } from 'vue';
 import { ref } from "vue"
-
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
-
 const doSearch = async () => {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric&lang=es`);
@@ -65,17 +61,12 @@ const doSearch = async () => {
     console.log(climaActual.value.name);
     console.log("Latitud" + climaActual.value.coord.lat);
     console.log("Longitud" + climaActual.value.coord.lon);
-
     datosCompletos(climaActual.value.coord.lat, climaActual.value.coord.lon)
-
   }
   catch (error) {
     console.log("error funcion doSearch",error)
   }
 };
-
-
-
 async function datosCompletos(lat, lon) {
   try {
   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
@@ -84,39 +75,28 @@ async function datosCompletos(lat, lon) {
   const respuesta = await fetch(url);
   const dataWeather = await respuesta.json();
   climaCompleto.value = dataWeather
-
   // console.log("EquipoVUE" + climaCompleto.value.name);
   return dataWeather;
-
   
-
   // climaHora(climaCompleto.value.hourly.dt);
   
   
-
 }
   catch (error) {
     console.log("error funcion datosCompletos",error)
   }
 }
-
 // function climaHora(timestamp) {
 //       const date = new Date(timestamp * 1000);
 //       const hora = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 //       return hora;
-
 //       console.log(hora);
 //     }
-
-
-
 /* No borrar la funcion de abajo "function gg(lat,lon)" para poder guiarme en la codificacion de la captura de errores al momento de hacer una busqueda  */
 // function gg(lat,lon){
 //   let dataWeather = ref("");
 //   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
-
 //   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-
 //   fetch(url)
 //     .then(response => {
 //       if (response.ok) {
@@ -134,40 +114,31 @@ async function datosCompletos(lat, lon) {
 //       console.log(error.message);
 //     });
 // }
-
 /*inicio*********************************************************
-
 Pasamos las variables que contienes los datos de cada api. 
 climaActual = nos pasa la informacion de la api https://api.openweathermap.org/data/2.5/weather, cuando se hace la busqueda en el input del header
-
 climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.org/data/2.5/onecall, que es la que tiene mas informacion
 *********************************************************fin*/
-
  defineProps({
   climaActual: Object,
   climaCompleto: Object
 });
-
 </script>
 
 <style scoped>
-
 /* *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 } */
-
 #app{
   font-family: 'Lato', sans-serif;
 }
-
 .bgnav {
   widows: 100%;
   height: auto;
   background-color: #C4DDFF;
 }
-
 .nav-link {
   background-color: rgba(218, 218, 218, 0.158);
   padding: 0.3em;
@@ -187,24 +158,20 @@ color: blue;
 #nav3.router-link-active {
 color: blue;
  background-color: rgba(133, 128, 128, 0.158); 
-
 }
  #nav, #nav2, #nav3{
   color: rgb(216, 167, 6);
-
 } 
 .navbar {
   padding: 0;
 }
 .cajaGeneral{
-
 display: flex;
 justify-content: space-around;
 background-color: #C4DDFF;
 margin-bottom: 0;
 align-items: center;
 }
-
 .copyright{
 align-items: center;
 color: #424642;
@@ -214,23 +181,18 @@ display: flex;
 align-items: center;
 color:#424642;
 }
-
 .datos{
 display: flex;
 align-items: center;
 color:#424642;
 }
-
   /* .fadeUp-enter-active, 
 .fadeUp-leave-active {
   transition: opacity 0.25s, transform 0.25s;
-
 }
  .fadeUp-enter, 
 .fadeUp-leave-to {
   opacity: 0;
   transform: translateX(30%);
 }  */
-
-
 </style>
