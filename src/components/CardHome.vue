@@ -47,7 +47,7 @@
     max-width: 501px;
     text-align: center;
     padding: 20px 20px 20px;
-    margin: 0 auto 3rem auto ;
+    margin: 0 auto 1rem auto ;
   }
 
   .imagenGif{
