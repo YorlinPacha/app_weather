@@ -54,7 +54,6 @@ defineProps({
   .contenedorDetalles_AmanecerAtarceder{
     display: flex;
     justify-content: space-evenly;
-    background-color: blueviolet;
 }
 
 
