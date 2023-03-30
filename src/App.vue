@@ -194,7 +194,7 @@ color: blue;
 
 }
  #nav, #nav2, #nav3{
-  color: rgb(196, 187, 66);
+  color: rgb(216, 167, 6);
 
 } 
 .navbar {
