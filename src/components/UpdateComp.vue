@@ -89,6 +89,35 @@ const delNew = async () => {
     console.log(error)
   }
 }
+// para actualizar los datos
+const updateNew = async () => {
+   try{
+const response = await axios.put(`http://localhost:3000/fotografias/${id.value}`,{
+  id:id.value,   
+  avatar:avatar.value,
+     name: name.value,
+     fecha: fecha.value,
+     location: location.value,
+     foto:foto.value,
+     comentario:comentario.value
+   
+   })
+   console.log(response)
+   id.value = ''
+   avatar.value=''
+   name.value = ''
+   fecha.value = ''
+   location.value = ''
+     foto.value = ''
+     comentario.value = ''
+     error.value = ''
+     alert ('Actualizado correctamente')
+     router.push("/blog")
+ }catch(error) {
+     console.log(error);
+     error.value = 'Error no se han actualizado los datos'
+   }
+}
 
 </script>
 
