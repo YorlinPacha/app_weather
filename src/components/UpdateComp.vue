@@ -38,12 +38,38 @@
 
 </template>
 
-<script>
-export default {
-  name: 'UpdateComp',
-  components: {
-  },
-}
+<script setup>
+
+import axios from 'axios'
+import {ref} from 'vue'
+const avatar = ref('')
+  const name = ref('')
+  const fecha = ref('')
+  const location = ref('')
+  const foto = ref('')
+  const comentario = ref('')
+  
+   
+const id = ref('')
+  const error =ref ('')
+ // coger un id y te proporciona los datos 
+  const getId = async () => {
+     try {
+        const response = await axios.get('http://localhost:3000/fotografias/' + id.value)
+        const data = response.data
+        console.log (response)
+        avatar.value =data.avatar
+        name.value = data.name
+        fecha.value = data.fecha
+        location.value = data.location
+        foto.value = data.foto
+        comentario.value = data.comentario
+   
+       } catch (error) {
+          alert('El Id no existe')
+           console.log(error)
+   }
+  }
 
 </script>
 
