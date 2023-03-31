@@ -1,7 +1,7 @@
 <template>
   <div class=" cuerpo ">
-  <h1 class="text-center p-5 ">Blog</h1>
-  <hr>
+  <h1 class="text-center p-5 ">Informacion de interes</h1>
+ 
   <img v-if="isError" src="@/assets/logo.png" alt="error">
       <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
       <div v-if="!isError && !isLoading" >
@@ -205,6 +205,7 @@ async function getInfo(){
      background-color: #c4ddff75; 
     /* background-image:url("../assets/img/v1015-101a.jpg");
   background-size: cover; */
+  min-height: 100vh;
   } 
   /* .contenedor{
     position: relative;
