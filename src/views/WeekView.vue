@@ -3,7 +3,7 @@
     <div class="contenedor_componentes">
         
     
-          <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
+        <CardHome :climaActual="climaActual" :climaCompleto="climaCompleto"/>
           <br>
         <SemanaComp :climaActual="climaActual" :climaCompleto="climaCompleto"/>
         
