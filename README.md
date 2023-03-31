@@ -11,27 +11,27 @@
 ***
 ## Información general
 
-Weather F5 es una pagina sobre cuales son los mejores dias y momentos del dia para hacer ejercicio al aire libre. 
+Weather F5 es una pagina sobre cuales son los mejores dias y momentos del dia para correr y andar en bici al aire libre. 
+
 El sitio web consta de:
 
-* Inicio/ Home: En la pagina de inicio, nos pide que elijamos un lugar. 
+* Inicio/ diario: En la pagina de inicio, nos pide que elijamos un lugar. 
 
-* Paginas dentro del proyecto: Una vez elegido el lugar, nos mostrara la pagina del tiempo por semanas o la pagina del dia por horas, podremos elegir la que queramos.
+    Luego despues de introducir un lugar en esta pagina, nos muestra el tiempo que ba hacer por horas durante el dia, y tambien nos dira si la hora es buena para correr o andar en bici.
 
-* Dentro de la pagina del tiempo por semanas: Dentro,podremos ver el tiempo que ba a hacer en toda la semana, tambien nos muestra en una tarjeta el tiempo que hace en el momento .
+    Tambien hay una tarjeta en esta pajina donde nos muestra el tiempo que hace en el momento detalladamente. Tambien aparece otra tarjeta donde encontramos el amanecer y el atardecer de este dia. 
+ 
 
-* En la pagina del tiempo por horas: En esta pagina nos muestra el tiempo que ba hacer por horas durante el dia, tambien nos dira si la hora es buena para hacer ejercicio. 
-
-Tambien en una tarjeta, nos muestra el tiempo que hace en el momento detalladamente y tambien hay otra tarje ta donde aprace el amanecer y el atardecer del mismo dia. 
-
+* Semana: Dentro, podremos ver el tiempo que ba a hacer en toda la semana, tambien nos muestra en otra tarjeta el tiempo que hace en el momento .
+ 
 * Blog: En este apartado, aparecen fotografias de lugares, con un resumen del tiempo que hace en ese momento. Se podra valorar la fotografia con likes. 
 
-*Resumen: Se podra ver el tiempo que hace y si hace bueno para salir a correr al aire libre.
+* Resumen: Se podra ver el tiempo que hace y si hace bueno para salir a correr o andar en bici al aire libre.
 
 
 
 ## Estado actual
-Terminando los responsives.
+Proyecto finalizado.
 
 ## Tecnologias utilizadas
 * HTML5
@@ -65,7 +65,7 @@ Terminando los responsives.
 *Gonzalo Lekunberri
 *Jone Guerrero
 *May Torres
-
+*Andres Oscina(Product owner)
 
 ## Project setup
 ```
