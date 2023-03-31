@@ -151,6 +151,19 @@ const postNew = async() => {
      error.value = 'Error al envia los datos'
    }
   };
+   // datos de la busqueda
+const results =ref([])
+  const search = async () => {
+  try {
+    
+   
+    const response = await axios.get(`http://localhost:3000/fotografias/?name=${name.value}`);
+    results.value= response.data;
+    console.log(response.data)
+  } catch (error) {
+    error.value = "Nombre no existe";
+  }
+}
 
 </script>
 
