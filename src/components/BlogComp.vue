@@ -1,7 +1,7 @@
 <template>
   <div class=" cuerpo ">
   <h1 class="text-center p-5 ">Informacion de interes</h1>
-  <hr>
+ 
   <img v-if="isError" src="@/assets/logo.png" alt="error">
       <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
       <div v-if="!isError && !isLoading" >
