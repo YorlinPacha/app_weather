@@ -9,11 +9,22 @@
     <!-- div principal -->
     <div v-else class="climaPrincipalDiario">
 
+        
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
-            <p class="fecha">{{ obtenerFechaActual() }}</p>
+            <div></div>
             <p class="ciudad">{{ climaActual.name }}</p>
-            <p class="hora">{{obtenerHoraActual()}}</p>
+
+            <!-- Botones de Andar en bici o correr??? --> 
+
+            <div class="opciones">
+                <p class="ciclismo" @click="bici = true">Ciclismo</p>
+                <div class="switch form-check form-switch">
+                    <input @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                </div>
+                <p class="footing" @click="bici = false">Footing</p>
+            </div>
+                
         </div>
 
         <!-- resto de datos  -->
@@ -30,24 +41,23 @@
             </div>
 
             <!-- gif en el centro -->
-            <div  v-if="climaActual.main.temp >12 && climaActual.main.temp <21" class="gif">
-                <img src="../assets/img/giphy-unscreen.gif" alt="">
-            </div>
-            <div v-else class="gif">
-                nada entra dentro del filtro(por terminar)
+            <div class="gif">
+                <div v-if="bici==true">
+                    <img src="../assets/img/giphy-unscreen.gif" alt="">
+                </div>
+                <div v-else>nada</div>
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
                 <div class="datosEspecificos">
-                    <p class="humedadimg" ><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
+                    <p class="humedadimg"><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
                     <p class="vientoimg"><img src="../assets/img/png-transparent-wind-symbol-weather-map-computer-icons-weather-forecasting-wind-text-logo-weather-forecasting-removebg-preview.png" alt="" >{{ climaActual.wind.speed }}km/h</p>
                 </div>
         </div>
 
         <!-- texto de recomendacion abajo -->
         <div class="recomendacion">
-            <div v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >=40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</div>
-            <div v-else>
+            <div>
                 <h2>Ejemplo de texto</h2>
                 <p>Ejemplo de mas texto pero mas pequeño que serian los detalles</p>
             </div>
@@ -56,25 +66,47 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps,ref } from 'vue';
 
 defineProps({
     climaActual: Object,
     climaCompleto: Object
 });
 
+let bici = ref(true)
 
-function obtenerHoraActual() {
-    return new Date().toLocaleTimeString()
+function cambio(){
+    if (bici.value == true) {
+        bici.value = false;
+    }
+    else{
+        bici.value = true;
+    }
 }
 
 
-function obtenerFechaActual(){
-    return new Date().toLocaleDateString()
-}
+// function obtenerHoraActual() {
+//     return new Date().toLocaleTimeString()
+// }
+
+
+// function obtenerFechaActual(){
+//     return new Date().toLocaleDateString()
+// }
+
 </script>
 
 <style scoped>
+.ciclismo {
+  color: blue;
+  font-weight: bold;
+}
+
+.footing {
+  color: red;
+  font-weight: normal;
+}
+
 
 *{
     text-align: center;
@@ -108,8 +140,22 @@ function obtenerFechaActual(){
  }
 
  .titulo{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+ }
+
+ .opciones{
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+ }
+
+ .opciones > p{
+    margin-right: 0.5rem;
+ }
+
+ .switch{
+    display: flex;
     align-items: center;
  }
  .containerDatos{
@@ -151,7 +197,7 @@ function obtenerFechaActual(){
     font-size: 2rem;
  }
 
- .gif > img{
+ .gif > div > img{
     width: 15rem;
     border-radius: 100%;
  }
@@ -167,11 +213,15 @@ function obtenerFechaActual(){
 
  @media screen and (max-width: 900px){
     .climaPrincipalDiario{
-        width: 100%;
+        width: 85vh;
     }
 
  }
  @media screen and (max-width: 400px){
+    .climaPrincipalDiario{
+        width: 90vw;
+    }
+    
     .containerDatos{
         flex-direction: column;
     }
@@ -196,11 +246,19 @@ function obtenerFechaActual(){
     }
 
     .gif > img{
-    width: 12rem;
+    width: 10rem;
     }
 
     .recomendacion{
-        margin:0;
+        margin:1rem;
+    }
+
+    .gifBuscar{
+        width: 90%;
+        height: 15rem;
+    }
+    .gifBuscar > img{
+        width: 50%;
     }
  }
 
