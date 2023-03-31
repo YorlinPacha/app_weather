@@ -70,6 +70,25 @@ const id = ref('')
            console.log(error)
    }
   }
+  //eliminas los datos
+const delNew = async () => {
+  try {
+    await axios.delete('http://localhost:3000/fotografias/' + id.value)
+    console.log('http://localhost:3000/fotografias/' + id.value)
+    alert(`La entrada id: ${id.value} ha sido eliminada de la base de datos`)
+    router.push("/blog")
+    id.value =''
+    avatar.value=''
+    fecha.value=''
+    location.value=''
+    name.value=''
+    foto.value=''
+    comentario.value=''
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 </script>
 
