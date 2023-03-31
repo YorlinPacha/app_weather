@@ -81,6 +81,7 @@ defineProps({
 
 }
 
+
 .clima_hora{
   text-align: center;
   align-items: center;
