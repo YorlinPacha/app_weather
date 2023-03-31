@@ -1,26 +1,41 @@
 <template>
-     <div class="home">
-      <div class="wrapper fadeInDown">
-        <div id="formContent">
-          
-            <form v-on:submit.prevent="postNew">
-                <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id">
-              <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-              <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
-              <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
-              <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
-              <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
-               <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
-              <input type="submit" class="fadeIn tenth" value="Post">
-              <input type="submit" class="fadeIn twelfth" value="Update">
-              <input type="submit" class="fadeIn ninth" value="delete">
-              <div class="error" v-if="error">{{ error }}</div>
-              </form>
-          </div>
-           
+  <div class="home">
+   <div class="wrapper fadeInDown">
+     <div id="formContent">
+      <div class="fadeIn first">
+            <h1>Crud</h1>
+       
+         <form v-on:submit.prevent="postNew">
+             <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id" >
+           <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
+           <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
+           <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
+           <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
+           <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
+            <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
+            <input type="button" class="fadeIn twelfth" @click="updateNew" value="UPDATE">
+           <input type="button" class="fadeIn twelfth" @click="getId" value="GET">
+           <input type="button" class="fadeIn ninth" @click="delNew" value="DELETE">
+           <input type="button" class="fadeIn ninth" @click="search" value="SEARCH">
+           <input type="submit" class="fadeIn ninth" value="POST">
+           <div class="error" v-if="error">{{ error }}</div>
+           </form>
        </div>
-     </div>
-   
+       </div>
+       <div class="resultados">
+   <div class="resultado" v-for="result in results" :key="result.id">
+     <img :src="result.avatar" alt="avatar" />
+     <h1>ID {{ result.id }}</h1>
+     <h2>{{ result.name }}</h2>
+     <p>{{ result.comentario }}</p>
+     <p>{{ result.fecha }}</p>
+     <p>{{ result.location }}</p>
+     <img :src="result.foto" alt="foto" />
+   </div>
+ </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
