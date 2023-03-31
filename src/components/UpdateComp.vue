@@ -76,7 +76,7 @@ const delNew = async () => {
     await axios.delete('http://localhost:3000/fotografias/' + id.value)
     console.log('http://localhost:3000/fotografias/' + id.value)
     alert(`La entrada id: ${id.value} ha sido eliminada de la base de datos`)
-    router.push("/blog")
+   
     id.value =''
     avatar.value=''
     fecha.value=''
@@ -112,12 +112,45 @@ const response = await axios.put(`http://localhost:3000/fotografias/${id.value}`
      comentario.value = ''
      error.value = ''
      alert ('Actualizado correctamente')
-     router.push("/blog")
+   
  }catch(error) {
      console.log(error);
      error.value = 'Error no se han actualizado los datos'
    }
 }
+const postNew = async() => {
+   try{
+    
+     if(!name.value|| !fecha.value|| !location.value || !comentario.value || !foto.value || !avatar.value){
+     error.value = 'No puede haber campos vacios'
+     return
+     }
+     
+     const response = await axios.post ('http://localhost:3000/fotografias',{
+     avatar:avatar.value,
+     name: name.value,
+     fecha: fecha.value,
+     location: location.value,
+     foto:foto.value,
+     comentario:comentario.value
+    
+   
+   })
+   console.log(response)
+   avatar.value=''
+   name.value = ''
+   fecha.value = ''
+   location.value = ''
+     foto.value = ''
+     comentario.value = ''
+     error.value = ''
+     alert ('Nuevo post añadido')
+    
+ }catch(error) {
+     console.log(error);
+     error.value = 'Error al envia los datos'
+   }
+  };
 
 </script>
 
