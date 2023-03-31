@@ -26,7 +26,9 @@ Tambien en una tarjeta, nos muestra el tiempo que hace en el momento detalladame
 
 * Blog: En este apartado, aparecen fotografias de lugares, con un resumen del tiempo que hace en ese momento. Se podra valorar la fotografia con likes. 
 
-*Resumen: Se podra ver el tiempo que hace y si hace bueno para hacer deporte al aire libre.
+*Resumen: Se podra ver el tiempo que hace y si hace bueno para salir a correr al aire libre.
+
+
 
 ## Estado actual
 Terminando los responsives.
@@ -60,9 +62,9 @@ Terminando los responsives.
 *Jonathan Echeverria (Scrum Master)
 *Yorlin Pachajoa
 *Edurne Montalban
-*
-
-
+*Gonzalo Lekunberri
+*Jone Guerrero
+*May Torres
 
 
 ## Project setup
