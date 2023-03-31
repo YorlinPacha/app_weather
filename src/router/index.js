@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import WeekView from '../views/WeekView.vue'
+// import WeekView from '../views/WeekView.vue'
+import DailyDeporteView from '@/views/DailyDeporteView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'week',
-    component: WeekView
+    name: 'dailyDeporte',
+    component: DailyDeporteView
   },
   {
-    path: '/daily',
-    name: 'daily',
+    path: '/week',
+    name: 'Week',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/DailyView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WeekDeporteView.vue')
   },
   {
     path: '/blog',
