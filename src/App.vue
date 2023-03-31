@@ -15,11 +15,11 @@
           <li class="nav-item">
 
             <router-link to="/" class="nav-link active border border-muted " id="nav"
-              aria-current="page">Semana</router-link>
+              aria-current="page">Diario</router-link>
           </li>
           <li class="nav-item">
 
-            <router-link to="/daily" class="nav-link active border borde-muted" id="nav2">Diario</router-link>
+            <router-link to="/week" class="nav-link active border borde-muted" id="nav2">Semana</router-link>
           </li>
           <li class="nav-item">
 
