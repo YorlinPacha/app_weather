@@ -7,7 +7,7 @@
     </div>
 
     <!-- div principal -->
-    <div v-else class="climaPrincipalDiario">
+    <div v-else id="climaPrincipalDiario">
 
         
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
@@ -18,11 +18,11 @@
             <!-- Botones de Andar en bici o correr??? --> 
 
             <div class="opciones">
-                <p class="ciclismo" @click="bici = true">Ciclismo</p>
+                <p class="switchs"  @click="ciclismo">Ciclismo</p>
                 <div class="switch form-check form-switch">
-                    <input @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
-                <p class="footing" @click="bici = false">Footing</p>
+                <p class="switchs" @click="footing">Footing</p>
             </div>
                 
         </div>
@@ -42,10 +42,20 @@
 
             <!-- gif en el centro -->
             <div class="gif">
-                <div v-if="bici==true">
-                    <img src="../assets/img/giphy-unscreen.gif" alt="">
+                <div v-if="climaActual.rain">       
+                   llueve
                 </div>
-                <div v-else>nada</div>
+                <div v-else-if="bici==true">
+                    <img v-if=" climaActual.main.temp >= 10 && climaActual.main.temp < 20 && climaActual.main.humidity <70 && climaActual.wind.speed < 5" src="../assets/img/giphy-unscreen.gif" alt="">
+                    <div v-else>
+                        ni llueve ni se cumplen
+                    </div>
+                </div>
+                <div v-else>
+                    <div>
+
+                    </div>
+                </div>
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
@@ -66,6 +76,7 @@
 </template>
 
 <script setup>
+
 import { defineProps,ref } from 'vue';
 
 defineProps({
@@ -73,16 +84,32 @@ defineProps({
     climaCompleto: Object
 });
 
+//ciclismo true por defecto
 let bici = ref(true)
+let switchValue = ref(false);
 
-function cambio(){
-    if (bici.value == true) {
-        bici.value = false;
-    }
-    else{
-        bici.value = true;
-    }
+
+
+console.log(switchValue)
+function footing(){
+    switchValue.value = true;
+    bici.value = false
 }
+
+function ciclismo(){
+    switchValue.value = false;
+    bici.value = true
+}
+
+ function cambio(){
+     if (bici.value == true) {
+         bici.value = false;
+     }
+     else{
+         bici.value = true;
+     }
+ }
+
 
 
 // function obtenerHoraActual() {
@@ -97,15 +124,11 @@ function cambio(){
 </script>
 
 <style scoped>
-.ciclismo {
-  color: blue;
-  font-weight: bold;
+.switchs {
+  color: rgb(32, 32, 197);
+  cursor: pointer;
 }
 
-.footing {
-  color: red;
-  font-weight: normal;
-}
 
 
 *{
@@ -127,7 +150,7 @@ function cambio(){
     width: 20em;
 }
 /* Datos generales de la tarjeta */
- .climaPrincipalDiario{
+ #climaPrincipalDiario{
     margin: 0 auto;
     width: 60%;
     height: auto;
