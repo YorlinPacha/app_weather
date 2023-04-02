@@ -12,7 +12,7 @@
               <div
                 class="clima_hora"
                 v-for="climaHoras in climaCompleto.hourly"
-                :key="climaHoras"
+                :key="climaHoras.dt"
               >
                 <img
                     :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
@@ -24,7 +24,7 @@
                 </p>
                 <p>
                     {{
-                      new Date((climaHoras.dt * 1000)+ 7200).toLocaleTimeString("en-us", {
+                      new Date((climaHoras.dt *1000) - 7200).toLocaleTimeString("en-us", {
                         hour: "numeric",
                         hour: '2-digit',
                       })

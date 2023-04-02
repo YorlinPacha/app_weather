@@ -46,6 +46,10 @@
     min-height: 100vh;
   }
   
+  .contenedor_componentes{
+  padding: 2rem 0 2rem 0;
+}
+  
   /* -------------------Responsive Tablet ----------------*/
   
   
