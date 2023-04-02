@@ -12,7 +12,7 @@
               <div
                 class="clima_hora"
                 v-for="climaHoras in climaCompleto.hourly"
-                :key="climaHoras.dt"
+                :key="climaHoras"
               >
                 <img
                     :src="`https://raw.githubusercontent.com/Shamanesss/app_weather/main/src/assets/img/weather_icons/${climaHoras.weather[0].icon}.png`"
