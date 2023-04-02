@@ -7,22 +7,22 @@
     </div>
 
     <!-- div principal -->
-    <div v-else class="climaPrincipalDiario">
+    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined }">
 
         
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
             <div></div>
-            <p class="ciudad">{{ climaActual.name }}</p>
+            <p class="ciudad">{{ climaActual.name }}{{ climaActual.clouds.all }}</p>
 
             <!-- Botones de Andar en bici o correr??? --> 
 
             <div class="opciones">
-                <p class="ciclismo" @click="bici = true">Ciclismo</p>
+                <p class="switchs"  @click="ciclismo">Ciclismo</p>
                 <div class="switch form-check form-switch">
-                    <input @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
-                <p class="footing" @click="bici = false">Footing</p>
+                <p class="switchs" @click="footing">Footing</p>
             </div>
                 
         </div>
@@ -42,10 +42,24 @@
 
             <!-- gif en el centro -->
             <div class="gif">
-                <div v-if="bici==true">
-                    <img src="../assets/img/giphy-unscreen.gif" alt="">
+                <div v-if="climaActual.rain">       
+                   <img src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
                 </div>
-                <div v-else>nada</div>
+                <div  v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20">
+                    hace sol y calor
+                </div>
+                <div v-else-if="bici==true">
+                    <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
+                    <div v-else>
+                        quedarse en casa
+                    </div>
+                </div>
+                <div v-else>
+                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                    <div v-else>
+                        mal timepo para correr pero no llueve
+                    </div>
+                </div>
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
@@ -66,6 +80,7 @@
 </template>
 
 <script setup>
+
 import { defineProps,ref } from 'vue';
 
 defineProps({
@@ -73,14 +88,29 @@ defineProps({
     climaCompleto: Object
 });
 
+//ciclismo true por defecto
 let bici = ref(true)
+let switchValue = ref(false);
+
+
+
+console.log(switchValue)
+function footing(){
+    switchValue.value = true;
+    bici.value = false
+}
+
+function ciclismo(){
+    switchValue.value = false;
+    bici.value = true
+}
 
 function cambio(){
     if (bici.value == true) {
-        bici.value = false;
+         bici.value = false;
     }
     else{
-        bici.value = true;
+         bici.value = true;
     }
 }
 
@@ -97,16 +127,10 @@ function cambio(){
 </script>
 
 <style scoped>
-.ciclismo {
-  color: blue;
-  font-weight: bold;
+.switchs {
+  color: rgb(32, 32, 197);
+  cursor: pointer;
 }
-
-.footing {
-  color: red;
-  font-weight: normal;
-}
-
 
 *{
     text-align: center;
@@ -127,7 +151,7 @@ function cambio(){
     width: 20em;
 }
 /* Datos generales de la tarjeta */
- .climaPrincipalDiario{
+ #climaPrincipalDiario{
     margin: 0 auto;
     width: 60%;
     height: auto;
@@ -137,6 +161,12 @@ function cambio(){
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     background-color: rgba(255, 255, 255, 0.637);
+   
+ }
+
+ .rain{
+    background-image: url(../assets/img/lluvia.gif);
+
  }
 
  .titulo{
@@ -197,10 +227,18 @@ function cambio(){
     font-size: 2rem;
  }
 
- .gif > div > img{
+
+ .ciclismo{
     width: 15rem;
-    border-radius: 100%;
  }
+
+ .footing{
+    width: 20rem;
+ }
+
+.paraguas{
+    width: 15rem;
+}
 
 .recomendacion{
     border-radius: 20px;
@@ -245,7 +283,7 @@ function cambio(){
     align-items: center;
     }
 
-    .gif > img{
+    .ciclismo .footing{
     width: 10rem;
     }
 
