@@ -7,13 +7,13 @@
     </div>
 
     <!-- div principal -->
-    <div v-else id="climaPrincipalDiario">
+    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined }">
 
         
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
             <div></div>
-            <p class="ciudad">{{ climaActual.name }}</p>
+            <p class="ciudad">{{ climaActual.name }}{{ climaActual.clouds.all }}</p>
 
             <!-- Botones de Andar en bici o correr??? --> 
 
@@ -43,17 +43,21 @@
             <!-- gif en el centro -->
             <div class="gif">
                 <div v-if="climaActual.rain">       
-                   llueve
+                   <img src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
+                </div>
+                <div  v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20">
+                    hace sol y calor
                 </div>
                 <div v-else-if="bici==true">
-                    <img v-if=" climaActual.main.temp >= 10 && climaActual.main.temp < 20 && climaActual.main.humidity <70 && climaActual.wind.speed < 5" src="../assets/img/giphy-unscreen.gif" alt="">
+                    <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
                     <div v-else>
-                        ni llueve ni se cumplen
+                        quedarse en casa
                     </div>
                 </div>
                 <div v-else>
-                    <div>
-
+                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                    <div v-else>
+                        mal timepo para correr pero no llueve
                     </div>
                 </div>
             </div>
@@ -101,15 +105,14 @@ function ciclismo(){
     bici.value = true
 }
 
- function cambio(){
-     if (bici.value == true) {
+function cambio(){
+    if (bici.value == true) {
          bici.value = false;
-     }
-     else{
+    }
+    else{
          bici.value = true;
-     }
- }
-
+    }
+}
 
 
 // function obtenerHoraActual() {
@@ -128,8 +131,6 @@ function ciclismo(){
   color: rgb(32, 32, 197);
   cursor: pointer;
 }
-
-
 
 *{
     text-align: center;
@@ -160,6 +161,12 @@ function ciclismo(){
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     background-color: rgba(255, 255, 255, 0.637);
+   
+ }
+
+ .rain{
+    background-image: url(../assets/img/lluvia.gif);
+
  }
 
  .titulo{
@@ -220,10 +227,18 @@ function ciclismo(){
     font-size: 2rem;
  }
 
- .gif > div > img{
+
+ .ciclismo{
     width: 15rem;
-    border-radius: 100%;
  }
+
+ .footing{
+    width: 20rem;
+ }
+
+.paraguas{
+    width: 15rem;
+}
 
 .recomendacion{
     border-radius: 20px;
@@ -268,7 +283,7 @@ function ciclismo(){
     align-items: center;
     }
 
-    .gif > img{
+    .ciclismo .footing{
     width: 10rem;
     }
 
