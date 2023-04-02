@@ -7,22 +7,20 @@
     </div>
 
     <!-- div principal -->
-    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined }">
-
+    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined, 'sunny':climaActual.main.temp >25 && climaActual.clouds.all <= 20}">
         
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
             <div></div>
-            <p class="ciudad">{{ climaActual.name }}{{ climaActual.clouds.all }}</p>
+            <p class="ciudad">{{ climaActual.name }}</p>
 
             <!-- Botones de Andar en bici o correr??? --> 
-
             <div class="opciones">
-                <p class="switchs"  @click="ciclismo">Ciclismo</p>
+                <p class="switchs"  @click="ciclismo" :class="{'seleccionado':switchValue==false}">Ciclismo</p>
                 <div class="switch form-check form-switch">
                     <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
-                <p class="switchs" @click="footing">Footing</p>
+                <p class="switchs" @click="footing" :class="{'seleccionado':switchValue==true}">Footing</p>
             </div>
                 
         </div>
@@ -42,23 +40,24 @@
 
             <!-- gif en el centro -->
             <div class="gif">
+                <!-- si llueve -->
                 <div v-if="climaActual.rain">       
                    <img src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
                 </div>
-                <div  v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20">
-                    hace sol y calor
-                </div>
+
+                <!-- si hace mucho calor y sol -->
+                <img v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20" src="../assets/img/muchocalor.gif" alt="" class="muchoCalor">
+
+                <!-- si se elige ciclismo -->
                 <div v-else-if="bici==true">
                     <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
-                    <div v-else>
-                        quedarse en casa
-                    </div>
+                        <!-- <img v-else src="../assets/img/" alt=""> -->
                 </div>
+                
+                <!-- si se elige footing -->
                 <div v-else>
                         <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
-                    <div v-else>
-                        mal timepo para correr pero no llueve
-                    </div>
+                        <!-- <img v-else src="../assets/img/" alt=""> -->
                 </div>
             </div>
 
@@ -71,9 +70,25 @@
 
         <!-- texto de recomendacion abajo -->
         <div class="recomendacion">
-            <div>
-                <h2>Ejemplo de texto</h2>
-                <p>Ejemplo de mas texto pero mas pequeño que serian los detalles</p>
+            <div v-if="climaActual.rain">
+                <h2>Esta lloviendo.</h2>
+                <p>El suelo esta mojado y no se recomienda salir a hacer deporte</p>
+            </div>
+            <div v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20">
+                <h2>Hace mucho calor.</h2>
+                <p>No se recomienda hacer deporte. Mantente hidratado</p>
+            </div>
+            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20">
+                <h2>¡Hora de hacer deporte!</h2>
+                <p>El tiempo es perfecto para salir a dar una vuelta en bici. </p>
+            </div>
+            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30">
+                <h2>¡Hora de Correr!</h2>
+                <p>Es el momento perfecto para salir a correr un poco. </p>
+            </div>
+            <div v-else>
+                <h2>Malas condiciones</h2>
+                <p>No es el mejor momento para salir a hacer deporte. </p>
             </div>
         </div>
     </div>
@@ -128,8 +143,15 @@ function cambio(){
 
 <style scoped>
 .switchs {
-  color: rgb(32, 32, 197);
+  color: rgb(0, 0, 0);
   cursor: pointer;
+}
+
+.seleccionado{
+    border: 1px solid rgba(0, 0, 0, 0.288);
+    border-radius: 20px;
+    box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
+    background-color: rgba(255, 255, 255, 0.637);
 }
 
 *{
@@ -166,7 +188,6 @@ function cambio(){
 
  .rain{
     background-image: url(../assets/img/lluvia.gif);
-
  }
 
  .titulo{
@@ -178,6 +199,7 @@ function cambio(){
  .opciones{
     display: flex;
     align-items: center;
+    margin: 0 auto;
  }
 
  .opciones > p{
@@ -240,6 +262,10 @@ function cambio(){
     width: 15rem;
 }
 
+.muchoCalor{
+    width: 15rem;
+}
+
 .recomendacion{
     border-radius: 20px;
     margin: 0 4rem 0 4rem;
@@ -250,14 +276,19 @@ function cambio(){
 
 
  @media screen and (max-width: 900px){
-    .climaPrincipalDiario{
-        width: 85vh;
+    #climaPrincipalDiario{
+        width: 90%;
+    }
+    .titulo{
+        grid-template-columns: auto;
+        justify-content: center;
     }
 
  }
  @media screen and (max-width: 400px){
-    .climaPrincipalDiario{
+    #climaPrincipalDiario{
         width: 90vw;
+        height: auto;
     }
     
     .containerDatos{
@@ -283,8 +314,11 @@ function cambio(){
     align-items: center;
     }
 
-    .ciclismo .footing{
-    width: 10rem;
+    .gif > div > img{
+        width: 15rem;
+    }
+    .gif > img{
+        width: 10rem;
     }
 
     .recomendacion{
