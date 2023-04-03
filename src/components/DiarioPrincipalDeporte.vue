@@ -7,7 +7,7 @@
     </div>
 
     <!-- div principal -->
-    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined, 'sunny':climaActual.main.temp >25 && climaActual.clouds.all <= 20}">
+    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined}">
         
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
@@ -50,13 +50,13 @@
 
                 <!-- si se elige ciclismo -->
                 <div v-else-if="bici==true">
-                    <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
+                    <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 10" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
                         <!-- <img v-else src="../assets/img/" alt=""> -->
                 </div>
                 
                 <!-- si se elige footing -->
                 <div v-else>
-                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 20" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
                         <!-- <img v-else src="../assets/img/" alt=""> -->
                 </div>
             </div>
@@ -186,6 +186,9 @@ function cambio(){
    
  }
 
+ .dark{
+    background-color: rgb(128, 102, 102)!important;
+ }
  .rain{
     background-image: url(../assets/img/lluvia.gif);
  }
