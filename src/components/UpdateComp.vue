@@ -22,20 +22,23 @@
            </form>
        </div>
        </div>
-       <div class="resultados">
+       <div class="container">
+       <div class="resultados" id="formContent-2">
    <div class="resultado" v-for="result in results" :key="result.id">
-     <img :src="result.avatar" alt="avatar" />
-     <h1>ID {{ result.id }}</h1>
-     <h2>{{ result.name }}</h2>
-     <p>{{ result.comentario }}</p>
-     <p>{{ result.fecha }}</p>
-     <p>{{ result.location }}</p>
-     <img :src="result.foto" alt="foto" />
+     
+     
+     <img class="avatar-img" :src="result.avatar" alt="avatar" />
+     <h4>{{ result.name }} <strong>ID {{ result.id }}</strong></h4>
+     
+     <p class="fecha">{{ result.fecha }}  {{ result.location }}</p>
+     <p></p>
+     <img class="foto" :src="result.foto" alt="foto" />
+     <p class="comentario">{{ result.comentario }}</p>
    </div>
  </div>
     </div>
   </div>
-
+</div>
 </template>
 
 <script setup>
@@ -191,17 +194,11 @@ const results =ref([])
    text-align: center;
  }
  #formContent-2 {
-   -webkit-border-radius: 10px 10px 10px 10px;
-   border-radius: 10px 10px 10px 10px;
-   background: #fff;
-   padding: 40px;
-   width: 90%;
-   max-width: 550px;
-   position: relative;
-   padding: 0px;
-   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-   text-align: center;
+  
+   padding: 30px;
+   max-width: 850px;
+   margin: 0 auto;
+ 
   
  }
  input[type=button], input[type=submit], input[type=reset]  {
@@ -247,13 +244,7 @@ const results =ref([])
    margin: 5px;
    width: 85%;
    border: 2px solid #f6f6f6;
-   /* -webkit-transition: all 0.5s ease-in-out;
-   -moz-transition: all 0.5s ease-in-out;
-   -ms-transition: all 0.5s ease-in-out;
-   -o-transition: all 0.5s ease-in-out;
-   transition: all 0.5s ease-in-out;
-   -webkit-border-radius: 5px 5px 5px 5px;
-   border-radius: 5px 5px 5px 5px; */
+
  }
  input[type=text]:focus {
    background-color: #fff;
@@ -262,82 +253,7 @@ const results =ref([])
  input[type=text]:placeholder {
    color: #cccccc;
  }
- /* ANIMATIONS */
- /* Simple CSS3 Fade-in-down Animation */
- /* .fadeInDown {
-   -webkit-animation-name: fadeInDown;
-   animation-name: fadeInDown;
-   -webkit-animation-duration: 1s;
-   animation-duration: 1s;
-   -webkit-animation-fill-mode: both;
-   animation-fill-mode: both;
- }
- @-webkit-keyframes fadeInDown {
-   0% {
-     opacity: 0;
-     -webkit-transform: translate3d(0, -100%, 0);
-     transform: translate3d(0, -100%, 0);
-   }
-   100% {
-     opacity: 1;
-     -webkit-transform: none;
-     transform: none;
-   }
- }
- @keyframes fadeInDown {
-   0% {
-     opacity: 0;
-     -webkit-transform: translate3d(0, -100%, 0);
-     transform: translate3d(0, -100%, 0);
-   }
-   100% {
-     opacity: 1;
-     -webkit-transform: none;
-     transform: none;
-   }
- }
- /* Simple CSS3 Fade-in Animation */
- /* @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
- @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
- @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
- .fadeIn {
-   opacity:0;
-   -webkit-animation:fadeIn ease-in 1;
-   -moz-animation:fadeIn ease-in 1;
-   animation:fadeIn ease-in 1;
-   -webkit-animation-fill-mode:forwards;
-   -moz-animation-fill-mode:forwards;
-   animation-fill-mode:forwards;
-   -webkit-animation-duration:1s;
-   -moz-animation-duration:1s;
-   animation-duration:1s;
- }  */
- /* .fadeIn.first {
-   -webkit-animation-delay: 0.4s;
-   -moz-animation-delay: 0.4s;
-   animation-delay: 0.4s;
- }
- .fadeIn.second {
-   -webkit-animation-delay: 0.6s;
-   -moz-animation-delay: 0.6s;
-   animation-delay: 0.6s;
- }
- .fadeIn.third {
-   -webkit-animation-delay: 0.8s;
-   -moz-animation-delay: 0.8s;
-   animation-delay: 0.8s;
- }
- .fadeIn.fourth {
-   -webkit-animation-delay: 1s;
-   -moz-animation-delay: 1s;
-   animation-delay: 1s;
- }
- *:focus {
-     outline: none;
- } 
- #icon {
-   width:60%;
- } */
+ 
  .error{
    background-color: red;
    color:white;
@@ -346,4 +262,34 @@ const results =ref([])
    margin-top: 2rem;
  }
  
+ .resultados{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+ 
+ }
+ .resultado{
+border: 1px solid black;
+flex-wrap: wrap;
+ }
+ .avatar-img {
+ border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+ } 
+ .foto {
+    max-width: 100%;
+   width: 10rem;
+   height: 10rem;
+   border-radius: 10px;
+   
+  }
+  .comentario{
+    width: 10rem;
+  } 
+  .fecha{
+    width: 10rem;
+  }
 </style>
