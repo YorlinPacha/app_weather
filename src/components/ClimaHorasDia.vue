@@ -42,7 +42,9 @@
                   <!-- {{(climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ).classList.add(dorado)}} -->
                 <hr>
                 
-                <h6>Mejores horas para salir a trotar</h6>
+                <h6 class="mejoresHoras">Hemos encontrado las mejores horas para ti!!</h6>
+                <p class="parrafoIcono">Puedes encuentralas con el icono  <i class="fa-solid fa-person-walking"></i></p>
+                
         </div>
       
     </div>
@@ -102,6 +104,13 @@ defineProps({
 
 .titulo-clima-horas{
   color: rgb(61, 61, 61);
+}
+.mejoresHoras{
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+.parrafoIcono{
+  font-size: 1.3rem;
 }
 
  /* --------------Responsive tablet --------------   -768*/
