@@ -7,13 +7,22 @@
     </div>
 
     <!-- div principal -->
-    <div v-else class="climaPrincipalDiario">
-
+    <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined, 'sunny':climaActual.main.temp >25 && climaActual.clouds.all <= 20}">
+        
         <!-- Parte de arriba con nombre y datos de hora y fecha -->
         <div class="titulo">
-            <p class="fecha">{{ obtenerFechaActual() }}</p>
+            <div></div>
             <p class="ciudad">{{ climaActual.name }}</p>
-            <p class="hora">{{obtenerHoraActual()}}</p>
+
+            <!-- Botones de Andar en bici o correr??? --> 
+            <div class="opciones">
+                <p class="switchs"  @click="ciclismo" :class="{'seleccionado':switchValue==false}">Ciclismo</p>
+                <div class="switch form-check form-switch">
+                    <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                </div>
+                <p class="switchs" @click="footing" :class="{'seleccionado':switchValue==true}">Running</p>
+            </div>
+                
         </div>
 
         <!-- resto de datos  -->
@@ -30,51 +39,120 @@
             </div>
 
             <!-- gif en el centro -->
-            <div  v-if="climaActual.main.temp >12 && climaActual.main.temp <21" class="gif">
-                <img src="../assets/img/giphy-unscreen.gif" alt="">
-            </div>
-            <div v-else class="gif">
-                nada entra dentro del filtro(por terminar)
+            <div class="gif">
+                <!-- si llueve -->
+                <div v-if="climaActual.rain">       
+                   <img src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
+                </div>
+
+                <!-- si hace mucho calor y sol -->
+                <img v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20" src="../assets/img/muchocalor.gif" alt="" class="muchoCalor">
+
+                <!-- si se elige ciclismo -->
+                <div v-else-if="bici==true">
+                    <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
+                        <!-- <img v-else src="../assets/img/" alt=""> -->
+                </div>
+                
+                <!-- si se elige footing -->
+                <div v-else>
+                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                        <!-- <img v-else src="../assets/img/" alt=""> -->
+                </div>
             </div>
 
                 <!-- Detalles de la humedad y el viento a la derecha -->
                 <div class="datosEspecificos">
-                    <p class="humedadimg" ><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
+                    <p class="humedadimg"><img src="../assets/img/kisspng-humidity-symbol-computer-icons-temperature-measure-against-vector-5ad99bf9116459.7880027515242106810713-removebg-preview.png" alt="" cl>{{ climaActual.main.humidity }}% </p>
                     <p class="vientoimg"><img src="../assets/img/png-transparent-wind-symbol-weather-map-computer-icons-weather-forecasting-wind-text-logo-weather-forecasting-removebg-preview.png" alt="" >{{ climaActual.wind.speed }}km/h</p>
                 </div>
         </div>
 
         <!-- texto de recomendacion abajo -->
         <div class="recomendacion">
-            <div v-if="climaActual.main.temp >14 && climaActual.main.temp <24 && climaActual.main.humidity >=40 && climaActual.main.humidity <60 && climaActual.wind.speed <16">Momento perfecto para salir a hacer deporte(es un ejemplo)</div>
+            <div v-if="climaActual.rain">
+                <h2>Esta lloviendo.</h2>
+                <p>El suelo esta mojado y no se recomienda salir a hacer deporte</p>
+            </div>
+            <div v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20">
+                <h2>Hace mucho calor.</h2>
+                <p>No se recomienda hacer deporte. Mantente hidratado</p>
+            </div>
+            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20">
+                <h2>¡Hora de hacer deporte!</h2>
+                <p>El tiempo es perfecto para salir a dar una vuelta en bici. </p>
+            </div>
+            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30">
+                <h2>¡Hora de Correr!</h2>
+                <p>Es el momento perfecto para salir a correr un poco. </p>
+            </div>
             <div v-else>
-                <h2>Ejemplo de texto</h2>
-                <p>Ejemplo de mas texto pero mas pequeño que serian los detalles</p>
+                <h2>Malas condiciones</h2>
+                <p>No es el mejor momento para salir a hacer deporte. </p>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+
+import { defineProps,ref } from 'vue';
 
 defineProps({
     climaActual: Object,
     climaCompleto: Object
 });
 
+//ciclismo true por defecto
+let bici = ref(true)
+let switchValue = ref(false);
 
-function obtenerHoraActual() {
-    return new Date().toLocaleTimeString()
+
+
+console.log(switchValue)
+function footing(){
+    switchValue.value = true;
+    bici.value = false
+}
+
+function ciclismo(){
+    switchValue.value = false;
+    bici.value = true
+}
+
+function cambio(){
+    if (bici.value == true) {
+         bici.value = false;
+    }
+    else{
+         bici.value = true;
+    }
 }
 
 
-function obtenerFechaActual(){
-    return new Date().toLocaleDateString()
-}
+// function obtenerHoraActual() {
+//     return new Date().toLocaleTimeString()
+// }
+
+
+// function obtenerFechaActual(){
+//     return new Date().toLocaleDateString()
+// }
+
 </script>
 
 <style scoped>
+.switchs {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.seleccionado{
+    border: 1px solid rgba(0, 0, 0, 0.288);
+    border-radius: 20px;
+    box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
+    background-color: rgba(255, 255, 255, 0.637);
+}
 
 *{
     text-align: center;
@@ -95,7 +173,7 @@ function obtenerFechaActual(){
     width: 20em;
 }
 /* Datos generales de la tarjeta */
- .climaPrincipalDiario{
+ #climaPrincipalDiario{
     margin: 0 auto;
     width: 60%;
     height: auto;
@@ -105,11 +183,31 @@ function obtenerFechaActual(){
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     background-color: rgba(255, 255, 255, 0.637);
+   
+ }
+
+ .rain{
+    background-image: url(../assets/img/lluvia.gif);
  }
 
  .titulo{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+ }
+
+ .opciones{
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+ }
+
+ .opciones > p{
+    margin-right: 0.5rem;
+ }
+
+ .switch{
+    display: flex;
     align-items: center;
  }
  .containerDatos{
@@ -151,10 +249,22 @@ function obtenerFechaActual(){
     font-size: 2rem;
  }
 
- .gif > img{
+
+ .ciclismo{
     width: 15rem;
-    border-radius: 100%;
  }
+
+ .footing{
+    width: 20rem;
+ }
+
+.paraguas{
+    width: 15rem;
+}
+
+.muchoCalor{
+    width: 15rem;
+}
 
 .recomendacion{
     border-radius: 20px;
@@ -166,12 +276,21 @@ function obtenerFechaActual(){
 
 
  @media screen and (max-width: 900px){
-    .climaPrincipalDiario{
-        width: 100%;
+    #climaPrincipalDiario{
+        width: 90%;
+    }
+    .titulo{
+        grid-template-columns: auto;
+        justify-content: center;
     }
 
  }
  @media screen and (max-width: 400px){
+    #climaPrincipalDiario{
+        width: 90vw;
+        height: auto;
+    }
+    
     .containerDatos{
         flex-direction: column;
     }
@@ -195,12 +314,23 @@ function obtenerFechaActual(){
     align-items: center;
     }
 
+    .gif > div > img{
+        width: 15rem;
+    }
     .gif > img{
-    width: 12rem;
+        width: 10rem;
     }
 
     .recomendacion{
-        margin:0;
+        margin:1rem;
+    }
+
+    .gifBuscar{
+        width: 90%;
+        height: 15rem;
+    }
+    .gifBuscar > img{
+        width: 50%;
     }
  }
 
