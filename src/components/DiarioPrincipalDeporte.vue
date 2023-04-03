@@ -2,7 +2,7 @@
 
     <!-- Solo se muestra si ninguna ciudad esta seleccionada -->
     <div v-if="climaActual == ''" class="gifBuscar">
-        <h1>Clima</h1>
+        <h1 class="tituloClima">Clima</h1>
         <img class="imagenGif"  src="../assets/img/entrada.gif" alt="">
     </div>
 
@@ -272,6 +272,9 @@ function cambio(){
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.733);
     box-shadow: 2px 2px 2px 2px rgba(155, 153, 153, 0.438);
+}
+.tituloClima{
+    color: #757575;
 }
 
 
