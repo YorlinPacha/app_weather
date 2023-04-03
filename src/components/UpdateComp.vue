@@ -1,168 +1,172 @@
 <template>
   <div class="home">
-   <div class="wrapper fadeInDown">
-     <div id="formContent">
-      <div class="fadeIn first">
-            <h1>Crud</h1>
-       
-         <form v-on:submit.prevent="postNew">
-             <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id" >
-           <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
-           <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre" v-model="name">
-           <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
-           <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad" v-model="location">
-           <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto" v-model="foto">
-            <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario" v-model="comentario">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <h1>Crud</h1>
+          <form v-on:submit.prevent="postNew">
+            <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id">
+            <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar"
+              v-model="avatar">
+            <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre"
+              v-model="name">
+            <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha"
+              v-model="fecha">
+            <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad"
+              v-model="location">
+            <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto"
+              v-model="foto">
+            <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario"
+              v-model="comentario">
             <input type="button" class="fadeIn twelfth" @click="updateNew" value="UPDATE">
-           <input type="button" class="fadeIn twelfth" @click="getId" value="GET">
-           <input type="button" class="fadeIn ninth" @click="delNew" value="DELETE">
-           <input type="button" class="fadeIn ninth" @click="search" value="SEARCH">
-           <input type="submit" class="fadeIn ninth" value="POST">
-           <div class="error" v-if="error">{{ error }}</div>
-           </form>
-       </div>
-       </div>
-       <div class="container">
-       <div class="resultados" id="formContent-2">
-   <div class="resultado" v-for="result in results" :key="result.id">
-     
-     
-     <img class="avatar-img" :src="result.avatar" alt="avatar" />
-     <h4>{{ result.name }} <strong>ID {{ result.id }}</strong></h4>
-     
-     <p class="fecha">{{ result.fecha }}  {{ result.location }}</p>
-     <p></p>
-     <img class="foto" :src="result.foto" alt="foto" />
-     <p class="comentario">{{ result.comentario }}</p>
-   </div>
- </div>
+            <input type="button" class="fadeIn twelfth" @click="getId" value="GET">
+            <input type="button" class="fadeIn ninth" @click="delNew" value="DELETE">
+            <input type="button" class="fadeIn ninth" @click="search" value="SEARCH">
+            <input type="submit" class="fadeIn ninth" value="POST">
+           
+            <div class="error" v-if="error">{{ error }}</div>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="resultados" id="formContent-2">
+          <div class="resultado" v-for="result in results" :key="result.id">
+            <img class="avatar-img" :src="result.avatar" alt="avatar" />
+            <h4>{{ result.name }} <strong>ID {{ result.id }}</strong></h4>
+            <p class="fecha">{{ result.fecha }} {{ result.location }}</p>
+            <p></p>
+            <img class="foto" :src="result.foto" alt="foto" />
+            <p class="comentario">{{ result.comentario }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup>
 
 import axios from 'axios'
-import {ref} from 'vue'
+import { ref } from 'vue'
+
 const avatar = ref('')
-  const name = ref('')
-  const fecha = ref('')
-  const location = ref('')
-  const foto = ref('')
-  const comentario = ref('')
-  
-   
+const name = ref('')
+const fecha = ref('')
+const location = ref('')
+const foto = ref('')
+const comentario = ref('')
+
+
 const id = ref('')
-  const error =ref ('')
- // coger un id y te proporciona los datos 
-  const getId = async () => {
-     try {
-        const response = await axios.get('http://localhost:3000/fotografias/' + id.value)
-        const data = response.data
-        console.log (response)
-        avatar.value =data.avatar
-        name.value = data.name
-        fecha.value = data.fecha
-        location.value = data.location
-        foto.value = data.foto
-        comentario.value = data.comentario
-   
-       } catch (error) {
-          alert('El Id no existe')
-           console.log(error)
-   }
+const error = ref('')
+// coger un id y te proporciona los datos 
+const getId = async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/fotografias/' + id.value)
+    const data = response.data
+    console.log(response)
+    avatar.value = data.avatar
+    name.value = data.name
+    fecha.value = data.fecha
+    location.value = data.location
+    foto.value = data.foto
+    comentario.value = data.comentario
+
+  } catch (error) {
+    alert('El Id no existe')
+    console.log(error)
   }
-  //eliminas los datos
+}
+
+
+//eliminas los datos
 const delNew = async () => {
   try {
     await axios.delete('http://localhost:3000/fotografias/' + id.value)
     console.log('http://localhost:3000/fotografias/' + id.value)
     alert(`La entrada id: ${id.value} ha sido eliminada de la base de datos`)
-   
-    id.value =''
-    avatar.value=''
-    fecha.value=''
-    location.value=''
-    name.value=''
-    foto.value=''
-    comentario.value=''
 
+    id.value = ''
+    avatar.value = ''
+    fecha.value = ''
+    location.value = ''
+    name.value = ''
+    foto.value = ''
+    comentario.value = ''
   } catch (error) {
     console.log(error)
   }
 }
+
+
 // para actualizar los datos
 const updateNew = async () => {
-   try{
-const response = await axios.put(`http://localhost:3000/fotografias/${id.value}`,{
-  id:id.value,   
-  avatar:avatar.value,
-     name: name.value,
-     fecha: fecha.value,
-     location: location.value,
-     foto:foto.value,
-     comentario:comentario.value
-   
-   })
-   console.log(response)
-   id.value = ''
-   avatar.value=''
-   name.value = ''
-   fecha.value = ''
-   location.value = ''
-     foto.value = ''
-     comentario.value = ''
-     error.value = ''
-     alert ('Actualizado correctamente')
-   
- }catch(error) {
-     console.log(error);
-     error.value = 'Error no se han actualizado los datos'
-   }
+  try {
+    const response = await axios.put(`http://localhost:3000/fotografias/${id.value}`, {
+      id: id.value,
+      avatar: avatar.value,
+      name: name.value,
+      fecha: fecha.value,
+      location: location.value,
+      foto: foto.value,
+      comentario: comentario.value
+    })
+    console.log(response)
+    id.value = ''
+    avatar.value = ''
+    name.value = ''
+    fecha.value = ''
+    location.value = ''
+    foto.value = ''
+    comentario.value = ''
+    error.value = ''
+    alert('Actualizado correctamente')
+  } catch (error) {
+    console.log(error);
+    error.value = 'Error no se han actualizado los datos'
+  }
 }
 
-const postNew = async() => {
-   try{
-    
-     if(!name.value|| !fecha.value|| !location.value || !comentario.value || !foto.value || !avatar.value){
-     error.value = 'No puede haber campos vacios'
-     return
-     }
-     
-     const response = await axios.post ('http://localhost:3000/fotografias',{
-     avatar:avatar.value,
-     name: name.value,
-     fecha: fecha.value,
-     location: location.value,
-     foto:foto.value,
-     comentario:comentario.value
-    
-   
-   })
-   console.log(response)
-   avatar.value=''
-   name.value = ''
-   fecha.value = ''
-   location.value = ''
-     foto.value = ''
-     comentario.value = ''
-     error.value = ''
-     alert ('Nuevo post añadido')
-    
- }catch(error) {
-     console.log(error);
-     error.value = 'Error al envia los datos'
-   }
-  };
-   // datos de la busqueda
-const results =ref([])
-  const search = async () => {
+//ESte es el post
+const postNew = async () => {
   try {
-    
-   
+
+    if (!name.value || !fecha.value || !location.value || !comentario.value || !foto.value || !avatar.value) {
+      error.value = 'No puede haber campos vacios'
+      return
+    }
+
+    const response = await axios.post('http://localhost:3000/fotografias', {
+      avatar: avatar.value,
+      name: name.value,
+      fecha: fecha.value,
+      location: location.value,
+      foto: foto.value,
+      comentario: comentario.value
+    })
+    console.log(response)
+    avatar.value = ''
+    name.value = ''
+    fecha.value = ''
+    location.value = ''
+    foto.value = ''
+    comentario.value = ''
+    error.value = ''
+    alert('Nuevo post añadido')
+  } catch (error) {
+    console.log(error);
+    error.value = 'Error al envia los datos'
+  }
+};
+
+
+
+// datos de la busqueda
+const results = ref([])
+const search = async () => {
+  try {
     const response = await axios.get(`http://localhost:3000/fotografias/?name=${name.value}`);
-    results.value= response.data;
+    results.value = response.data;
     console.log(response.data)
   } catch (error) {
     error.value = "Nombre no existe";
@@ -202,7 +206,7 @@ const results =ref([])
  
   
  }
- input[type=button], input[type=submit], input[type=reset]  {
+ input[type=button], input[type=submit]{
    background-color: #56baed;
    border: none;
    color: white;
@@ -223,10 +227,10 @@ const results =ref([])
    -o-transition: all 0.3s ease-in-out;
    transition: all 0.3s ease-in-out;
  }
- input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+ input[type=button]:hover, input[type=submit]:hover {
    background-color: #39ace7;
  }
- input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+ input[type=button]:active, input[type=submit]:active {
    -moz-transform: scale(0.95);
    -webkit-transform: scale(0.95);
    -o-transform: scale(0.95);
