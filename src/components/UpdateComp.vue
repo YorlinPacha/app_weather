@@ -118,6 +118,7 @@ const response = await axios.put(`http://localhost:3000/fotografias/${id.value}`
      error.value = 'Error no se han actualizado los datos'
    }
 }
+
 const postNew = async() => {
    try{
     

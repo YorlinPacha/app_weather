@@ -214,7 +214,5 @@ form{
   padding-bottom: .5rem;
 }
 
-
-
 }
 </style>
