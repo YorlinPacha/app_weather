@@ -20,7 +20,7 @@
                 <div class="switch form-check form-switch">
                     <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
-                <p class="switchs" @click="footing" :class="{'seleccionado':switchValue==true}">Footing</p>
+                <p class="switchs" @click="footing" :class="{'seleccionado':switchValue==true}">Running</p>
             </div>
                 
         </div>
