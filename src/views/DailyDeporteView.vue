@@ -9,7 +9,7 @@
         :climaCompleto="climaCompleto"
       />
       <br />
-      <ClimaHorasDia
+      <ClimaHorasDia class="cuadroHorasDia"
         :climaActual="climaActual"
         :climaCompleto="climaCompleto"
       />
@@ -84,7 +84,7 @@ const noMeGusta = ()=>{
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  max-width: 80px;
+  max-width: 90px;
   text-align: center;
   padding: 0.5rem 1rem ;
   margin: 0 auto 0 90%;
@@ -95,6 +95,10 @@ const noMeGusta = ()=>{
   font-size: 1rem;
   color: #fff;
 }
+.cuadroHorasDia{
+margin: 4rem 0;
+}
+
 
 
 /* -------------------Responsive Tablet ----------------*/
