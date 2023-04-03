@@ -76,6 +76,20 @@ async function datosCompletos(lat, lon) {
   const dataWeather = await respuesta.json();
   climaCompleto.value = dataWeather
   // console.log("EquipoVUE" + climaCompleto.value.name);
+
+  // cal current date & time
+  const localOffset = new Date().getTimezoneOffset() * 60000;
+    const utc = dataWeather.data.current.dt * 1000 + localOffset;
+    dataWeather.data.currentTime =
+      utc + 1000 * dataWeather.data.timezone_offset;
+
+    // cal hourly weather offset
+    dataWeather.data.hourly.forEach((hour) => {
+      const utc = hour.dt * 1000 + localOffset;
+      hour.currentTime =
+        utc + 1000 * dataWeather.data.timezone_offset;
+    });
+
   return dataWeather;
   
   // climaHora(climaCompleto.value.hourly.dt);
@@ -86,34 +100,7 @@ async function datosCompletos(lat, lon) {
     console.log("error funcion datosCompletos",error)
   }
 }
-// function climaHora(timestamp) {
-//       const date = new Date(timestamp * 1000);
-//       const hora = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-//       return hora;
-//       console.log(hora);
-//     }
-/* No borrar la funcion de abajo "function gg(lat,lon)" para poder guiarme en la codificacion de la captura de errores al momento de hacer una busqueda  */
-// function gg(lat,lon){
-//   let dataWeather = ref("");
-//   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
-//   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-//   fetch(url)
-//     .then(response => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       throw new Error('Error en la respuesta de la API.');
-//     })
-//     .then(dataWeather => {
-//       const temperaturaActual = dataWeather.current.temp;
-//       const descripcionClimaActual = dataWeather.current.weather[0].description;
-//       console.log(`La temperatura actual es ${temperaturaActual} grados Celsius y el clima está ${descripcionClimaActual}.`);
-//       console.log("*****dataWeather*******",dataWeather);
-//     })
-//     .catch(error => {
-//       console.log(error.message);
-//     });
-// }
+
 /*inicio*********************************************************
 Pasamos las variables que contienes los datos de cada api. 
 climaActual = nos pasa la informacion de la api https://api.openweathermap.org/data/2.5/weather, cuando se hace la busqueda en el input del header
@@ -205,7 +192,7 @@ color:#424642;
     margin: 1rem auto;
   }
   .nav-item {
-  width: 20rem;
+  width: 80vw;
   text-align: center;
 }
 form{

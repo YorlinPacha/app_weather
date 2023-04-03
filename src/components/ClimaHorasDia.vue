@@ -24,7 +24,7 @@
                 </p>
                 <p>
                     {{
-                      new Date((climaHoras.dt *1000) - 7200).toLocaleTimeString("en-us", {
+                      new Date((climaHoras.dt *1000) + 7200).toLocaleTimeString("en-us", {
                         hour: "numeric",
                         hour: '2-digit',
                       })
@@ -42,7 +42,7 @@
                   <!-- {{(climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ).classList.add(dorado)}} -->
                 <hr>
                 
-                <h6>Mejores horas para hacer ejercicio</h6>
+                <h6>Mejores horas para salir a trotar</h6>
         </div>
       
     </div>
