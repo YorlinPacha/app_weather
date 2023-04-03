@@ -204,6 +204,7 @@ function cambio(){
         display: flex;
         align-items: center;
         margin: 0 auto;
+        
     }
 
     .opciones > p{
@@ -213,10 +214,12 @@ function cambio(){
     .switch{
         display: flex;
         align-items: center;
+        
     }
     .switchs {
     color: rgb(0, 0, 0);
     cursor: pointer;
+    
     }
 
     /* estilos solo para el que esta seleccionado */
@@ -225,6 +228,8 @@ function cambio(){
         border-radius: 20px;
         box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
         background-color: rgba(255, 255, 255, 0.637);
+        padding: .2rem .5rem;
+        
     }
 
 /* container con la informacion */
