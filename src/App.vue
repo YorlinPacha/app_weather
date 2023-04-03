@@ -29,9 +29,9 @@
 
         </ul>
         <form class="d-flex col-6" v-on:submit.prevent="doSearch">
-          <input v-model="search" class="form-control me-2" type="search" placeholder="Introducir Ciudad"
+          <input v-model="search" class="form-control me-2 inputColor" type="search" placeholder="Introducir Ciudad"
             aria-label="Search">
-          <button class="btn btn-outline-grey" type="submit">Buscar</button>
+          <button class="btn btn-outline-grey buscarTexto" type="submit">Buscar</button>
         </form>
       </div>
     </div>
@@ -141,9 +141,11 @@ climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.or
 }
 .nav-link {
   background-color: rgba(218, 218, 218, 0.158);
+  width: 5rem;
   padding: 0.3em;
   border-radius: 9px;
   margin: 0.1em;
+  text-align: center;
 }
 .logo {
   max-width: 5em;
@@ -185,6 +187,12 @@ color:#424642;
 display: flex;
 align-items: center;
 color:#424642;
+}
+.inputColor::placeholder{
+  color: rgb(121, 121, 249);
+}
+.buscarTexto{
+  color: rgb(216, 167, 6);
 }
   /* .fadeUp-enter-active, 
 .fadeUp-leave-active {

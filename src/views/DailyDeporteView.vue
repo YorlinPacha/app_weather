@@ -55,7 +55,10 @@ const meGusta = ()=>{
   cantidadValoracion.value++;
 }
 const noMeGusta = ()=>{
-  cantidadValoracion.value--;
+  if(cantidadValoracion.value > 0){
+    cantidadValoracion.value--;
+  }
+  
 }
 
 </script>
