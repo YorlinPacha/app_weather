@@ -14,9 +14,10 @@
             <div></div>
             <p class="ciudad">{{ climaActual.name }}</p>
 
-            <!-- Botones de Andar en bici o correr??? --> 
+            <!-- Botones de Andar en bici o correr --> 
             <div class="opciones">
                 <p class="switchs"  @click="ciclismo" :class="{'seleccionado':switchValue==false}">Ciclismo</p>
+                <!-- switch -->
                 <div class="switch form-check form-switch">
                     <input v-model="switchValue" @click="cambio()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 </div>
@@ -38,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- gif en el centro -->
+            <!-- gif en el centro con condiciones -->
             <div class="gif">
                 <!-- si llueve -->
                 <div v-if="climaActual.rain">       
@@ -50,15 +51,17 @@
 
                 <!-- si se elige ciclismo -->
                 <div v-else-if="bici==true">
+                    <!-- se cumplen -->
                     <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 10" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
-                    
+                    <!-- no se cumplen -->
                     <img v-else src="../assets/img/bored-week-13-unscreen.gif" alt="" class="bored">
                 </div>
                 
                 <!-- si se elige footing -->
                 <div v-else>
+                    <!-- se cumplen -->
                     <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 20" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
-                    
+                    <!-- no se cumple -->
                     <img v-else src="../assets/img/bored-week-13-unscreen.gif" alt="" class="bored">
                 </div>
             </div>
@@ -97,7 +100,6 @@
                 <h2>Malas condiciones</h2>
                 <p>No es el mejor momento para salir a correr. </p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -114,21 +116,23 @@ defineProps({
 
 //ciclismo true por defecto
 let bici = ref(true)
+//valor del switch par que coincida con lo seleccionado
 let switchValue = ref(false);
 
 
-
-console.log(switchValue)
+//si se hace click en footing "bici" se vuelve false
 function footing(){
     switchValue.value = true;
     bici.value = false
 }
 
+//si se hace click en ciclismo "bici" se vuelve true
 function ciclismo(){
     switchValue.value = false;
     bici.value = true
 }
 
+//si se hace click en el switch el valor cambia
 function cambio(){
     if (bici.value == true) {
          bici.value = false;
@@ -139,29 +143,10 @@ function cambio(){
 }
 
 
-// function obtenerHoraActual() {
-//     return new Date().toLocaleTimeString()
-// }
-
-
-// function obtenerFechaActual(){
-//     return new Date().toLocaleDateString()
-// }
-
 </script>
 
 <style scoped>
-.switchs {
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-}
 
-.seleccionado{
-    border: 1px solid rgba(0, 0, 0, 0.288);
-    border-radius: 20px;
-    box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
-    background-color: rgba(255, 255, 255, 0.637);
-}
 
 *{
     text-align: center;
@@ -177,12 +162,17 @@ function cambio(){
     height: 25rem;
     margin: 0 auto;
 }
+
+.tituloClima{
+    color: #757575;
+}
+
 .gifBuscar > img {
     border-radius: 100%;
     width: 20em;
 }
 /* Datos generales de la tarjeta */
- #climaPrincipalDiario{
+#climaPrincipalDiario{
     margin: 0 auto;
     width: 60%;
     height: auto;
@@ -191,97 +181,117 @@ function cambio(){
     padding-bottom: 1rem;
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    background-color: rgba(255, 255, 255, 0.637);
-   
- }
+    background-color: rgba(255, 255, 255, 0.637);  
+}
 
- .dark{
-    background-color: rgb(128, 102, 102)!important;
- }
- .rain{
+/* solo aparece cuando llueve */
+.rain{
     background-image: url(../assets/img/lluvia.gif);
- }
+}
 
- .titulo{
+
+.titulo{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
- }
+}
+    /* nombre de la ciudad */
+    .ciudad{
+        font-size: 2rem;
+    }
+    /* Ciclismo y running para elegir */
+    .opciones{
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        
+    }
 
- .opciones{
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
- }
+    .opciones > p{
+        margin-right: 0.5rem;
+    }
 
- .opciones > p{
-    margin-right: 0.5rem;
- }
+    .switch{
+        display: flex;
+        align-items: center;
+        
+    }
+    .switchs {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    
+    }
 
- .switch{
-    display: flex;
-    align-items: center;
- }
- .containerDatos{
+    /* estilos solo para el que esta seleccionado */
+    .seleccionado{
+        border: 1px solid rgba(0, 0, 0, 0.288);
+        border-radius: 20px;
+        box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
+        background-color: rgba(255, 255, 255, 0.637);
+        padding: .2rem .5rem;
+        
+    }
+
+/* container con la informacion */
+.containerDatos{
     display: flex;
     align-items: center;
     height: auto;
     position: relative;
     justify-content: space-evenly;
- }
-
- .datosEspecificos{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 4rem;
- }
- 
- .datosEspecificos > p{
-    text-align: left;
- }
- .humedadimg{
-    margin-left: 1rem;
- }
-
-.vientoimg > img{
-    width: 4rem;
 }
 
-.humedadimg > img{
-    width: 1.5rem;
-}
+    /* humedad y viento */
+    .datosEspecificos{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 4rem;
+    }
+    
+    .datosEspecificos > p{
+        text-align: left;
+    }
+    .humedadimg{
+        margin-left: 1rem;
+    }
 
- .grados{
+    .vientoimg > img{
+        width: 4rem;
+    }
+
+    .humedadimg > img{
+        width: 1.5rem;
+    }
+
+/* grados en grande */
+.grados{
     place-self: center;
     font-size: 5rem;
- }
-
- .ciudad{
-    font-size: 2rem;
- }
-
-
- .ciclismo{
-    width: 15rem;
- }
-
- .footing{
-    width: 20rem;
- }
-
-.paraguas{
-    width: 15rem;
 }
 
-.muchoCalor{
-    width: 15rem;
-}
+        /* tamaño de los gifs */
+        .ciclismo{
+            width: 15rem;
+        }
 
-.bored{
-    width: 15rem;
-}
+        .footing{
+            width: 20rem;
+        }
 
+        .paraguas{
+            width: 15rem;
+        }
+
+        .muchoCalor{
+            width: 15rem;
+        }
+
+        .bored{
+            width: 15rem;
+        }
+
+/* texto de recomendacion */
 .recomendacion{
     border-radius: 20px;
     margin: 0 4rem 0 4rem;
@@ -289,9 +299,7 @@ function cambio(){
     background-color: rgba(255, 255, 255, 0.733);
     box-shadow: 2px 2px 2px 2px rgba(155, 153, 153, 0.438);
 }
-.tituloClima{
-    color: #757575;
-}
+
 
 
  @media screen and (max-width: 900px){

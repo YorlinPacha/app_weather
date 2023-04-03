@@ -30,8 +30,9 @@
       </div>
 
       <br />
+      <ValoraAppVue class="valoraAppComp" @noMeGusta="noMeGusta" @meGusta="meGusta"/>
     </div>
-    <ValoraAppVue @noMeGusta="noMeGusta" @meGusta="meGusta"/>
+ 
   </div>
 </template>
 
@@ -103,6 +104,10 @@ const noMeGusta = ()=>{
     display: flex;
     justify-content: space-evenly;
   }
+  /* .mostrarValoracion{
+    margin: 0 auto 0 80%;
+    top:8rem;
+  } */
 }
 
 /* -------------------Responsive Desktop ----------------*/
