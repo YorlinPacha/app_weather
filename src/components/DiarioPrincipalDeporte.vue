@@ -51,13 +51,15 @@
                 <!-- si se elige ciclismo -->
                 <div v-else-if="bici==true">
                     <img v-if=" climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 10" src="../assets/img/giphy-unscreen.gif" alt="" class="ciclismo">
-                        <!-- <img v-else src="../assets/img/" alt=""> -->
+                    
+                    <img v-else src="../assets/img/bored-week-13-unscreen.gif" alt="" class="bored">
                 </div>
                 
                 <!-- si se elige footing -->
                 <div v-else>
-                        <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 20" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
-                        <!-- <img v-else src="../assets/img/" alt=""> -->
+                    <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 20" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                    
+                    <img v-else src="../assets/img/bored-week-13-unscreen.gif" alt="" class="bored">
                 </div>
             </div>
 
@@ -266,6 +268,10 @@ function cambio(){
 }
 
 .muchoCalor{
+    width: 15rem;
+}
+
+.bored{
     width: 15rem;
 }
 
