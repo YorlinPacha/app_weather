@@ -82,8 +82,10 @@ const noMeGusta = ()=>{
 
   max-width: 80px;
   text-align: center;
-  padding: 0.5rem 0 ;
+  padding: 0.5rem 1rem ;
   margin: 0 auto 0 90%;
+  position: absolute;
+  top:7.5rem;
 }
 .titulomostrarValoracion{
   font-size: 1rem;
