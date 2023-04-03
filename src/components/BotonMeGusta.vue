@@ -21,7 +21,7 @@
     </button>
     
     <p>Me gusta {{ megusta }}</p>
-    <p>Favoritos {{ contador }}</p>
+    <!-- <p>Favoritos {{ contador }}</p> -->
   </div>
 </template>
 

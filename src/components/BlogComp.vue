@@ -1,6 +1,6 @@
 <template>
   <div class=" cuerpo ">
-  <h1 class="text-center p-5 ">Informacion de interes</h1>
+  <h1 class="text-center p-5 textoBlog ">Informacion de interes</h1>
  
   <img v-if="isError" src="@/assets/logo.png" alt="error">
       <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
@@ -207,6 +207,10 @@ async function getInfo(){
   background-size: cover; */
   min-height: 100vh;
   } 
+
+  .textoBlog{
+    color: #757575;
+  }
   /* .contenedor{
     position: relative;
     display: inline-block;

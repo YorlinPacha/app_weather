@@ -5,7 +5,7 @@
         <div  class="contenedor_clima_horas"
         v-if="climaCompleto">
 
-        <h2 >Clima próximas 48 hrs</h2>
+        <h2 class="titulo-clima-horas">Clima próximas 48 hrs</h2>
           
           <div class="clima_horas">
           
@@ -24,7 +24,7 @@
                 </p>
                 <p>
                     {{
-                      new Date((climaHoras.dt *1000) - 7200).toLocaleTimeString("en-us", {
+                      new Date((climaHoras.dt *1000) + 7200).toLocaleTimeString("en-us", {
                         hour: "numeric",
                         hour: '2-digit',
                       })
@@ -42,7 +42,7 @@
                   <!-- {{(climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ).classList.add(dorado)}} -->
                 <hr>
                 
-                <h6>Mejores horas para hacer ejercicio</h6>
+                <h6>Mejores horas para salir a trotar</h6>
         </div>
       
     </div>
@@ -98,6 +98,10 @@ defineProps({
 
 .clima_hora .goToRun{
   width: 2rem;
+}
+
+.titulo-clima-horas{
+  color: rgb(61, 61, 61);
 }
 
  /* --------------Responsive tablet --------------   -768*/

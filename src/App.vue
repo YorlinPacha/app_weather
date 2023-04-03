@@ -29,9 +29,9 @@
 
         </ul>
         <form class="d-flex col-6" v-on:submit.prevent="doSearch">
-          <input v-model="search" class="form-control me-2" type="search" placeholder="Introducir Ciudad"
+          <input v-model="search" class="form-control me-2 inputColor" type="search" placeholder="Introducir Ciudad"
             aria-label="Search">
-          <button class="btn btn-outline-grey" type="submit">Buscar</button>
+          <button class="btn btn-outline-grey buscarTexto" type="submit">Buscar</button>
         </form>
       </div>
     </div>
@@ -76,6 +76,20 @@ async function datosCompletos(lat, lon) {
   const dataWeather = await respuesta.json();
   climaCompleto.value = dataWeather
   // console.log("EquipoVUE" + climaCompleto.value.name);
+
+  // cal current date & time
+  const localOffset = new Date().getTimezoneOffset() * 60000;
+    const utc = dataWeather.data.current.dt * 1000 + localOffset;
+    dataWeather.data.currentTime =
+      utc + 1000 * dataWeather.data.timezone_offset;
+
+    // cal hourly weather offset
+    dataWeather.data.hourly.forEach((hour) => {
+      const utc = hour.dt * 1000 + localOffset;
+      hour.currentTime =
+        utc + 1000 * dataWeather.data.timezone_offset;
+    });
+
   return dataWeather;
   
   // climaHora(climaCompleto.value.hourly.dt);
@@ -86,34 +100,7 @@ async function datosCompletos(lat, lon) {
     console.log("error funcion datosCompletos",error)
   }
 }
-// function climaHora(timestamp) {
-//       const date = new Date(timestamp * 1000);
-//       const hora = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-//       return hora;
-//       console.log(hora);
-//     }
-/* No borrar la funcion de abajo "function gg(lat,lon)" para poder guiarme en la codificacion de la captura de errores al momento de hacer una busqueda  */
-// function gg(lat,lon){
-//   let dataWeather = ref("");
-//   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
-//   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-//   fetch(url)
-//     .then(response => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       throw new Error('Error en la respuesta de la API.');
-//     })
-//     .then(dataWeather => {
-//       const temperaturaActual = dataWeather.current.temp;
-//       const descripcionClimaActual = dataWeather.current.weather[0].description;
-//       console.log(`La temperatura actual es ${temperaturaActual} grados Celsius y el clima está ${descripcionClimaActual}.`);
-//       console.log("*****dataWeather*******",dataWeather);
-//     })
-//     .catch(error => {
-//       console.log(error.message);
-//     });
-// }
+
 /*inicio*********************************************************
 Pasamos las variables que contienes los datos de cada api. 
 climaActual = nos pasa la informacion de la api https://api.openweathermap.org/data/2.5/weather, cuando se hace la busqueda en el input del header
@@ -141,9 +128,11 @@ climaCompleto = nos pasa la informacion de la api  https://api.openweathermap.or
 }
 .nav-link {
   background-color: rgba(218, 218, 218, 0.158);
+  width: 5rem;
   padding: 0.3em;
   border-radius: 9px;
   margin: 0.1em;
+  text-align: center;
 }
 .logo {
   max-width: 5em;
@@ -186,6 +175,12 @@ display: flex;
 align-items: center;
 color:#424642;
 }
+.inputColor::placeholder{
+  color: rgb(121, 121, 249);
+}
+.buscarTexto{
+  color: rgb(216, 167, 6);
+}
   /* .fadeUp-enter-active, 
 .fadeUp-leave-active {
   transition: opacity 0.25s, transform 0.25s;
@@ -205,8 +200,14 @@ color:#424642;
     margin: 1rem auto;
   }
   .nav-item {
-  width: 20rem;
+  width: 80vw;
   text-align: center;
+}
+
+.nav-link {
+  
+  width: 85vw;
+  margin: 0 auto;
 }
 form{
   width: 90vw;
