@@ -9,7 +9,7 @@
     <!-- div principal -->
     <div v-else id="climaPrincipalDiario" :class="{ 'rain': climaActual.rain !== undefined}">
         
-        <!-- Parte de arriba con nombre y datos de hora y fecha -->
+        <!-- Parte de arriba con nombre y seleccion -->
         <div class="titulo">
             <div></div>
             <p class="ciudad">{{ climaActual.name }}</p>
@@ -81,7 +81,7 @@
                 <p>No se recomienda hacer deporte. Mantente hidratado</p>
             </div>
             <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20">
-                <h2>¡Hora de hacer deporte!</h2>
+                <h2>¡Hora de coger la bici!</h2>
                 <p>El tiempo es perfecto para salir a dar una vuelta en bici. </p>
             </div>
             <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30">
@@ -89,8 +89,15 @@
                 <p>Es el momento perfecto para salir a correr un poco. </p>
             </div>
             <div v-else>
+                <div v-if="bici==true">
                 <h2>Malas condiciones</h2>
-                <p>No es el mejor momento para salir a hacer deporte. </p>
+                <p>No es el mejor momento para salir con la bici. </p>
+                </div>
+                <div v-else>
+                <h2>Malas condiciones</h2>
+                <p>No es el mejor momento para salir a correr. </p>
+                </div>
+
             </div>
         </div>
     </div>
