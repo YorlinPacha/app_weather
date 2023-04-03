@@ -203,6 +203,12 @@ color:#424642;
   width: 80vw;
   text-align: center;
 }
+
+.nav-link {
+  
+  width: 85vw;
+  margin: 0 auto;
+}
 form{
   width: 90vw;
   padding-bottom: .5rem;

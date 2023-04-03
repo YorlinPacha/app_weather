@@ -5,7 +5,7 @@
         <div  class="contenedor_clima_horas"
         v-if="climaCompleto">
 
-        <h2 >Clima próximas 48 hrs</h2>
+        <h2 class="titulo-clima-horas">Clima próximas 48 hrs</h2>
           
           <div class="clima_horas">
           
@@ -98,6 +98,10 @@ defineProps({
 
 .clima_hora .goToRun{
   width: 2rem;
+}
+
+.titulo-clima-horas{
+  color: rgb(61, 61, 61);
 }
 
  /* --------------Responsive tablet --------------   -768*/
