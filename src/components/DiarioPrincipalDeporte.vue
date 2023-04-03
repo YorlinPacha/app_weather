@@ -294,10 +294,11 @@ function cambio(){
 /* texto de recomendacion */
 .recomendacion{
     border-radius: 20px;
-    margin: 0 4rem 0 4rem;
+    margin: 2rem 4rem 0 4rem;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.733);
     box-shadow: 2px 2px 2px 2px rgba(155, 153, 153, 0.438);
+    padding: 1.2rem ;
 }
 
 
