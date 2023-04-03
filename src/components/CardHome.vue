@@ -59,7 +59,7 @@
 }
 
 .tituloClima{
-  color: rgb(145, 151, 151);
+  color: #757575;
 }
 
 
