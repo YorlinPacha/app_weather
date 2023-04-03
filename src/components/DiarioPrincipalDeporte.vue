@@ -161,6 +161,7 @@ function cambio(){
     border-radius: 20px;
     box-shadow: 2px 2px 3px 0 rgba(31, 38, 135, 0.37);
     background-color: rgba(255, 255, 255, 0.637);
+    padding: 0.2rem 0.5rem;
 }
 
 *{
