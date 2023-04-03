@@ -60,7 +60,7 @@
                 <!-- si se elige footing -->
                 <div v-else>
                     <!-- se cumplen -->
-                    <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 20" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
+                    <img  v-if=" climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 15" src="../assets/img/footing-unscreen.gif" alt="" class="footing">
                     <!-- no se cumple -->
                     <img v-else src="../assets/img/bored-week-13-unscreen.gif" alt="" class="bored">
                 </div>

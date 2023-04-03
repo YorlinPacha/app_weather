@@ -1,12 +1,13 @@
-
+import { mount } from '@vue/test-utils'
 import DiarioPrincipalDeporte from '@/components/DiarioPrincipalDeporte.vue'
-import {mount} from "@vue/test-utils"
-let wrapper;
-describe('DiarioPrincipalDeporte', () => {
-    it('renderizaElComponente', () => {
-      const wrapper = mount(<DiarioPrincipalDeporte />)
-      expect(wrapper.exists()).toBeTruthy()
-    })
-  })
 
+
+
+describe('gifBuscar', () => {
+  it('el componente existe', () => {
+    const wrapper = mount(DiarioPrincipalDeporte)
+    const gif = wrapper.find('.gifBuscar')
+    expect(gifBuscar.exists()).toBeTruthy()
+  })
+})
 
