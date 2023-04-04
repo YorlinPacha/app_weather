@@ -9,7 +9,7 @@
           <div class="card  ">
             <div class="card-body col-12 ">
               <div>
-                <div class="lalala">
+                <div class="card-principal">
                   <img class="avatar-img col-3" :src="getNew.avatar" alt="Avatar de May" />
                   <div class="px-2">
                     <h4 class="card-header-title mb-0">{{ getNew.name }}</h4>
@@ -96,7 +96,7 @@ getInfo()
 
   }
 
- .lalala {
+ .card-principal {
   display: flex;
 
  }
