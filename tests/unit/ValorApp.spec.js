@@ -8,5 +8,10 @@ describe('Valora', () => {
       const wrapper = mount(<ValoraApp />)
       expect(wrapper.exists()).toBe(true)
     });
+    it('debería renderizar dos botones', () => {
+      const wrapper = mount(<ValoraApp />)
+      const botones = wrapper.findAll('button')
+      expect(botones).toHaveLength(2)
+    });
     
 })

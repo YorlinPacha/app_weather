@@ -13,20 +13,11 @@ describe('FooterComp', () => {
     wrapper.unmount();
   });
 
-  it('se renderiza correctamente', () => {
+  it('se renderiza correctamente y contiene elementos', () => {
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it('contiene un elemento de información', () => {
     expect(wrapper.find('.info').exists()).toBe(true);
-  });
-
-  it('contiene un elemento de derechos de autor', () => {
-    expect(wrapper.find('.copyright').exists()).toBe(true);
-  });
-
-  it('contiene un elemento de datos', () => {
     expect(wrapper.find('.datos').exists()).toBe(true);
+    expect(wrapper.find('.copyright').exists()).toBe(true);
   });
 
   it('tiene tres elementos de etiqueta p', () => {
@@ -40,4 +31,3 @@ describe('FooterComp', () => {
     expect(wrapper.find('.copyright').text()).toBe('Copyright');
   });
 });
-
