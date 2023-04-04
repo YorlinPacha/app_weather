@@ -37,4 +37,10 @@
 /* .icono{
     width: 2px;
 } */
+/* -------------------Responsive mobile ----------------*/
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+  
+}
+
 </style>
