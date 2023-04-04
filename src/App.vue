@@ -46,12 +46,16 @@
 
 <script setup>
 import FooterComp from "./components/FooterComp.vue"
+
 import { RouterLink, RouterView } from 'vue-router'
 import { defineProps } from 'vue';
 import { ref } from "vue"
+
 let search = ref("");
 let climaActual = ref("");
 let climaCompleto = ref("");
+
+
 const doSearch = async () => {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=${search.value}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=metric&lang=es`);
@@ -67,6 +71,8 @@ const doSearch = async () => {
     console.log("error funcion doSearch",error)
   }
 };
+
+
 async function datosCompletos(lat, lon) {
   try {
   const apiKey = '7efa332cf48aeb9d2d391a51027f1a71';
