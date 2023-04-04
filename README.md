@@ -5,15 +5,14 @@
 2. [Estado actual](#estado-actual)
 3. [Tecnologías utilizadas](#tecnologias-usadas)
 4. [Instalación y prueba](#instalacion-y-prueba)
-5. [Marcos de competencia](#marcos-de-competencia)
-6. [Equipo](#equipo)
-7. [Agradecimientos](#agradecimientos)
+5. [Equipo](#equipo)
+6. [Agradecimientos](#agradecimientos)
 ***
 ## Información general
 
 Weather F5 es una aplicacion de pronostico del clima en la cual se muestra las mejores horas o momentos del dia para correr o andar en bici al aire libre. 
 
-El sitio web consta de tres vistas principales:
+El sitio web consta de tres vistas principales: Diario, semana, y blog.
 
 * Inicio/ diario: En la pagina de inicio, nos pide que elijamos un lugar. 
 
@@ -23,10 +22,10 @@ El sitio web consta de tres vistas principales:
     
     Luego en otra tarjeta nos dice la hora de el amanecer y el atardecer de este dia. 
 
-    Tarjeta con detalles del clima ese dia .....
+    
  
 
-* Semana: Dentro, podremos ver el tiempo que ba a hacer durante toda la semana, y tambien, un poco mas abjo nos mostrara el tiempo que hace en el momento.
+* Semana: Dentro, podremos ver el tiempo que ba a hacer durante toda la semana, y tambien, un poco mas abajo nos mostrara el tiempo que hace en el momento.
  
 * Blog: En este apartado, aparecen fotografias de lugares, con un resumen del tiempo que hace en ese momento. Se podra valorar la fotografia con likes. 
 
@@ -39,40 +38,35 @@ Proyecto finalizado.
 
 ## Tecnologias utilizadas
 * HTML5
-* CSS3
-* Bootstrap 
-* Sass
+* CSS 3
+* Bootstrap
 * Figma
-* Git
-* Linux
+* Git Hub
 * Visual Studio Code
-* GitHub
+* Vue 3
+* Jest
 * Trello
+* Canva
 
 ## Instalación y prueba
 1. Copie la URL del proyecto:
 ```
 https://github.com/bzmay0149/apiBlog.git
+
+https://github.com/Shamanesss/app_weather.git
 ```
 2. Abra una terminal en su Visual Studio Code y seleccione la carpeta en la que quiere poner el proyecto y clónalo, escribiendo en la terminal del visual studio code el siguiente codigo:
 
 
 $ git clone https://github.com/bzmay0149/apiBlog.git
+
+$ git clone https://github.com/Shamanesss/app_weather.git
 ```
 
 3.El proyecto ya estaria preparado en el visual studio code. Para poder visualizarlo abria que secribir en la terminal del visual studio code:  npm run serve.
 
 
-## Marcos de competencia
-* HTML5
-* Responsive desing
-* Flex/Grid
-* Git
-* SCRUM
-* Linux
-* SEO
-* CSS3
-* Visual Studio Code
+
 
 ## Equipo
 *Jonathan Echeverria (Scrum Master)
@@ -80,8 +74,8 @@ $ git clone https://github.com/bzmay0149/apiBlog.git
 *Edurne Montalban
 *Gonzalo Lekunberri
 *Jone Guerrero
-*May Torres
-*Andres Oscina(Product owner)
+*May Torres(Product owner)
+
 
 ## Instalación del proyecto
 ```

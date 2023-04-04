@@ -4,6 +4,8 @@
       <h1 class="titulomostrarValoracion"><i class="fa-regular fa-face-laugh-wink" style="color: #ffffff;"></i> + {{cantidadValoracion}}</h1>
       </div>
     <div class="contenedor_componentes">
+      <!-- <p> {{  climaActual.weather[0].icon }}</p> -->
+
       <DiarioPrincipalDeporteVue
         :climaActual="climaActual"
         :climaCompleto="climaCompleto"
