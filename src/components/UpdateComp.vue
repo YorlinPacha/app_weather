@@ -107,7 +107,7 @@ const updateNew = async () => {
       comentario: comentario.value
     })
     console.log(response)
-   location.reload()
+    location.reload()
     alert('Actualizado correctamente')
   } catch (error) {
     console.log(error);
