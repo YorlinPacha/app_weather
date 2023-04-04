@@ -1,6 +1,6 @@
 <template>
   <section v-if="climaActual" class="contenedor_amanecer_atardecer_comp">
-    <h3>Amanecer y Atardecer</h3>
+    <h3 class="titulo-amanecerAtardecer">Amanecer y Atardecer</h3>
     <div class="contenedor_amanecer_atardecer">
       <div class="contenedor_amanecer center text-center">
         <img
@@ -80,6 +80,10 @@ defineProps({
     border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 20px 20px 20px;
     text-align: center;
+}
+
+.titulo-amanecerAtardecer{
+  color: rgb(61, 61, 61);
 }
 
 /* -------------------Responsive Tablet ----------------*/

@@ -86,6 +86,7 @@ defineProps({
 
  .titulo_clima_semana{
   margin-bottom: 1.5rem;
+  color: rgb(61, 61, 61);
  }
 
  .clima_dia{

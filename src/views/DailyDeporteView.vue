@@ -9,7 +9,7 @@
         :climaCompleto="climaCompleto"
       />
       <br />
-      <ClimaHorasDia
+      <ClimaHorasDia class="cuadroHorasDia"
         :climaActual="climaActual"
         :climaCompleto="climaCompleto"
       />
@@ -30,8 +30,9 @@
       </div>
 
       <br />
+      <ValoraAppVue class="valoraAppComp" @noMeGusta="noMeGusta" @meGusta="meGusta"/>
     </div>
-    <ValoraAppVue @noMeGusta="noMeGusta" @meGusta="meGusta"/>
+ 
   </div>
 </template>
 
@@ -55,7 +56,10 @@ const meGusta = ()=>{
   cantidadValoracion.value++;
 }
 const noMeGusta = ()=>{
-  cantidadValoracion.value--;
+  if(cantidadValoracion.value > 0){
+    cantidadValoracion.value--;
+  }
+  
 }
 
 </script>
@@ -80,7 +84,7 @@ const noMeGusta = ()=>{
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  max-width: 80px;
+  max-width: 90px;
   text-align: center;
   padding: 0.5rem 1rem ;
   margin: 0 auto 0 90%;
@@ -91,6 +95,10 @@ const noMeGusta = ()=>{
   font-size: 1rem;
   color: #fff;
 }
+.cuadroHorasDia{
+margin: 4rem 0;
+}
+
 
 
 /* -------------------Responsive Tablet ----------------*/
@@ -100,6 +108,10 @@ const noMeGusta = ()=>{
     display: flex;
     justify-content: space-evenly;
   }
+  /* .mostrarValoracion{
+    margin: 0 auto 0 80%;
+    top:8rem;
+  } */
 }
 
 /* -------------------Responsive Desktop ----------------*/

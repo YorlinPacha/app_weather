@@ -3,7 +3,7 @@
     class="contenedor_detalles_clima"
     v-if="climaCompleto && climaActual"
     >
-        <h3 class="text-center">Detalles del clima de hoy</h3>
+        <h3 class="text-center titulo-clima-hoy">Detalles del clima de hoy</h3>
         <div class="detalles_clima_hoy">
             <img 
             class="imagen_clima_hoy"
@@ -67,6 +67,10 @@
 
 .clima_hoy_descripcion{
     text-transform: capitalize;
+}
+
+.titulo-clima-hoy{
+  color: rgb(61, 61, 61);
 }
 
 /* -------------------Responsive Tablet ----------------*/
