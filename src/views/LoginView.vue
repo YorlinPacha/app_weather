@@ -36,7 +36,7 @@ export default {
 const error = ref('')
     const login = () =>{
       if (usuario.value === 'administrador' && password.value === 'contraseña') {
-      router.push("/formulario")
+      router.push("/login/formulario")
     } else {
       error.value = "Usuario o contraseña incorrectos"
     }
@@ -55,6 +55,12 @@ const error = ref('')
 
 
 <style scoped>
+.home{
+  margin-top: 5rem;
+  margin-bottom: 12rem;
+
+  }
+
 
 .wrapper {
   display: flex;
