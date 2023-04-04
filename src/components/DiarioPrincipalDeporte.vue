@@ -45,7 +45,7 @@
                 <img v-if="climaActual.rain" src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
 
                 <!-- si nieva -->
-                <!-- <img v-else-if="" src="../assets/img/Making-a-snow-angel-unscreen.gif" alt=""> -->
+                <!-- <img v-else-if="climaActual.snow" src="../assets/img/Making-a-snow-angel-unscreen.gif" alt=""> -->
 
                 <!-- si hace mucho calor y sol -->
                 <img v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20" src="../assets/img/muchocalor.gif" alt="" class="muchoCalor">
@@ -271,7 +271,7 @@ function cambio(){
     font-size: 5rem;
 }
 
-        /* tamaño de los gifs */
+        /* tamaño de los gifs ------------------------ */
         .ciclismo{
             width: 15rem;
         }
@@ -313,7 +313,7 @@ function cambio(){
     }
 
  }
- @media screen and (max-width: 400px){
+ @media screen and (max-width: 450px){
     #climaPrincipalDiario{
         width: 90vw;
         height: auto;
