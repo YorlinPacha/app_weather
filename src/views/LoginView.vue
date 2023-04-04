@@ -36,7 +36,7 @@ export default {
 const error = ref('')
     const login = () =>{
       if (usuario.value === 'administrador' && password.value === 'contraseña') {
-      router.push("/login/formulario")
+      router.push("/auth/formulario")
     } else {
       error.value = "Usuario o contraseña incorrectos"
     }
