@@ -1,8 +1,8 @@
 <template>
   <div class=" cuerpo ">
     <h1 class="text-center p-5 textoBlog ">Información de interés</h1>
-    <img v-if="isError" src="@/assets/logo.png" alt="error">
-    <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
+    <img v-if="isError" src="https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_1280.png" alt="error">
+    <img v-if="isLoading" src="https://cdn.pixabay.com/photo/2017/10/04/10/36/charging-the-battery-2815741_1280.jpg" alt="loading">
     <div v-if="!isError && !isLoading">
       <div class="container">
         <div v-for="getCard in getCards" :key="getCard.id">
@@ -38,7 +38,8 @@ import BotonMeGusta from './BotonMeGusta.vue';
 import axios from 'axios'
 import { ref } from 'vue'
 const getCards = ref(null)
-async function getInfo() {
+
+async function getNoticias() {
   let isError = false
   let isLoading = true
   try {
@@ -58,7 +59,7 @@ async function getInfo() {
 
 }
 
-getInfo()
+getNoticias()
 
 </script>
 
