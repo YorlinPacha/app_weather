@@ -63,7 +63,7 @@ getNoticias()
 
 </script>
 
-<style scoped>
+ <style scoped>
 .container{
   display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -131,4 +131,4 @@ getNoticias()
     grid-template-columns: repeat(1, 1fr);  
   }
   }
-</style>
+</style> 
