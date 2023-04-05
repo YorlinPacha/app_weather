@@ -84,11 +84,11 @@
                 <h2>Hace mucho calor.</h2>
                 <p>No se recomienda hacer deporte. Mantente hidratado</p>
             </div>
-            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20">
+            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 10">
                 <h2>¡Hora de coger la bici!</h2>
                 <p>El tiempo es perfecto para salir a dar una vuelta en bici. </p>
             </div>
-            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30">
+            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 15">
                 <h2>¡Hora de Correr!</h2>
                 <p>Es el momento perfecto para salir a correr un poco. </p>
             </div>

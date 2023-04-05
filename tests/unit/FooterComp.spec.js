@@ -5,7 +5,7 @@ describe('FooterComp', () => {
   let wrapper;
 
   beforeEach(async () => {
-    wrapper = mount(FooterComp, { attachTo: document.body });
+    wrapper = mount(FooterComp);
     await wrapper.vm.$nextTick();
   });
 
