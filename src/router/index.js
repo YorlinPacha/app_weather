@@ -34,7 +34,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   },
   {
-    path: '/formulario',
+    path: '/auth/formulario',
     name: 'formulario',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

@@ -3,7 +3,7 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first">
-          <h1>Crud</h1>
+          <h1>CRUD</h1>
           <form v-on:submit.prevent="postNew">
             <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id">
             <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar"
@@ -12,8 +12,8 @@
               v-model="name">
             <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha"
               v-model="fecha">
-            <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad"
-              v-model="location">
+            <input type="text" id="ciudad" class="fadeIn sixth" name="ciudad" placeholder="Introducir ciudad"
+              v-model="ciudad">
             <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto"
               v-model="foto">
             <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario"
@@ -33,7 +33,7 @@
           <div class="resultado" v-for="result in results" :key="result.id">
             <img class="avatar-img" :src="result.avatar" alt="avatar" />
             <h4>{{ result.name }} <strong>ID {{ result.id }}</strong></h4>
-            <p class="fecha">{{ result.fecha }} {{ result.location }}</p>
+            <p class="fecha">{{ result.fecha }} {{ result.ciudad }}</p>
             <p></p>
             <img class="foto" :src="result.foto" alt="foto" />
             <p class="comentario">{{ result.comentario }}</p>
@@ -52,7 +52,7 @@ import { ref } from 'vue'
 const avatar = ref('')
 const name = ref('')
 const fecha = ref('')
-const location = ref('')
+const ciudad = ref('')
 const foto = ref('')
 const comentario = ref('')
 
@@ -68,7 +68,7 @@ const getId = async () => {
     avatar.value = data.avatar
     name.value = data.name
     fecha.value = data.fecha
-    location.value = data.location
+    ciudad.value = data.ciudad
     foto.value = data.foto
     comentario.value = data.comentario
 
@@ -86,16 +86,11 @@ const delNew = async () => {
     console.log('http://localhost:3000/fotografias/' + id.value)
     alert(`La entrada id: ${id.value} ha sido eliminada de la base de datos`)
 
-    id.value = ''
-    avatar.value = ''
-    fecha.value = ''
-    location.value = ''
-    name.value = ''
-    foto.value = ''
-    comentario.value = ''
+   location.reload()
   } catch (error) {
-    console.log(error)
+    console.log(error.value)
   }
+  
 }
 
 
@@ -107,19 +102,12 @@ const updateNew = async () => {
       avatar: avatar.value,
       name: name.value,
       fecha: fecha.value,
-      location: location.value,
+      ciudad: ciudad.value,
       foto: foto.value,
       comentario: comentario.value
     })
     console.log(response)
-    id.value = ''
-    avatar.value = ''
-    name.value = ''
-    fecha.value = ''
-    location.value = ''
-    foto.value = ''
-    comentario.value = ''
-    error.value = ''
+    location.reload()
     alert('Actualizado correctamente')
   } catch (error) {
     console.log(error);
@@ -131,7 +119,7 @@ const updateNew = async () => {
 const postNew = async () => {
   try {
 
-    if (!name.value || !fecha.value || !location.value || !comentario.value || !foto.value || !avatar.value) {
+    if (!name.value || !fecha.value || !ciudad.value || !comentario.value || !foto.value || !avatar.value) {
       error.value = 'No puede haber campos vacios'
       return
     }
@@ -140,18 +128,12 @@ const postNew = async () => {
       avatar: avatar.value,
       name: name.value,
       fecha: fecha.value,
-      location: location.value,
+      ciudad: ciudad.value,
       foto: foto.value,
       comentario: comentario.value
     })
     console.log(response)
-    avatar.value = ''
-    name.value = ''
-    fecha.value = ''
-    location.value = ''
-    foto.value = ''
-    comentario.value = ''
-    error.value = ''
+   location.reload()
     alert('Nuevo post añadido')
   } catch (error) {
     console.log(error);
@@ -172,6 +154,7 @@ const search = async () => {
     error.value = "Nombre no existe";
   }
 }
+
 
 </script>
 

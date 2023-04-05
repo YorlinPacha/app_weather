@@ -30,7 +30,7 @@
                       })
                     }}
                 </p>
-                  <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp >= 10 && climaHoras.temp < 20 && climaHoras.humidity <70 && climaHoras.wind_speed < 5 && climaHoras.pop < 0.3 ">
+                  <img class="goToRun" src="../assets/img/favorito.gif" alt="" v-if=" climaHoras.temp >= 10 && climaHoras.temp < 25 && climaHoras.humidity <70 && climaHoras.wind_speed < 10 && climaHoras.pop < 0.3 ">
               
                 </div>
               
