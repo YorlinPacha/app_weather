@@ -13,5 +13,11 @@ describe('Valora', () => {
       const botones = wrapper.findAll('button')
       expect(botones).toHaveLength(2)
     });
+    it('tiene clases', () => {
+      const wrapper = mount(<ValoraApp />)
+      const clasesEsperadas =['valoracion']
+      const clasesActuales = wrapper.classes()
+      expect(clasesActuales).toEqual(expect.arrayContaining(clasesEsperadas))
+    })
     
 })
