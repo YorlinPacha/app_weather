@@ -36,6 +36,7 @@
       </div>
     </div>
   </nav>
+  
   <RouterView :climaActual="climaActual" :climaCompleto="climaCompleto" />
 
    

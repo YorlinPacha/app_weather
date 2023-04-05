@@ -19,9 +19,6 @@
   <script setup>
   import { defineProps } from 'vue';
  defineProps({
-    result: {
-      type: Object
-    },
     climaActual: Object,
     climaCompleto: Object
   });
