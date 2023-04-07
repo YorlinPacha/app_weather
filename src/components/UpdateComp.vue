@@ -5,25 +5,19 @@
         <div class="fadeIn first">
           <h1>Crud</h1>
           <form v-on:submit.prevent="postNew">
-            <input type="text" id="delid" class="fadeIn second " name="id" placeholder="Introducir el Id" v-model="id">
-            <input type="text" id="avatar" class="fadeIn third" name="avatar" placeholder="Introducir enlace avatar"
-              v-model="avatar">
-            <input type="text" id="name" class="fadeIn fourth" name="name" placeholder="Introducir el nombre"
-              v-model="name">
-            <input type="date" id="fecha" class="fadeIn fifth" name="fecha" placeholder="Introducir la fecha"
-              v-model="fecha">
-            <input type="text" id="location" class="fadeIn sixth" name="location" placeholder="Introducir ciudad"
-              v-model="location">
-            <input type="text" id="foto" class="fadeIn seventh" name="foto" placeholder="Introducir enlace foto"
-              v-model="foto">
-            <input type="text" id="comentario" class="fadeIn eighth" name="comentario" placeholder="Introducir comentario"
-              v-model="comentario">
+            <input type="text" id="delid" class="fadeIn" name="id" placeholder="Introducir el Id" v-model="id">
+            <input type="text" class="fadeIn" name="avatar" placeholder="Introducir enlace avatar" v-model="avatar">
+            <input type="text" class="fadeIn" name="name" placeholder="Introducir el nombre" v-model="name">
+            <input type="date" class="fadeIn" name="fecha" placeholder="Introducir la fecha" v-model="fecha">
+            <input type="text" class="fadeIn" name="location" placeholder="Introducir ciudad" v-model="location">
+            <input type="text" class="fadeIn" name="foto" placeholder="Introducir enlace foto" v-model="foto">
+            <input type="text" class="fadeIn" name="comentario" placeholder="Introducir comentario" v-model="comentario">
             <input type="button" class="fadeIn twelfth" @click="updateNew" value="UPDATE">
             <input type="button" class="fadeIn twelfth" @click="getId" value="GET">
             <input type="button" class="fadeIn ninth" @click="delNew" value="DELETE">
             <input type="button" class="fadeIn ninth" @click="search" value="SEARCH">
             <input type="submit" class="fadeIn ninth" value="POST">
-           
+
             <div class="error" v-if="error">{{ error }}</div>
           </form>
         </div>
@@ -177,124 +171,141 @@ const search = async () => {
 
 <style scoped>
 .wrapper {
-   display: flex;
-   align-items: center;
-   flex-direction: column; 
-   justify-content: center;
-   width: 100%;
-   min-height: 100%;
-   padding: 20px;
- } 
- #formContent {
-   -webkit-border-radius: 10px 10px 10px 10px;
-   border-radius: 10px 10px 10px 10px;
-   background: #fff;
-   padding: 30px;
-   width: 90%;
-   max-width: 850px;
-   position: relative;
-   padding: 0px;
-   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-   text-align: center;
- }
- #formContent-2 {
-  
-   padding: 30px;
-   max-width: 850px;
-   margin: 0 auto;
- 
-  
- }
- input[type=button], input[type=submit]{
-   background-color: #56baed;
-   border: none;
-   color: white;
-   padding: 15px 80px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   text-transform: uppercase;
-   font-size: 13px;
-   -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-   -webkit-border-radius: 5px 5px 5px 5px;
-   border-radius: 5px 5px 5px 5px;
-   margin: 5px 20px 40px 20px;
-   -webkit-transition: all 0.3s ease-in-out;
-   -moz-transition: all 0.3s ease-in-out;
-   -ms-transition: all 0.3s ease-in-out;
-   -o-transition: all 0.3s ease-in-out;
-   transition: all 0.3s ease-in-out;
- }
- input[type=button]:hover, input[type=submit]:hover {
-   background-color: #39ace7;
- }
- input[type=button]:active, input[type=submit]:active {
-   -moz-transform: scale(0.95);
-   -webkit-transform: scale(0.95);
-   -o-transform: scale(0.95);
-   -ms-transform: scale(0.95);
-   transform: scale(0.95);
- }
- input[type=text], [type=date] {
-   background-color: #f6f6f6;
-   border: none;
-   color: #0d0d0d;
-   padding: 15px 32px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 16px;
-   margin: 5px;
-   width: 85%;
-   border: 2px solid #f6f6f6;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
 
- }
- input[type=text]:focus {
-   background-color: #fff;
-   border-bottom: 2px solid #5fbae9;
- }
- input[type=text]:placeholder {
-   color: #cccccc;
- }
- 
- .error{
-   background-color: red;
-   color:white;
- }
- #delid{
-   margin-top: 2rem;
- }
- 
- .resultados{
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 850px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+#formContent-2 {
+
+  padding: 30px;
+  max-width: 850px;
+  margin: 0 auto;
+
+
+}
+
+input[type=button],
+input[type=submit] {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:hover,
+input[type=submit]:hover {
+  background-color: #39ace7;
+}
+
+input[type=button]:active,
+input[type=submit]:active {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text],
+[type=date] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+
+}
+
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+.error {
+  background-color: red;
+  color: white;
+}
+
+#delid {
+  margin-top: 2rem;
+}
+
+.resultados {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
- 
- }
- .resultado{
-border: 1px solid black;
-flex-wrap: wrap;
- }
- .avatar-img {
- border-radius: 50%;
+
+}
+
+.resultado {
+  border: 1px solid black;
+  flex-wrap: wrap;
+}
+
+.avatar-img {
+  border-radius: 50%;
   width: 40px;
   height: 40px;
   object-fit: cover;
- } 
- .foto {
-    max-width: 100%;
-   width: 10rem;
-   height: 10rem;
-   border-radius: 10px;
-   
-  }
-  .comentario{
-    width: 10rem;
-  } 
-  .fecha{
-    width: 10rem;
-  }
-</style>
+}
+
+.foto {
+  max-width: 100%;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10px;
+
+}
+
+.comentario {
+  width: 10rem;
+}
+
+.fecha {
+  width: 10rem;
+}</style>
