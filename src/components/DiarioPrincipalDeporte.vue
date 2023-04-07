@@ -41,10 +41,11 @@
 
             <!-- gif en el centro con condiciones -->
             <div class="gif">
-                <!-- si llueve -->
-                <div v-if="climaActual.rain">       
-                   <img src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
-                </div>
+                <!-- si llueve -->                    
+                <img v-if="climaActual.rain" src="../assets/img/umbrella-motvion-800x600-unscreen.gif" alt="" class="paraguas">
+
+                <!-- si nieva -->
+                <!-- <img v-else-if="climaActual.snow" src="../assets/img/Making-a-snow-angel-unscreen.gif" alt=""> -->
 
                 <!-- si hace mucho calor y sol -->
                 <img v-else-if="climaActual.main.temp >25 && climaActual.clouds.all <= 20" src="../assets/img/muchocalor.gif" alt="" class="muchoCalor">
@@ -83,11 +84,11 @@
                 <h2>Hace mucho calor.</h2>
                 <p>No se recomienda hacer deporte. Mantente hidratado</p>
             </div>
-            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 20">
+            <div v-else-if="bici==true && climaActual.main.temp >= 15 && climaActual.main.temp < 25 && climaActual.main.humidity <70 && climaActual.main.humidity >35 && climaActual.wind.speed < 10">
                 <h2>¡Hora de coger la bici!</h2>
                 <p>El tiempo es perfecto para salir a dar una vuelta en bici. </p>
             </div>
-            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 30">
+            <div v-else-if="bici==false && climaActual.main.temp >= 10 && climaActual.main.temp <= 20 && climaActual.main.humidity <60 && climaActual.main.humidity >40 && climaActual.wind.speed < 15">
                 <h2>¡Hora de Correr!</h2>
                 <p>Es el momento perfecto para salir a correr un poco. </p>
             </div>
@@ -270,7 +271,7 @@ function cambio(){
     font-size: 5rem;
 }
 
-        /* tamaño de los gifs */
+        /* tamaño de los gifs ------------------------ */
         .ciclismo{
             width: 15rem;
         }
@@ -294,11 +295,10 @@ function cambio(){
 /* texto de recomendacion */
 .recomendacion{
     border-radius: 20px;
-    margin: 2rem 4rem 0 4rem;
+    margin: 0 4rem 0 4rem;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.733);
     box-shadow: 2px 2px 2px 2px rgba(155, 153, 153, 0.438);
-    padding: 1.2rem ;
 }
 
 
@@ -313,7 +313,7 @@ function cambio(){
     }
 
  }
- @media screen and (max-width: 400px){
+ @media screen and (max-width: 450px){
     #climaPrincipalDiario{
         width: 90vw;
         height: auto;

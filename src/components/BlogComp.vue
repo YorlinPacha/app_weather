@@ -1,27 +1,27 @@
 <template>
   <div class=" cuerpo ">
     <h1 class="text-center p-5 textoBlog ">Información de interés</h1>
-    <img v-if="isError" src="@/assets/logo.png" alt="error">
-    <img v-if="isLoading" src="@/assets/logo.png" alt="loading">
+    <img v-if="isError" src="https://cdn.pixabay.com/photo/2018/01/04/15/51/404-error-3060993_1280.png" alt="error">
+    <img v-if="isLoading" src="https://cdn.pixabay.com/photo/2017/10/04/10/36/charging-the-battery-2815741_1280.jpg" alt="loading">
     <div v-if="!isError && !isLoading">
       <div class="container">
-        <div v-for="getNew in getNews" :key="getNew.id">
+        <div v-for="getCard in getCards" :key="getCard.id">
           <div class="card  ">
             <div class="card-body col-12 ">
               <div>
-                <div class="lalala">
-                  <img class="avatar-img col-3" :src="getNew.avatar" alt="Avatar de May" />
+                <div class="card-principal">
+                  <img class="avatar-img col-3" :src="getCard.avatar" alt="Avatar de May" />
                   <div class="px-2">
-                    <h4 class="card-header-title mb-0">{{ getNew.name }}</h4>
-                    <small class="text-muted py-0">{{ getNew.fecha }} </small>
+                    <h4 class="card-header-title mb-0">{{ getCard.name }}</h4>
+                    <small class="text-muted py-0">{{ getCard.fecha }} </small>
                   </div>
                 </div>
               </div>
             </div>
             <div class="p-2">
-              <p class="px-4">{{ getNew.location }} </p>
-              <img class="foto " :src="getNew.foto" alt="fotos" />
-              <p>{{ getNew.comentario }}</p>
+              <p class="px-4">{{ getCard.ciudad }} </p>
+              <img class="foto " :src="getCard.foto" alt="fotos" />
+              <p>{{ getCard.comentario }}</p>
               <div class="megusta">
                 <BotonMeGusta />
               </div>
@@ -37,14 +37,15 @@
 import BotonMeGusta from './BotonMeGusta.vue';
 import axios from 'axios'
 import { ref } from 'vue'
-const getNews = ref(null)
-async function getInfo() {
+const getCards = ref(null)
+
+async function getNoticias() {
   let isError = false
   let isLoading = true
   try {
     const response = await axios.get("http://localhost:3000/fotografias")
-    getNews.value = await response.data
-    console.log("****", getNews.value)
+    getCards.value = await response.data
+    console.log("****", getCards.value)
 
   } catch (error) {
     console.log(error);
@@ -53,16 +54,16 @@ async function getInfo() {
   isLoading = false
 
   return {
-    isError, isLoading, getNews
+    isError, isLoading, getCards
   }
 
 }
 
-getInfo()
+getNoticias()
 
 </script>
 
-<style scoped>
+ <style scoped>
 .container{
   display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -96,7 +97,7 @@ getInfo()
 
   }
 
- .lalala {
+ .card-principal {
   display: flex;
 
  }
@@ -130,4 +131,4 @@ getInfo()
     grid-template-columns: repeat(1, 1fr);  
   }
   }
-</style>
+</style> 

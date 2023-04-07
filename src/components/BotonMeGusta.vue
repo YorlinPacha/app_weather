@@ -21,12 +21,11 @@
     </button>
     
     <p>Me gusta {{ megusta }}</p>
-    <!-- <p>Favoritos {{ contador }}</p> -->
+  
   </div>
 </template>
 
 <script>
-// import { count } from "console";
 import { ref } from "vue";
 export default {
   name: "BotonMeGusta",
@@ -34,29 +33,16 @@ export default {
   setup() {
     let isFavorito = ref(false);
     let megusta = ref(0);
-    const contador = ref(0);
-    const megustas = () => {
-      console.log("me gusta");
-      console.log(megusta);
+
+    const megustas = () => { 
       megusta.value++;
     };
 
-    // seccion favoritos
-    console.log("contador inicial", contador.value);
+  
     const addFavorite = function () {
       isFavorito.value = !isFavorito.value;
       console.log(isFavorito.value);
-      console.log("contador imicial", contador.value);
-
-    
-      if (isFavorito.value == true) {
-        contador.value++;
-        console.log(contador.value);
-      } 
-      else {
-        contador.value--;
-        console.log(contador.value);
-      }
+ 
     };
 
     return {
@@ -64,7 +50,6 @@ export default {
       megustas,
       isFavorito,
       addFavorite,
-      contador,
     };
   },
 };

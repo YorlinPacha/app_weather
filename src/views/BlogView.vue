@@ -1,6 +1,4 @@
 
-import BotonMeGusta from '@/components/BotonMeGusta.vue';
-
 <template>
    <BlogComp />
  
